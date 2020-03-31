@@ -11,10 +11,24 @@ set(CMAKE_AUTOUIC ON) # Create code from a list of Qt designer ui files
 set(CMAKE_AUTORCC ON) # Create Resource files
 
 ################################
+# Pre-compilation steps
+################################
+include_directories(
+		#		${PROJECT_SOURCE_DIR}/Headers
+		${PROJECT_SOURCE_DIR}/src
+)
+
+file(GLOB SOURCE_FILES
+		${PROJECT_SOURCE_DIR}/src/*.cpp
+		${PROJECT_SOURCE_DIR}/src/*.c
+		)
+
+qt5_wrap_ui(ui_wrap MainWindow.ui)
+
+################################
 # Compiling
 ################################
-qt5_wrap_ui(ui_wrap MainWindow.ui)
-add_executable(DonationMining src/main.cpp src/MainWindow.cpp src/MainWindow.h ${ui_wrap})
+add_executable(DonationMining ${SOURCE_FILES} ${ui_wrap})
 
 set(EXECUTABLE_OUTPUT_PATH "bin" CACHE STRING "Path to place executables relative to ${CMAKE_INSTALL_PREFIX}")
 set(LIBRARY_OUTPUT_PATH "bin" CACHE STRING "Path to place libraries relative to ${CMAKE_INSTALL_PREFIX}")
