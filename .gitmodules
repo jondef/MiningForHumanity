@@ -1,4 +1,4 @@
-[submodule "xmrstak"]
-	path = xmrstak
-	url = https://github.com/fireice-uk/xmr-stak.git
+[submodule "xmr-stak"]
+	path = xmr-stak
+	url = https://github.com/jondef/xmr-stak.git
 	branch = xmr-stak-rx
