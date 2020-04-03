@@ -6,15 +6,20 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::uiMainWindow) {
 	ui->setupUi(this);
-	QString x("damn");
-//	QCoreApplication::setOrganizationName("MySoft");
+//	QCoreApplication::setOrganizationName("MySoft"); MiningForHumanity
 //	QCoreApplication::setOrganizationDomain("mysoft.com");
 //	QCoreApplication::setApplicationName("Star Runner");
-	ui->checkBox->setChecked(settings->value("editor/wrapMargin/checked").toBool());
+	ui->checkBox_SSLSupport->setChecked(settings->value("editor/wrapMargin").toBool());
 
-	connect(ui->checkBox, &QCheckBox::toggled, this, [&](bool checked){
-		settings->setValue("editor/wrapMargin/checked", checked);
+	connect(ui->checkBox_SSLSupport, &QCheckBox::toggled, this, [&](bool checked) {
+		settings->setValue("editor/wrapMargin", checked);
 	});
+
+	connect(ui->buttonBox, &QDialogButtonBox::accepted, this, [&]() {
+		// save / connect to pools
+		// minimise window
+	});
+	connect(ui->buttonBox, &QDialogButtonBox::rejected, this, [&]() { this->close(); });
 }
 
 MainWindow::~MainWindow() {
