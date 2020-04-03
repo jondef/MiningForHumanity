@@ -541,19 +541,25 @@ if (OpenCL_FOUND)
 endif ()
 
 # compile final binary
-file(GLOB SRCFILES_CPP "${CMAKE_SOURCE_DIR}/xmr-stak/xmrstak/cli/*.cpp")
+file(GLOB SRCFILES_CPP
+#        ${CMAKE_SOURCE_DIR}/xmr-stak/xmrstak/cli/*.cpp
+        ${PROJECT_SOURCE_DIR}/src/*.cpp
+        ${PROJECT_SOURCE_DIR}/src/*.c
+        )
 set_source_files_properties(${SRCFILES_CPP} PROPERTIES LANGUAGE CXX)
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-    add_executable(xmr-stak-rx ${SRCFILES_CPP} ${CMAKE_SOURCE_DIR}/xmr-stak/xmrstak/cli/xmr-stak.manifest)
+    add_executable(DonationMining ${SRCFILES_CPP} ${CMAKE_SOURCE_DIR}/xmr-stak/xmrstak/cli/xmr-stak.manifest)
 else ()
-    add_executable(xmr-stak-rx ${SRCFILES_CPP})
+    add_executable(DonationMining ${SRCFILES_CPP})
 endif ()
+
+qt5_wrap_ui(ui_wrap MainWindow.ui)
 
 set(EXECUTABLE_OUTPUT_PATH "bin" CACHE STRING "Path to place executables relative to ${CMAKE_INSTALL_PREFIX}")
 set(LIBRARY_OUTPUT_PATH "bin" CACHE STRING "Path to place libraries relative to ${CMAKE_INSTALL_PREFIX}")
 
-target_link_libraries(xmr-stak-rx ${MHTD} ${LIBS} xmr-stak-rx-backend)
+target_link_libraries(DonationMining ${MHTD} ${LIBS} xmr-stak-rx-backend Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Network)
 
 ################################################################################
 # Install
@@ -570,7 +576,7 @@ endif ()
 
 # do not install the binary if the project and install are equal
 if (NOT CMAKE_INSTALL_PREFIX STREQUAL PROJECT_BINARY_DIR)
-    install(TARGETS xmr-stak-rx
+    install(TARGETS DonationMining
             RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/${EXECUTABLE_OUTPUT_PATH}")
     if (CUDA_FOUND)
         if (WIN32)

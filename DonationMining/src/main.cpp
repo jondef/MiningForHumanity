@@ -166,7 +166,8 @@ void do_guided_pool_config() {
 	// load the template of the backend config into a char variable
 	const char *tpl =
 
-#include "xmrstak/pools.tpl";
+#include "xmrstak/pools.tpl"
+		;
 
 	configEditor configTpl{};
 	configTpl.set(std::string(tpl));
@@ -297,7 +298,8 @@ void do_guided_config() {
 	// load the template of the backend config into a char variable
 	const char *tpl =
 
-#include "xmrstak/config.tpl";
+#include "../config.tpl"
+		;
 
 	configEditor configTpl{};
 	configTpl.set(std::string(tpl));
@@ -341,6 +343,14 @@ int main(int argc, char *argv[]) {
 	SSL_load_error_strings();
 	OpenSSL_add_all_digests();
 #endif
+
+	QApplication app(argc, argv);
+
+	MainWindow window;
+	window.show();
+
+	QApplication::exec();
+//	return QApplication::exec();
 
 	srand(time(0));
 
@@ -831,6 +841,7 @@ int do_benchmark(int block_version, int wait_sec, int work_sec) {
 	printer::inst()->print_msg(L0, "Benchmark are measured without the dataset creation.");
 	return 0;
 }
+
 
 
 
