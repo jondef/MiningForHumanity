@@ -15,80 +15,83 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-       <item row="1" column="0">
-           <widget class="QDialogButtonBox" name="buttonBox">
-               <property name="standardButtons">
-                   <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-               </property>
-           </widget>
-       </item>
-       <item row="0" column="0">
-           <layout class="QFormLayout" name="formLayout">
-               <item row="0" column="0">
-                   <widget class="QLabel" name="label">
-                       <property name="text">
-                           <string>Curreny</string>
-                       </property>
-                   </widget>
-               </item>
-               <item row="1" column="0">
-                   <widget class="QLabel" name="label_2">
-                       <property name="text">
-                           <string>Pool address e.g. pool.example.com:3333</string>
-                       </property>
-                   </widget>
-               </item>
-               <item row="2" column="0">
-                   <widget class="QLabel" name="label_3">
-                       <property name="text">
-                           <string>Username (wallet address or pool login)</string>
-                       </property>
-                   </widget>
-               </item>
-               <item row="0" column="1">
-                   <widget class="QComboBox" name="comboBox_currency">
-                       <item>
-                           <property name="text">
-                               <string>monero</string>
-                           </property>
-                       </item>
-                   </widget>
-               </item>
-               <item row="1" column="1">
-                   <widget class="QLineEdit" name="lineEdit_poolAdress"/>
-               </item>
-               <item row="2" column="1">
-                   <widget class="QLineEdit" name="lineEdit_username"/>
-               </item>
-               <item row="3" column="0">
-                   <widget class="QLabel" name="label_4">
-                       <property name="text">
-                           <string>Password (mostly empty or x):</string>
-                       </property>
-                   </widget>
-               </item>
-               <item row="3" column="1">
-                   <widget class="QLineEdit" name="lineEdit_password"/>
-               </item>
-               <item row="4" column="0">
-                   <widget class="Line" name="line">
-                       <property name="orientation">
-                           <enum>Qt::Horizontal</enum>
-                       </property>
-                   </widget>
-               </item>
-               <item row="5" column="0">
-                   <widget class="QLabel" name="label_5">
-                       <property name="text">
-                           <string>Does this pool port support TLS/SSL? Leave unchecked if unsure</string>
-                       </property>
-                   </widget>
-               </item>
-               <item row="5" column="1">
-                   <widget class="QCheckBox" name="checkBox_SSLSupport"/>
-               </item>
-           </layout>
-       </item>
+    <item row="2" column="0">
+     <widget class="QDialogButtonBox" name="buttonBox">
+      <property name="standardButtons">
+       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Curreny</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Pool address e.g. pool.example.com:3333</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Username (wallet address or pool login)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="comboBox_currency">
+        <item>
+         <property name="text">
+          <string>monero</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEdit_poolAdress"/>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lineEdit_username"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Password (mostly empty or x):</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="lineEdit_password"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Does this pool port support TLS/SSL? Leave unchecked if unsure</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QCheckBox" name="checkBox_SSLSupport"/>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPlainTextEdit" name="plainTextEdit"/>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
