@@ -47,9 +47,6 @@ protected:
 
 	bool loadGame(SaveFormat saveFormat);
 
-	QVariantHash readConfigFile(const QString &config);
-
-	bool writeConfigFile(const QString &config, QVariantHash hash);
 };
 
 

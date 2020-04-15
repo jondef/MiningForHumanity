@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>uiSettingsWindow</class>
+ <widget class="QDialog" name="uiSettingsWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>619</width>
+    <height>621</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="3" column="1">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QStackedWidget" name="stackedWidget">
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="generalSettingsPage">
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <layout class="QFormLayout" name="formLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="callTimeoutLabel">
+           <property name="text">
+            <string>Call Timeout</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="callTimeoutSpinBox"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="retryTimeLabel">
+           <property name="text">
+            <string>Retry Time</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QSpinBox" name="retryTimeSpinBox"/>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="giveUpLimitLabel">
+           <property name="text">
+            <string>Give up Limit</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QSpinBox" name="giveUpLimitSpinBox"/>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="verboseLevelLabel">
+           <property name="text">
+            <string>Verbose Level</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QSpinBox" name="verboseLevelSpinBox"/>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="printMotdLabel">
+           <property name="text">
+            <string>Print Motd</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="hashraterateReportFreqencyLabel">
+           <property name="text">
+            <string>Hashraterate report freqency</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QSpinBox" name="hashraterateReportFreqencySpinBox"/>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="aESOverrideLabel">
+           <property name="text">
+            <string>AES Override</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QComboBox" name="aESOverrideComboBox"/>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="useSlowMemoryLabel">
+           <property name="text">
+            <string>Use slow memory</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QComboBox" name="useSlowMemoryComboBox"/>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="useTLSSecureAlgorithmLabel">
+           <property name="text">
+            <string>Use TLS Secure algorithm</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="1">
+          <widget class="QCheckBox" name="useTLSSecureAlgorithmCheckBox"/>
+         </item>
+         <item row="4" column="1">
+          <widget class="QCheckBox" name="printMotdCheckBox">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="0">
+          <widget class="QLabel" name="daemonModeLabel">
+           <property name="text">
+            <string>Daemon Mode</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="1">
+          <widget class="QCheckBox" name="daemonModeCheckBox"/>
+         </item>
+         <item row="10" column="0">
+          <widget class="QLabel" name="logOutputFileLabel">
+           <property name="text">
+            <string>Log Output file</string>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="1">
+          <widget class="QLineEdit" name="logOutputFileLineEdit"/>
+         </item>
+         <item row="11" column="0">
+          <widget class="QLabel" name="hTTPDPortLabel">
+           <property name="text">
+            <string>HTTPD Port</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="1">
+          <widget class="QSpinBox" name="hTTPDPortSpinBox"/>
+         </item>
+         <item row="12" column="0">
+          <widget class="QLabel" name="hTTPLoginLabel">
+           <property name="text">
+            <string>HTTP Login</string>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="1">
+          <widget class="QLineEdit" name="hTTPLoginLineEdit"/>
+         </item>
+         <item row="13" column="0">
+          <widget class="QLabel" name="hTTPPassLabel">
+           <property name="text">
+            <string>HTTP Pass</string>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="1">
+          <widget class="QLineEdit" name="hTTPPassLineEdit"/>
+         </item>
+         <item row="14" column="0">
+          <widget class="QLabel" name="preferIPV4Label">
+           <property name="text">
+            <string>Prefer IPV4</string>
+           </property>
+          </widget>
+         </item>
+         <item row="14" column="1">
+          <widget class="QCheckBox" name="preferIPV4CheckBox"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="cpuSettingsPage"/>
+     <widget class="QWidget" name="poolSettingsPage"/>
+    </widget>
+   </item>
+   <item row="0" column="0" rowspan="2">
+    <widget class="QListWidget" name="listWidget">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>uiSettingsWindow</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>uiSettingsWindow</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
