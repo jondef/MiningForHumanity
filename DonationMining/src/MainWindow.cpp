@@ -85,10 +85,7 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 		//loadGame(Json);
 //		readConfigFile(QString("config.txt"));
 	});
-	connect(ui->buttonBox, &QDialogButtonBox::rejected, this, [&]() {
-		this->close();
-		//saveGame(Json);
-	});
+	connect(ui->buttonBox, &QDialogButtonBox::rejected, this, [&]() { this->close(); });
 }
 
 MainWindow::~MainWindow() {
@@ -102,64 +99,4 @@ void MainWindow::closeEvent(QCloseEvent *event) {
 		this->hide();
 		event->ignore();
 	}
-}
-
-void MainWindow::read(const QJsonObject &json) {
-	qDebug() << json["cpu_threads_conf"].toString();
-	qDebug() << json["level"].toDouble();
-}
-
-
-
-void MainWindow::write(QJsonObject &json) const {
-	json["name"] = true;
-	json["level"] = 13;
-}
-
-bool MainWindow::saveGame(MainWindow::SaveFormat saveFormat) const {
-	QFile saveFile(saveFormat == Json ? QStringLiteral("save.json") : QStringLiteral("save.dat"));
-
-	if (!saveFile.open(QIODevice::WriteOnly)) {
-		qWarning("Couldn't open save file.");
-		return false;
-	}
-
-	QJsonObject gameObject;
-	write(gameObject);
-	QJsonDocument saveDoc(gameObject);
-	saveFile.write(saveFormat == Json ? saveDoc.toJson() : saveDoc.toBinaryData());
-
-	return true;
-}
-
-bool MainWindow::loadGame(MainWindow::SaveFormat saveFormat) {
-//	QFile loadFile(QStringLiteral("save.json"));
-//
-//	if (!loadFile.open(QIODevice::ReadOnly)) {
-//		qWarning("Couldn't open save file.");
-//		return false;
-//	}
-//
-//	QByteArray saveData = loadFile.readAll();
-//
-//	QJsonDocument loadDoc(QJsonDocument::fromJson(saveData));
-//
-//	this->read(loadDoc.object());
-//
-//	return true;
-
-	QFile file;
-	file.setFileName("save.json");
-	file.open(QIODevice::ReadOnly | QIODevice::Text);
-	QByteArray fcontent = file.readAll();
-	auto x = QString::fromStdString(fcontent.toStdString());
-
-	QJsonParseError jsonError;
-	QJsonDocument flowerJson = QJsonDocument::fromJson(fcontent, &jsonError);
-	if (jsonError.error != QJsonParseError::NoError) {
-		qDebug() << jsonError.errorString();
-	}
-	QList<QVariant> list = flowerJson.toVariant().toList();
-	QMap<QString, QVariant> map = list[0].toMap();
-	qDebug() << map["name"].toString();
 }

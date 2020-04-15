@@ -20,12 +20,16 @@ public:
 
 	~SettingsWindow();
 
-	QVariantHash readConfigFile(const QString &config);
+	QJsonObject readConfigFile(const QString &config);
 
-	bool writeConfigFile(const QString &config, QVariantHash hash);
+	bool writeConfigFile(const QString &fileName, const QJsonObject& jsonConfig);
 
 protected:
-	void showEvent(QShowEvent* event);
+	void showEvent(QShowEvent* event) override;
+
+	void updateWidgets();
+
+	void updateConfigFile();
 };
 
 

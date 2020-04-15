@@ -22,14 +22,7 @@ class MainWindow : public QMainWindow {
 
 public:
 	explicit MainWindow(int argc, char *argv[], QWidget *parent = nullptr);
-
-	enum SaveFormat {
-		Json, Binary
-	};
 	~MainWindow();
-
-	void read(const QJsonObject &json);
-	void write(QJsonObject &json) const;
 
 private:
 	bool closing;
@@ -42,10 +35,6 @@ private:
 
 protected:
 	void closeEvent(QCloseEvent *event) override;
-
-	bool saveGame(SaveFormat saveFormat) const;
-
-	bool loadGame(SaveFormat saveFormat);
 
 };
 

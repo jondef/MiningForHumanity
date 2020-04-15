@@ -6,9 +6,6 @@
 
 SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::uiSettingsWindow) {
 	ui->setupUi(this);
-	writeConfigFile(QString("modified_cpu.txt"), readConfigFile(QString("cpu.txt")));
-	writeConfigFile(QString("modified_pools.txt"), readConfigFile(QString("pools.txt")));
-	writeConfigFile(QString("modified_config.txt"), readConfigFile(QString("config.txt")));
 
 	// populate the listWidget with the available pages
 	QListWidgetItem *generalTab = new QListWidgetItem("General Settings");
@@ -25,8 +22,10 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::ui
 	connect(ui->listWidget, &QListWidget::currentItemChanged, this, [this](QListWidgetItem *current){
 		ui->stackedWidget->setCurrentIndex(current->data(Qt::UserRole).toInt());
 	});
-}
 
+	connect(ui->buttonBox, &QDialogButtonBox::accepted, this, [this]() { updateConfigFile(); });
+	connect(ui->buttonBox, &QDialogButtonBox::rejected, this, [this]() { this->close(); });
+}
 
 SettingsWindow::~SettingsWindow() {
 	delete ui;
@@ -34,16 +33,33 @@ SettingsWindow::~SettingsWindow() {
 
 void SettingsWindow::showEvent(QShowEvent *event) {
 	QDialog::showEvent(event);
-
-	// read config file
+	updateWidgets();
 }
 
-QVariantHash SettingsWindow::readConfigFile(const QString &config) {
+void SettingsWindow::updateConfigFile() {
+	QJsonObject jsonConfig = readConfigFile(QString("config.txt"));
+	jsonConfig["h_print_time"] = ui->hashraterateReportFreqencySpinBox->value();
+
+	// needs to read the state of every widgets
+	// and edit the qvarianthash and finally write the
+	// changes to the file
+	writeConfigFile("config.txt", jsonConfig);
+}
+
+void SettingsWindow::updateWidgets() {
+	// read the config file, and update the widget accordingly
+	QJsonObject jsonConfig = readConfigFile(QString("config.txt"));
+	ui->callTimeoutSpinBox->setValue(jsonConfig["call_timeout"].toInt());
+	ui->hashraterateReportFreqencySpinBox->setValue(jsonConfig["h_print_time"].toInt());
+
+}
+
+QJsonObject SettingsWindow::readConfigFile(const QString &config) {
 	QFile loadFile(config);
 
 	if (!loadFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
 		qWarning("Couldn't open save file.");
-		return QVariantHash(); // todo: return something else?
+		return QJsonObject(); // todo: return something else?
 	}
 
 	QByteArray fileData = loadFile.readAll();
@@ -104,16 +120,12 @@ QVariantHash SettingsWindow::readConfigFile(const QString &config) {
 		qDebug() << jsonError.errorString();
 	}
 
-	QVariantHash x = jsonDocument.object().toVariantHash();
-	qDebug() << x["cpu_threads_conf"].toJsonArray().count();
-	return jsonDocument.object().toVariantHash();
+	return jsonDocument.object();
 }
 
-bool SettingsWindow::writeConfigFile(const QString &config, QVariantHash hash) {
-	QJsonObject jsonObject = QJsonObject::fromVariantHash(hash);
-
+bool SettingsWindow::writeConfigFile(const QString &fileName, const QJsonObject& jsonConfig) {
 	QJsonDocument jsonDocument;
-	jsonDocument.setObject(jsonObject);
+	jsonDocument.setObject(jsonConfig);
 	QByteArray fileData = jsonDocument.toJson(QJsonDocument::Indented); // ! Compact makes it crash
 
 	// remove the curley brackets at the beginning and at the end
@@ -146,9 +158,71 @@ bool SettingsWindow::writeConfigFile(const QString &config, QVariantHash hash) {
 	// is not required because the miner will successfully
 	// read the config files anyway
 
-	QFile file(config);
+	QFile file(fileName);
 	file.open(QIODevice::WriteOnly | QIODevice::Text);
 	file.write(fileData);
 	file.close();
 	return true;
 }
+
+
+
+
+/*
+void MainWindow::read(const QJsonObject &json) {
+	qDebug() << json["cpu_threads_conf"].toString();
+	qDebug() << json["level"].toDouble();
+}
+
+void MainWindow::write(QJsonObject &json) const {
+	json["name"] = true;
+	json["level"] = 13;
+}
+
+bool MainWindow::saveGame(MainWindow::SaveFormat saveFormat) const {
+	QFile saveFile(saveFormat == Json ? QStringLiteral("save.json") : QStringLiteral("save.dat"));
+
+	if (!saveFile.open(QIODevice::WriteOnly)) {
+		qWarning("Couldn't open save file.");
+		return false;
+	}
+
+	QJsonObject gameObject;
+	write(gameObject);
+	QJsonDocument saveDoc(gameObject);
+	saveFile.write(saveFormat == Json ? saveDoc.toJson() : saveDoc.toBinaryData());
+
+	return true;
+}
+
+bool MainWindow::loadGame(MainWindow::SaveFormat saveFormat) {
+//	QFile loadFile(QStringLiteral("save.json"));
+//
+//	if (!loadFile.open(QIODevice::ReadOnly)) {
+//		qWarning("Couldn't open save file.");
+//		return false;
+//	}
+//
+//	QByteArray saveData = loadFile.readAll();
+//
+//	QJsonDocument loadDoc(QJsonDocument::fromJson(saveData));
+//
+//	this->read(loadDoc.object());
+//
+//	return true;
+
+	QFile file;
+	file.setFileName("save.json");
+	file.open(QIODevice::ReadOnly | QIODevice::Text);
+	QByteArray fcontent = file.readAll();
+	auto x = QString::fromStdString(fcontent.toStdString());
+
+	QJsonParseError jsonError;
+	QJsonDocument flowerJson = QJsonDocument::fromJson(fcontent, &jsonError);
+	if (jsonError.error != QJsonParseError::NoError) {
+		qDebug() << jsonError.errorString();
+	}
+	QList<QVariant> list = flowerJson.toVariant().toList();
+	QMap<QString, QVariant> map = list[0].toMap();
+	qDebug() << map["name"].toString();
+}*/
