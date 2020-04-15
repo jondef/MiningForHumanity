@@ -23,12 +23,26 @@ file(GLOB SOURCE_FILES
         ${PROJECT_SOURCE_DIR}/src/*.c
         )
 
-qt5_wrap_ui(ui_wrap MainWindow.ui)
+#file(GLOB HEADER_FILES
+#		"${PROJECT_SOURCE_DIR}/Headers/*.h"
+#		"${PROJECT_SOURCE_DIR}/Headers/*.hpp"
+#		)
+
+file(GLOB UI_FILES
+		"${PROJECT_SOURCE_DIR}/src/*.ui"
+		)
+
+file(GLOB QRC_FILES
+		"${PROJECT_SOURCE_DIR}/Resources/*.qrc"
+		)
 
 ################################
 # Compiling
 ################################
-add_executable(DonationMining ${SOURCE_FILES} ${ui_wrap})
+qt5_wrap_ui(ui_wrap MainWindow.ui)
+
+add_executable(DonationMining ${SOURCE_FILES} ${HEADER_FILES} ${ui_wrap} ${QRC_FILES})
+
 
 set(EXECUTABLE_OUTPUT_PATH "bin" CACHE STRING "Path to place executables relative to ${CMAKE_INSTALL_PREFIX}")
 set(LIBRARY_OUTPUT_PATH "bin" CACHE STRING "Path to place libraries relative to ${CMAKE_INSTALL_PREFIX}")
