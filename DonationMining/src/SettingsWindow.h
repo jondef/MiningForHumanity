@@ -8,6 +8,7 @@
 #include "ui_SettingsWindow.h"
 #include <QtCore>
 #include <QObject>
+#include <QtNetwork>
 
 class SettingsWindow : public QDialog {
 Q_OBJECT
@@ -20,9 +21,9 @@ public:
 
 	~SettingsWindow();
 
-	QJsonObject readConfigFile(const QString &config);
+	static QJsonObject readConfigFile(const QString &config);
 
-	bool writeConfigFile(const QString &fileName, const QJsonObject& jsonConfig);
+	static bool writeConfigFile(const QString &fileName, const QJsonObject& jsonConfig);
 
 protected:
 	void showEvent(QShowEvent* event) override;
@@ -30,6 +31,14 @@ protected:
 	void updateWidgets();
 
 	void updateConfigFile();
+
+	QJsonObject GetAvailablePools(QNetworkReply *reply);
+
+	QNetworkAccessManager *networkManager = new QNetworkAccessManager();
+
+	void replyFini(QNetworkReply *reply);
+
+	void onResult(QNetworkReply *reply);
 };
 
 

@@ -10,7 +10,6 @@
 #include <QMessageBox>
 #include <QCloseEvent>
 
-
 MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(parent), ui(new Ui::uiMainWindow) {
 	ui->setupUi(this);
 	this->argc = argc;
@@ -31,6 +30,17 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 
 	connect(ui->actionSettings, &QAction::triggered, this, [this]() {
 		settingsWindow->show();
+	});
+
+	connect(ui->actionAbout, &QAction::triggered, this, [this]() {
+		QMessageBox *about = new QMessageBox(this);
+		about->setText("Version: " VERSION "\n"
+		               "Build Date: " BUILDDATE "\n"
+		               "Git Commit Date: " GIT_COMMIT_DATE "\n"
+		               "Git Commit Hash: " GIT_COMMIT_HASH "\n"
+		               "Git Branch: " GIT_BRANCH "\n"
+		);
+		about->show();
 	});
 
 	closing = false;

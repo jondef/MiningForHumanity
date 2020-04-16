@@ -1,6 +1,64 @@
 set(CMAKE_CXX_STANDARD 20)
 project(DonationMining)
 
+
+################################
+# Versioning
+################################
+# set version number
+set(VERSION 0.1)
+# get current date time
+if(WIN32)
+	execute_process(
+			COMMAND date /t
+			WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+			OUTPUT_VARIABLE BUILDDATE
+			OUTPUT_STRIP_TRAILING_WHITESPACE
+	)
+elseif(NOT APPLE) # unix
+	execute_process(
+			COMMAND date -R
+			WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+			OUTPUT_VARIABLE BUILDDATE
+			OUTPUT_STRIP_TRAILING_WHITESPACE
+	)
+endif()
+# Get git commit hash
+execute_process(
+		COMMAND git --git-dir ${CMAKE_SOURCE_DIR}/.git --work-tree ${CMAKE_SOURCE_DIR} rev-parse HEAD
+		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+		OUTPUT_VARIABLE GIT_COMMIT_HASH
+		OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+# Get git commit date
+execute_process(
+		COMMAND git --git-dir ${CMAKE_SOURCE_DIR}/.git --work-tree ${CMAKE_SOURCE_DIR} show -s --format=%ci HEAD
+		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+		OUTPUT_VARIABLE GIT_COMMIT_DATE
+		OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+# Get git branch
+execute_process(
+		COMMAND git --git-dir ${CMAKE_SOURCE_DIR}/.git --work-tree ${CMAKE_SOURCE_DIR} rev-parse --abbrev-ref HEAD
+		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+		OUTPUT_VARIABLE GIT_BRANCH
+		OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+add_definitions(-DVERSION="${VERSION}")
+if(NOT BUILDDATE STREQUAL "")
+	add_definitions(-DBUILDDATE="${BUILDDATE}")
+endif()
+if(NOT GIT_COMMIT_HASH STREQUAL "")
+	add_definitions(-DGIT_COMMIT_HASH="${GIT_COMMIT_HASH}")
+endif()
+if(NOT GIT_COMMIT_DATE STREQUAL "")
+	add_definitions(-DGIT_COMMIT_DATE="${GIT_COMMIT_DATE}")
+endif()
+if(NOT GIT_BRANCH STREQUAL "")
+	add_definitions(-DGIT_BRANCH="${GIT_BRANCH}")
+endif()
+
 ################################
 # Qt configuration
 ################################
@@ -9,6 +67,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON) # Find includes in corresponding build directo
 set(CMAKE_AUTOMOC ON) # Instruct CMake to run moc automatically when needed
 set(CMAKE_AUTOUIC ON) # Create code from a list of Qt designer ui files
 set(CMAKE_AUTORCC ON) # Create Resource files
+SET(QT_USE_QTNETWORK true)
 
 ################################
 # Pre-compilation steps
@@ -42,7 +101,6 @@ file(GLOB QRC_FILES
 qt5_wrap_ui(ui_wrap MainWindow.ui)
 
 add_executable(DonationMining ${SOURCE_FILES} ${HEADER_FILES} ${ui_wrap} ${QRC_FILES})
-
 
 set(EXECUTABLE_OUTPUT_PATH "bin" CACHE STRING "Path to place executables relative to ${CMAKE_INSTALL_PREFIX}")
 set(LIBRARY_OUTPUT_PATH "bin" CACHE STRING "Path to place libraries relative to ${CMAKE_INSTALL_PREFIX}")

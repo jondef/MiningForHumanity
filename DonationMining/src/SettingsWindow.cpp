@@ -4,6 +4,8 @@
 
 #include "SettingsWindow.h"
 
+// ! FOR POOLS WIDGET SETTINGS USE A TABLE
+
 SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::uiSettingsWindow) {
 	ui->setupUi(this);
 
@@ -25,6 +27,12 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::ui
 
 	connect(ui->buttonBox, &QDialogButtonBox::accepted, this, [this]() { updateConfigFile(); });
 	connect(ui->buttonBox, &QDialogButtonBox::rejected, this, [this]() { this->close(); });
+
+
+	connect(networkManager, &QNetworkAccessManager::finished, this, &SettingsWindow::GetAvailablePools);
+
+	QNetworkRequest request(QUrl("https://httpbin.org/get"));
+	networkManager->get(request);
 }
 
 SettingsWindow::~SettingsWindow() {
@@ -36,22 +44,25 @@ void SettingsWindow::showEvent(QShowEvent *event) {
 	updateWidgets();
 }
 
+/*
+ * Reads the state of every widget
+ * and writes the changes to the file
+ */
 void SettingsWindow::updateConfigFile() {
-	QJsonObject jsonConfig = readConfigFile(QString("config.txt"));
+	QJsonObject jsonConfig = readConfigFile(QStringLiteral("config.txt"));
 	jsonConfig["h_print_time"] = ui->hashraterateReportFreqencySpinBox->value();
 
-	// needs to read the state of every widgets
-	// and edit the qvarianthash and finally write the
-	// changes to the file
+
 	writeConfigFile("config.txt", jsonConfig);
 }
 
+/*
+ * reads the config file and updates the widget accordingly
+ */
 void SettingsWindow::updateWidgets() {
-	// read the config file, and update the widget accordingly
-	QJsonObject jsonConfig = readConfigFile(QString("config.txt"));
+	QJsonObject jsonConfig = readConfigFile(QStringLiteral("config.txt"));
 	ui->callTimeoutSpinBox->setValue(jsonConfig["call_timeout"].toInt());
 	ui->hashraterateReportFreqencySpinBox->setValue(jsonConfig["h_print_time"].toInt());
-
 }
 
 QJsonObject SettingsWindow::readConfigFile(const QString &config) {
@@ -165,64 +176,11 @@ bool SettingsWindow::writeConfigFile(const QString &fileName, const QJsonObject&
 	return true;
 }
 
-
-
-
-/*
-void MainWindow::read(const QJsonObject &json) {
-	qDebug() << json["cpu_threads_conf"].toString();
-	qDebug() << json["level"].toDouble();
-}
-
-void MainWindow::write(QJsonObject &json) const {
-	json["name"] = true;
-	json["level"] = 13;
-}
-
-bool MainWindow::saveGame(MainWindow::SaveFormat saveFormat) const {
-	QFile saveFile(saveFormat == Json ? QStringLiteral("save.json") : QStringLiteral("save.dat"));
-
-	if (!saveFile.open(QIODevice::WriteOnly)) {
-		qWarning("Couldn't open save file.");
-		return false;
+QJsonObject SettingsWindow::GetAvailablePools(QNetworkReply *reply) {
+	if (reply->error()) {
+		qWarning() << __FILE__ <<  __LINE__ << Q_FUNC_INFO << reply->error();
 	}
-
-	QJsonObject gameObject;
-	write(gameObject);
-	QJsonDocument saveDoc(gameObject);
-	saveFile.write(saveFormat == Json ? saveDoc.toJson() : saveDoc.toBinaryData());
-
-	return true;
+	QJsonObject jsonRoot = QJsonDocument::fromJson(reply->readAll()).object();
+	reply->deleteLater();
+	return jsonRoot;
 }
-
-bool MainWindow::loadGame(MainWindow::SaveFormat saveFormat) {
-//	QFile loadFile(QStringLiteral("save.json"));
-//
-//	if (!loadFile.open(QIODevice::ReadOnly)) {
-//		qWarning("Couldn't open save file.");
-//		return false;
-//	}
-//
-//	QByteArray saveData = loadFile.readAll();
-//
-//	QJsonDocument loadDoc(QJsonDocument::fromJson(saveData));
-//
-//	this->read(loadDoc.object());
-//
-//	return true;
-
-	QFile file;
-	file.setFileName("save.json");
-	file.open(QIODevice::ReadOnly | QIODevice::Text);
-	QByteArray fcontent = file.readAll();
-	auto x = QString::fromStdString(fcontent.toStdString());
-
-	QJsonParseError jsonError;
-	QJsonDocument flowerJson = QJsonDocument::fromJson(fcontent, &jsonError);
-	if (jsonError.error != QJsonParseError::NoError) {
-		qDebug() << jsonError.errorString();
-	}
-	QList<QVariant> list = flowerJson.toVariant().toList();
-	QMap<QString, QVariant> map = list[0].toMap();
-	qDebug() << map["name"].toString();
-}*/
