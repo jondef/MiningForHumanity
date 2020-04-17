@@ -12,6 +12,7 @@
 #include <QSettings>
 #include "ui_MainWindow.h"
 #include "SettingsWindow.h"
+#include "LoginWidget.h"
 
 #include <future>
 #include <memory>
@@ -32,9 +33,15 @@ private:
 	QProcess *myProcess = new QProcess(this);
 
 	SettingsWindow *settingsWindow = new SettingsWindow(this);
+	LoginWidget *loginWindow = new LoginWidget();
+	QWidget *centralWidget;
+
+	void showDashboard(const QString &username, const QString &password);
 
 protected:
 	void closeEvent(QCloseEvent *event) override;
+
+	void showEvent(QShowEvent *event) override;
 
 };
 

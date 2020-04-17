@@ -98,7 +98,7 @@ file(GLOB QRC_FILES
 ################################
 # Compiling
 ################################
-qt5_wrap_ui(ui_wrap MainWindow.ui)
+qt5_wrap_ui(ui_wrap ${UI_FILES})
 
 add_executable(DonationMining ${SOURCE_FILES} ${HEADER_FILES} ${ui_wrap} ${QRC_FILES})
 

@@ -1,0 +1,7 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource>
+        <file alias="images/icon">icon-resizeimage.png</file>
+        <file alias="images/login_bg">login_bg.jpg</file>
+    </qresource>
+</RCC>

@@ -14,7 +14,12 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	ui->setupUi(this);
 	this->argc = argc;
 	this->argv = argv;
-//	qDebug() << QThread::idealThreadCount();
+
+	centralWidget = takeCentralWidget();
+	this->setCentralWidget(loginWindow);
+	this->statusBar()->hide();
+	this->menuBar()->hide();
+
 	// these are used to qsettings
 	QCoreApplication::setOrganizationName("MiningForHumanity");
 	QCoreApplication::setOrganizationDomain("MiningForHumanity.org");
@@ -96,10 +101,18 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 //		readConfigFile(QString("config.txt"));
 	});
 	connect(ui->buttonBox, &QDialogButtonBox::rejected, this, [&]() { this->close(); });
+
+
+	connect(loginWindow, &LoginWidget::userAuthorized, this, &MainWindow::showDashboard);
 }
 
 MainWindow::~MainWindow() {
 	delete ui;
+}
+
+void MainWindow::showEvent(QShowEvent *event) {
+	// If the user opens the app for the first time,
+	// ask him to register / login
 }
 
 void MainWindow::closeEvent(QCloseEvent *event) {
@@ -110,3 +123,11 @@ void MainWindow::closeEvent(QCloseEvent *event) {
 		event->ignore();
 	}
 }
+
+void MainWindow::showDashboard(const QString& username, const QString& password) {
+	this->takeCentralWidget(); // remove the login screen
+	this->setCentralWidget(centralWidget);
+	this->statusBar()->show();
+	this->menuBar()->show();
+}
+

@@ -32,13 +32,12 @@ protected:
 
 	void updateConfigFile();
 
-	QJsonObject GetAvailablePools(QNetworkReply *reply);
+	QJsonObject getAvailablePools();
 
-	QNetworkAccessManager *networkManager = new QNetworkAccessManager();
+	QNetworkAccessManager *networkManager = new QNetworkAccessManager(this);
+	QNetworkReply *reply;
 
-	void replyFini(QNetworkReply *reply);
-
-	void onResult(QNetworkReply *reply);
+	void networkReplyOrganizations();
 };
 
 

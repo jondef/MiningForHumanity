@@ -9,30 +9,14 @@
 SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::uiSettingsWindow) {
 	ui->setupUi(this);
 
-	// populate the listWidget with the available pages
-	QListWidgetItem *generalTab = new QListWidgetItem("General Settings");
-	QListWidgetItem *cpuTab = new QListWidgetItem("CPU Settings");
-	QListWidgetItem *poolTab = new QListWidgetItem("Pool Settings");
-	// The data needs to match the index of the widgets in the stackedWidget
-	generalTab->setData(Qt::UserRole, QVariant::fromValue(0));
-	cpuTab->setData(Qt::UserRole, QVariant::fromValue(1));
-	poolTab->setData(Qt::UserRole, QVariant::fromValue(2));
-	ui->listWidget->addItem(generalTab);
-	ui->listWidget->addItem(cpuTab);
-	ui->listWidget->addItem(poolTab);
-
-	connect(ui->listWidget, &QListWidget::currentItemChanged, this, [this](QListWidgetItem *current){
-		ui->stackedWidget->setCurrentIndex(current->data(Qt::UserRole).toInt());
-	});
-
 	connect(ui->buttonBox, &QDialogButtonBox::accepted, this, [this]() { updateConfigFile(); });
 	connect(ui->buttonBox, &QDialogButtonBox::rejected, this, [this]() { this->close(); });
 
 
-	connect(networkManager, &QNetworkAccessManager::finished, this, &SettingsWindow::GetAvailablePools);
+//	connect(networkManager, &QNetworkAccessManager::finished, this, &SettingsWindow::getAvailablePools);
 
-	QNetworkRequest request(QUrl("https://httpbin.org/get"));
-	networkManager->get(request);
+	// connect(button, clicked, this, [&]() { networkManager->get(QNetworkRequest(QUrl("https://httpbin.org/get"))); }
+
 }
 
 SettingsWindow::~SettingsWindow() {
@@ -41,6 +25,7 @@ SettingsWindow::~SettingsWindow() {
 
 void SettingsWindow::showEvent(QShowEvent *event) {
 	QDialog::showEvent(event);
+	getAvailablePools();
 	updateWidgets();
 }
 
@@ -51,7 +36,6 @@ void SettingsWindow::showEvent(QShowEvent *event) {
 void SettingsWindow::updateConfigFile() {
 	QJsonObject jsonConfig = readConfigFile(QStringLiteral("config.txt"));
 	jsonConfig["h_print_time"] = ui->hashraterateReportFreqencySpinBox->value();
-
 
 	writeConfigFile("config.txt", jsonConfig);
 }
@@ -176,11 +160,39 @@ bool SettingsWindow::writeConfigFile(const QString &fileName, const QJsonObject&
 	return true;
 }
 
-QJsonObject SettingsWindow::GetAvailablePools(QNetworkReply *reply) {
-	if (reply->error()) {
-		qWarning() << __FILE__ <<  __LINE__ << Q_FUNC_INFO << reply->error();
+/*
+ * Fetches the json data from the website
+ * and returns a json object (or an empty one if an error occurred)
+ */
+QJsonObject SettingsWindow::getAvailablePools() {
+	reply = networkManager->get(QNetworkRequest(QUrl("https://httpbin.org/get")));
+
+	connect(reply, &QIODevice::readyRead, this, &SettingsWindow::networkReplyOrganizations);
+//	connect(reply, QOverload<QNetworkReply::NetworkError>::of(&QNetworkReply::error), this, &MyClass::slotError);
+//	connect(reply, &QNetworkReply::sslErrors, this, &MyClass::slotSslErrors);
+
+//	if (!reply->error()) {
+//		qWarning() << __FILE__ <<  __LINE__ << Q_FUNC_INFO << reply->error();
+//		return QJsonObject();
+//	}
+//	QJsonObject jsonRoot = QJsonDocument::fromJson(reply->readAll()).object();
+//	reply->deleteLater();
+//	return jsonRoot;
+	return QJsonObject();
+}
+
+void SettingsWindow::networkReplyOrganizations(){
+	QString string("{ \"automatic\": 5 }");
+	QByteArray a;
+	a += string;
+	QJsonParseError jsonError;
+	QJsonDocument jsonDocument = QJsonDocument::fromJson(a, &jsonError);
+
+	if (jsonError.error != QJsonParseError::NoError) {
+		qDebug() << jsonError.errorString();
 	}
-	QJsonObject jsonRoot = QJsonDocument::fromJson(reply->readAll()).object();
+//	QJsonObject jsonRoot = QJsonDocument::fromJson(a).object(); // reply->readAll()
 	reply->deleteLater();
-	return jsonRoot;
+	disconnect(reply, &QIODevice::readyRead, this, &SettingsWindow::networkReplyOrganizations);
+	qDebug() << jsonDocument.object();
 }
