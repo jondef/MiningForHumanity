@@ -191,6 +191,10 @@ background-color: white;
 border: 1px solid grey;
 border-radius: 5px;
 background-color: white;
+}
+
+*{
+color: black;
 }</string>
             </property>
             <property name="frameShape">
@@ -212,7 +216,7 @@ background-color: white;
              <property name="bottomMargin">
               <number>5</number>
              </property>
-             <item row="2" column="0">
+             <item row="3" column="0">
               <widget class="QLabel" name="label_11">
                <property name="text">
                 <string>Remember me:</string>
@@ -239,13 +243,6 @@ background-color: white;
                </property>
                <property name="alignment">
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QCheckBox" name="checkBox_rememberMe">
-               <property name="text">
-                <string/>
                </property>
               </widget>
              </item>
@@ -281,37 +278,42 @@ background-color: white;
                </property>
               </widget>
              </item>
-             <item row="4" column="1">
-              <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item row="3" column="1" rowspan="2">
+              <layout class="QHBoxLayout" name="horizontalLayout_6">
                <property name="bottomMargin">
                 <number>0</number>
                </property>
                <item>
-                <spacer name="horizontalSpacer_9">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="QPushButton" name="pushButton_forgotPassword">
-                 <property name="styleSheet">
-                  <string notr="true">background: transparent;
+                <layout class="QGridLayout" name="gridLayout_6">
+                 <item row="0" column="0">
+                  <widget class="QCheckBox" name="checkBox_rememberMe">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="label_12">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1" rowspan="2">
+                  <widget class="QPushButton" name="pushButton_forgotPassword">
+                   <property name="styleSheet">
+                    <string notr="true">background: transparent;
 color:  rgb(39, 121, 246);
 border-radius: 1px;
 text-decoration: underline;
 outline : none;</string>
-                 </property>
-                 <property name="text">
-                  <string>Forgot password?</string>
-                 </property>
-                </widget>
+                   </property>
+                   <property name="text">
+                    <string>Forgot password?</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </item>
               </layout>
              </item>
@@ -330,7 +332,8 @@ outline : none;</string>
              <string notr="true">border: 1px solid rgb(24, 103, 155);
 border-radius: 5px;
 background-color: rgb(124, 203, 255);
-color: white;</string>
+color: white;
+outline : none;</string>
             </property>
             <property name="text">
              <string>Login</string>
@@ -487,6 +490,10 @@ background-color: white;
 border: 1px solid grey;
 border-radius: 5px;
 background-color: white;
+}
+
+* {
+color: black;
 }</string>
             </property>
             <property name="frameShape">
@@ -603,7 +610,8 @@ background-color: white;
              <string notr="true">border: 1px solid rgb(24, 103, 155);
 border-radius: 5px;
 background-color: rgb(124, 203, 255);
-color: white;</string>
+color: white;
+outline : none;</string>
             </property>
             <property name="text">
              <string>Register</string>

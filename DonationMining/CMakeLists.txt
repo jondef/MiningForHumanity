@@ -62,7 +62,8 @@ endif()
 ################################
 # Qt configuration
 ################################
-FIND_PACKAGE(Qt5 COMPONENTS Core Gui Widgets Network PrintSupport Test QuickTest REQUIRED)
+FIND_PACKAGE(Qt5 COMPONENTS Core Gui Widgets Charts Network PrintSupport Test QuickTest REQUIRED)
+
 set(CMAKE_INCLUDE_CURRENT_DIR ON) # Find includes in corresponding build directories
 set(CMAKE_AUTOMOC ON) # Instruct CMake to run moc automatically when needed
 set(CMAKE_AUTOUIC ON) # Create code from a list of Qt designer ui files
@@ -108,4 +109,4 @@ set(LIBRARY_OUTPUT_PATH "bin" CACHE STRING "Path to place libraries relative to 
 ################################
 # Linking
 ################################
-target_link_libraries(DonationMining PUBLIC Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Network)
+target_link_libraries(DonationMining PUBLIC Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Charts Qt5::Network)

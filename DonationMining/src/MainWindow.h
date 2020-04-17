@@ -7,9 +7,8 @@
 
 #include <QMainWindow>
 #include <QtCore>
-#include <QObject>
-#include <QString>
-#include <QSettings>
+#include <QtGui>
+#include <QtCharts>
 #include "ui_MainWindow.h"
 #include "SettingsWindow.h"
 #include "LoginWidget.h"

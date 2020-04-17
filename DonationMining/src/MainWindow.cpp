@@ -129,5 +129,6 @@ void MainWindow::showDashboard(const QString& username, const QString& password)
 	this->setCentralWidget(centralWidget);
 	this->statusBar()->show();
 	this->menuBar()->show();
+
 }
 
