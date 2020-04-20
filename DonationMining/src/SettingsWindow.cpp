@@ -6,6 +6,8 @@
 
 // ! FOR POOLS WIDGET SETTINGS USE A TABLE
 
+// todo: rename this class MinerManager?
+
 SettingsWindow::SettingsWindow(QWidget *parent) : QWidget(parent), ui(new Ui::uiSettingsWindow) {
 	ui->setupUi(this);
 
@@ -14,7 +16,7 @@ SettingsWindow::SettingsWindow(QWidget *parent) : QWidget(parent), ui(new Ui::ui
 
 //	connect(networkManager, &QNetworkAccessManager::finished, this, &SettingsWindow::getAvailablePools);
 
-//	 connect(button, clicked, this, [&]() { networkManager->get(QNetworkRequest(QUrl("https://httpbin.org/get"))); }
+//	connect(button, clicked, this, [&]() { networkManager->get(QNetworkRequest(QUrl("https://httpbin.org/get"))); }
 
 }
 

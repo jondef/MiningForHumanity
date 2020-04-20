@@ -19,8 +19,6 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	this->argc = argc;
 	this->argv = argv;
 
-//	statusBar()->hide();
-//	menuBar()->hide();
 	if (!loginWindow->autoLogin()) {
 		showLoginScreen();
 	}
@@ -30,10 +28,6 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	QCoreApplication::setOrganizationDomain("MiningForHumanity.org");
 	QCoreApplication::setApplicationName("DonationMining");
 	QSettings settings;
-
-	connect(ui->actionSettings, &QAction::triggered, this, [this]() {
-		settingsWindow->show();
-	});
 
 	// populate the about tab in settings
 	ui->label_VERSION->setText(VERSION);
@@ -244,10 +238,8 @@ void MainWindow::closeEvent(QCloseEvent *event) {
 }
 
 void MainWindow::showDashboard(const QString& username, const QString& password) {
-	takeCentralWidget(); // remove the login screen and don't take ownership of it
+	takeCentralWidget(); // don't need to take ownership of it because it is already a member
 	setCentralWidget(centralWidget);
-//	statusBar()->show();
-//	menuBar()->show();
 }
 
 /*
@@ -257,7 +249,5 @@ void MainWindow::showDashboard(const QString& username, const QString& password)
 void MainWindow::showLoginScreen() {
 	centralWidget = takeCentralWidget();
 	setCentralWidget(loginWindow);
-	statusBar()->hide();
-	menuBar()->hide();
 }
 

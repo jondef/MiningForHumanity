@@ -49,6 +49,5 @@ void LoginWidget::checkCredentials() {
  * @return false if no file is found or a file without a remember field
  */
 bool LoginWidget::autoLogin() {
-
-	return true;
+	return false;
 }
