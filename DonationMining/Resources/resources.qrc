@@ -1,7 +1,15 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
-    <qresource>
+    <qresource prefix="/">
         <file alias="images/icon">icon-resizeimage.png</file>
         <file alias="images/login_bg">login_bg.jpg</file>
+        <file alias="images/power_off_icon">power_off_icon.png</file>
+    </qresource>
+    <qresource prefix="/icons/burger">
+        <file alias="burger">burger/burger.png</file>
+        <file alias="collections">burger/collections.png</file>
+        <file alias="folders">burger/folders.png</file>
+        <file alias="albums">burger/albums.png</file>
+        <file alias="settings_icon">burger/settings_icon.png</file>
     </qresource>
 </RCC>

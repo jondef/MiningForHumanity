@@ -38,3 +38,17 @@ void LoginWidget::checkCredentials() {
 	emit userAuthorized(email, password);
 }
 
+/*
+ * returns true if an automatic login is possible
+ * checks if a credentials file exists and with a remember field in it
+ *
+ * if a file is found that doesn't contain the remember field then
+ * read the email address and update the line edit and insert it
+ *
+ * @return true if a credentials file is found with a remember field in it
+ * @return false if no file is found or a file without a remember field
+ */
+bool LoginWidget::autoLogin() {
+
+	return true;
+}

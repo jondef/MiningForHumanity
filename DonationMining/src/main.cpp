@@ -39,6 +39,9 @@ void readBinary(QString filename) {
 int main(int argc, char *argv[]) {
 	QApplication app(argc, argv);
 
+	qDebug() << QStyleFactory::keys();
+	app.setStyle(QStyleFactory::create("Fusion"));
+
 	MainWindow window(argc, argv);
 	window.show();
 

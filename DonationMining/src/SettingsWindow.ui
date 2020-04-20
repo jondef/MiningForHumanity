@@ -1,293 +1,308 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>uiSettingsWindow</class>
- <widget class="QDialog" name="uiSettingsWindow">
+ <widget class="QWidget" name="uiSettingsWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>619</width>
-    <height>621</height>
+    <width>742</width>
+    <height>576</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
-   <item row="3" column="1">
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QStackedWidget" name="stackedWidget">
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="currentIndex">
-      <number>2</number>
-     </property>
-     <widget class="QWidget" name="generalSettingsPage">
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0">
-        <layout class="QFormLayout" name="formLayout">
-         <item row="0" column="0">
-          <widget class="QLabel" name="callTimeoutLabel">
-           <property name="text">
-            <string>Call Timeout</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QSpinBox" name="callTimeoutSpinBox"/>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="retryTimeLabel">
-           <property name="text">
-            <string>Retry Time</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QSpinBox" name="retryTimeSpinBox"/>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="giveUpLimitLabel">
-           <property name="text">
-            <string>Give up Limit</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QSpinBox" name="giveUpLimitSpinBox"/>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="verboseLevelLabel">
-           <property name="text">
-            <string>Verbose Level</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QSpinBox" name="verboseLevelSpinBox"/>
-         </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="printMotdLabel">
-           <property name="text">
-            <string>Print Motd</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0">
-          <widget class="QLabel" name="hashraterateReportFreqencyLabel">
-           <property name="text">
-            <string>Hashraterate report freqency</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="1">
-          <widget class="QSpinBox" name="hashraterateReportFreqencySpinBox"/>
-         </item>
-         <item row="6" column="0">
-          <widget class="QLabel" name="aESOverrideLabel">
-           <property name="text">
-            <string>AES Override</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="1">
-          <widget class="QComboBox" name="aESOverrideComboBox"/>
-         </item>
-         <item row="7" column="0">
-          <widget class="QLabel" name="useSlowMemoryLabel">
-           <property name="text">
-            <string>Use slow memory</string>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="1">
-          <widget class="QComboBox" name="useSlowMemoryComboBox"/>
-         </item>
-         <item row="8" column="0">
-          <widget class="QLabel" name="useTLSSecureAlgorithmLabel">
-           <property name="text">
-            <string>Use TLS Secure algorithm</string>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="1">
-          <widget class="QCheckBox" name="useTLSSecureAlgorithmCheckBox"/>
-         </item>
-         <item row="4" column="1">
-          <widget class="QCheckBox" name="printMotdCheckBox">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="9" column="0">
-          <widget class="QLabel" name="daemonModeLabel">
-           <property name="text">
-            <string>Daemon Mode</string>
-           </property>
-          </widget>
-         </item>
-         <item row="9" column="1">
-          <widget class="QCheckBox" name="daemonModeCheckBox"/>
-         </item>
-         <item row="10" column="0">
-          <widget class="QLabel" name="logOutputFileLabel">
-           <property name="text">
-            <string>Log Output file</string>
-           </property>
-          </widget>
-         </item>
-         <item row="10" column="1">
-          <widget class="QLineEdit" name="logOutputFileLineEdit"/>
-         </item>
-         <item row="11" column="0">
-          <widget class="QLabel" name="hTTPDPortLabel">
-           <property name="text">
-            <string>HTTPD Port</string>
-           </property>
-          </widget>
-         </item>
-         <item row="11" column="1">
-          <widget class="QSpinBox" name="hTTPDPortSpinBox"/>
-         </item>
-         <item row="12" column="0">
-          <widget class="QLabel" name="hTTPLoginLabel">
-           <property name="text">
-            <string>HTTP Login</string>
-           </property>
-          </widget>
-         </item>
-         <item row="12" column="1">
-          <widget class="QLineEdit" name="hTTPLoginLineEdit"/>
-         </item>
-         <item row="13" column="0">
-          <widget class="QLabel" name="hTTPPassLabel">
-           <property name="text">
-            <string>HTTP Pass</string>
-           </property>
-          </widget>
-         </item>
-         <item row="13" column="1">
-          <widget class="QLineEdit" name="hTTPPassLineEdit"/>
-         </item>
-         <item row="14" column="0">
-          <widget class="QLabel" name="preferIPV4Label">
-           <property name="text">
-            <string>Prefer IPV4</string>
-           </property>
-          </widget>
-         </item>
-         <item row="14" column="1">
-          <widget class="QCheckBox" name="preferIPV4CheckBox"/>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="cpuSettingsPage">
-      <widget class="QPushButton" name="pushButton">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>110</y>
-         <width>90</width>
-         <height>32</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_2">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>200</y>
-         <width>90</width>
-         <height>32</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="poolSettingsPage">
-      <widget class="QRadioButton" name="radioButton">
-       <property name="geometry">
-        <rect>
-         <x>100</x>
-         <y>140</y>
-         <width>97</width>
-         <height>26</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>RadioButton</string>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="radioButton_2">
-       <property name="geometry">
-        <rect>
-         <x>100</x>
-         <y>210</y>
-         <width>97</width>
-         <height>26</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>RadioButton</string>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="radioButton_3">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>290</y>
-         <width>97</width>
-         <height>26</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>RadioButton</string>
-       </property>
-      </widget>
-     </widget>
-    </widget>
-   </item>
-   <item row="0" column="0" rowspan="2">
-    <widget class="QListWidget" name="listWidget">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <item>
-      <property name="text">
-       <string>General Settings</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>CPU Settings</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Pool Settings</string>
-      </property>
-     </item>
+   <item row="0" column="0">
+    <widget class="QWidget" name="centralWidget" native="true">
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="QListWidget" name="listWidget">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="baseSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <item>
+         <property name="text">
+          <string>General Settings</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>CPU Settings</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Pool Settings</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QStackedWidget" name="stackedWidget">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="generalSettingsPage">
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="0">
+           <layout class="QFormLayout" name="formLayout">
+            <item row="0" column="0">
+             <widget class="QLabel" name="callTimeoutLabel">
+              <property name="text">
+               <string>Call Timeout</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QSpinBox" name="callTimeoutSpinBox"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="retryTimeLabel">
+              <property name="text">
+               <string>Retry Time</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QSpinBox" name="retryTimeSpinBox"/>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="giveUpLimitLabel">
+              <property name="text">
+               <string>Give up Limit</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QSpinBox" name="giveUpLimitSpinBox"/>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="verboseLevelLabel">
+              <property name="text">
+               <string>Verbose Level</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QSpinBox" name="verboseLevelSpinBox"/>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="printMotdLabel">
+              <property name="text">
+               <string>Print Motd</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="0">
+             <widget class="QLabel" name="hashraterateReportFreqencyLabel">
+              <property name="text">
+               <string>Hashraterate report freqency</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="1">
+             <widget class="QSpinBox" name="hashraterateReportFreqencySpinBox"/>
+            </item>
+            <item row="6" column="0">
+             <widget class="QLabel" name="aESOverrideLabel">
+              <property name="text">
+               <string>AES Override</string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="1">
+             <widget class="QComboBox" name="aESOverrideComboBox"/>
+            </item>
+            <item row="7" column="0">
+             <widget class="QLabel" name="useSlowMemoryLabel">
+              <property name="text">
+               <string>Use slow memory</string>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="1">
+             <widget class="QComboBox" name="useSlowMemoryComboBox"/>
+            </item>
+            <item row="8" column="0">
+             <widget class="QLabel" name="useTLSSecureAlgorithmLabel">
+              <property name="text">
+               <string>Use TLS Secure algorithm</string>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="1">
+             <widget class="QCheckBox" name="useTLSSecureAlgorithmCheckBox"/>
+            </item>
+            <item row="4" column="1">
+             <widget class="QCheckBox" name="printMotdCheckBox">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="0">
+             <widget class="QLabel" name="daemonModeLabel">
+              <property name="text">
+               <string>Daemon Mode</string>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="1">
+             <widget class="QCheckBox" name="daemonModeCheckBox"/>
+            </item>
+            <item row="10" column="0">
+             <widget class="QLabel" name="logOutputFileLabel">
+              <property name="text">
+               <string>Log Output file</string>
+              </property>
+             </widget>
+            </item>
+            <item row="10" column="1">
+             <widget class="QLineEdit" name="logOutputFileLineEdit"/>
+            </item>
+            <item row="11" column="0">
+             <widget class="QLabel" name="hTTPDPortLabel">
+              <property name="text">
+               <string>HTTPD Port</string>
+              </property>
+             </widget>
+            </item>
+            <item row="11" column="1">
+             <widget class="QSpinBox" name="hTTPDPortSpinBox"/>
+            </item>
+            <item row="12" column="0">
+             <widget class="QLabel" name="hTTPLoginLabel">
+              <property name="text">
+               <string>HTTP Login</string>
+              </property>
+             </widget>
+            </item>
+            <item row="12" column="1">
+             <widget class="QLineEdit" name="hTTPLoginLineEdit"/>
+            </item>
+            <item row="13" column="0">
+             <widget class="QLabel" name="hTTPPassLabel">
+              <property name="text">
+               <string>HTTP Pass</string>
+              </property>
+             </widget>
+            </item>
+            <item row="13" column="1">
+             <widget class="QLineEdit" name="hTTPPassLineEdit"/>
+            </item>
+            <item row="14" column="0">
+             <widget class="QLabel" name="preferIPV4Label">
+              <property name="text">
+               <string>Prefer IPV4</string>
+              </property>
+             </widget>
+            </item>
+            <item row="14" column="1">
+             <widget class="QCheckBox" name="preferIPV4CheckBox"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="cpuSettingsPage">
+         <widget class="QPushButton" name="pushButton">
+          <property name="geometry">
+           <rect>
+            <x>130</x>
+            <y>110</y>
+            <width>90</width>
+            <height>32</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>PushButton</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="geometry">
+           <rect>
+            <x>130</x>
+            <y>200</y>
+            <width>90</width>
+            <height>32</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>PushButton</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="poolSettingsPage">
+         <widget class="QRadioButton" name="radioButton">
+          <property name="geometry">
+           <rect>
+            <x>100</x>
+            <y>140</y>
+            <width>97</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>RadioButton</string>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="radioButton_2">
+          <property name="geometry">
+           <rect>
+            <x>100</x>
+            <y>210</y>
+            <width>97</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>RadioButton</string>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="radioButton_3">
+          <property name="geometry">
+           <rect>
+            <x>130</x>
+            <y>290</y>
+            <width>97</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>RadioButton</string>
+          </property>
+         </widget>
+        </widget>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QDialogButtonBox" name="buttonBox">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="standardButtons">
+         <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>
@@ -295,50 +310,18 @@
  <resources/>
  <connections>
   <connection>
-   <sender>buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>uiSettingsWindow</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>519</x>
-     <y>611</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>rejected()</signal>
-   <receiver>uiSettingsWindow</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>587</x>
-     <y>611</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>listWidget</sender>
    <signal>currentRowChanged(int)</signal>
    <receiver>stackedWidget</receiver>
    <slot>setCurrentIndex(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>194</x>
-     <y>137</y>
+     <x>145</x>
+     <y>268</y>
     </hint>
     <hint type="destinationlabel">
-     <x>429</x>
-     <y>60</y>
+     <x>501</x>
+     <y>268</y>
     </hint>
    </hints>
   </connection>

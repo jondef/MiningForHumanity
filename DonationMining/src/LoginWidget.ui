@@ -302,11 +302,18 @@ color: black;
                  <item row="0" column="1" rowspan="2">
                   <widget class="QPushButton" name="pushButton_forgotPassword">
                    <property name="styleSheet">
-                    <string notr="true">background: transparent;
-color:  rgb(39, 121, 246);
-border-radius: 1px;
-text-decoration: underline;
-outline : none;</string>
+                    <string notr="true">QPushButton {
+                     background: transparent;
+                     color: rgb(39, 121, 246);
+                     border-radius: 1px;
+                     text-decoration: underline;
+                     outline : none;
+                     }
+
+                     QPushButton:pressed {
+                     color: rgb(71, 42, 145);
+                     }
+                    </string>
                    </property>
                    <property name="text">
                     <string>Forgot password?</string>
@@ -329,11 +336,19 @@ outline : none;</string>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">border: 1px solid rgb(24, 103, 155);
-border-radius: 5px;
-background-color: rgb(124, 203, 255);
-color: white;
-outline : none;</string>
+             <string notr="true">QPushButton {
+              border: 1px solid rgb(24, 103, 155);
+              border-radius: 5px;
+              background-color: rgb(124, 203, 255);
+              color: white;
+              outline : none;
+              }
+
+              QPushButton:pressed {
+              color: white;
+              background-color: #005880;
+              }
+             </string>
             </property>
             <property name="text">
              <string>Login</string>
@@ -358,11 +373,18 @@ outline : none;</string>
             <item>
              <widget class="QPushButton" name="pushButton_switchToRegisterPage">
               <property name="styleSheet">
-               <string notr="true">background: transparent;
-color:  rgb(39, 121, 246);
-border-radius: 1px;
-text-decoration: underline;
-outline : none;</string>
+               <string notr="true">QPushButton {
+                background: transparent;
+                color: rgb(39, 121, 246);
+                border-radius: 1px;
+                text-decoration: underline;
+                outline : none;
+                }
+
+                QPushButton:pressed {
+                color: rgb(71, 42, 145);
+                }
+               </string>
               </property>
               <property name="text">
                <string>Sign Up</string>
@@ -607,11 +629,19 @@ color: black;
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">border: 1px solid rgb(24, 103, 155);
-border-radius: 5px;
-background-color: rgb(124, 203, 255);
-color: white;
-outline : none;</string>
+             <string notr="true">QPushButton {
+              border: 1px solid rgb(24, 103, 155);
+              border-radius: 5px;
+              background-color: rgb(124, 203, 255);
+              color: white;
+              outline : none;
+              }
+
+              QPushButton:pressed {
+              color: white;
+              background-color: #005880;
+              }
+             </string>
             </property>
             <property name="text">
              <string>Register</string>
@@ -633,11 +663,18 @@ outline : none;</string>
             <item>
              <widget class="QPushButton" name="pushButton_switchToLoginPage">
               <property name="styleSheet">
-               <string notr="true">background: transparent;
-color:  rgb(39, 121, 246);
-border-radius: 1px;
-text-decoration: underline;
-outline : none;</string>
+               <string notr="true">QPushButton {
+                background: transparent;
+                color: rgb(39, 121, 246);
+                border-radius: 1px;
+                text-decoration: underline;
+                outline : none;
+                }
+
+                QPushButton:pressed {
+                color: rgb(71, 42, 145);
+                }
+               </string>
               </property>
               <property name="text">
                <string>Sign In</string>

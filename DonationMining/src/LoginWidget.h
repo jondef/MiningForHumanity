@@ -7,6 +7,7 @@
 
 #include <QtCore>
 #include <QObject>
+#include <QMainWindow>
 #include "ui_LoginWidget.h"
 
 class LoginWidget : public QWidget {
@@ -14,18 +15,21 @@ Q_OBJECT
 
 public:
 	explicit LoginWidget(QWidget *parent = nullptr);
+
 	~LoginWidget();
 
-public slots:
+	bool autoLogin();
+
+private slots:
+
 	void checkCredentials();
 
 Q_SIGNALS:
+
 	void userAuthorized(QString username, QString password);
 
 private:
 	Ui::uiLogin *ui;
-
-
 
 
 };

@@ -6,16 +6,15 @@
 
 // ! FOR POOLS WIDGET SETTINGS USE A TABLE
 
-SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent), ui(new Ui::uiSettingsWindow) {
+SettingsWindow::SettingsWindow(QWidget *parent) : QWidget(parent), ui(new Ui::uiSettingsWindow) {
 	ui->setupUi(this);
 
 	connect(ui->buttonBox, &QDialogButtonBox::accepted, this, [this]() { updateConfigFile(); });
 	connect(ui->buttonBox, &QDialogButtonBox::rejected, this, [this]() { this->close(); });
 
-
 //	connect(networkManager, &QNetworkAccessManager::finished, this, &SettingsWindow::getAvailablePools);
 
-	// connect(button, clicked, this, [&]() { networkManager->get(QNetworkRequest(QUrl("https://httpbin.org/get"))); }
+//	 connect(button, clicked, this, [&]() { networkManager->get(QNetworkRequest(QUrl("https://httpbin.org/get"))); }
 
 }
 
@@ -24,7 +23,7 @@ SettingsWindow::~SettingsWindow() {
 }
 
 void SettingsWindow::showEvent(QShowEvent *event) {
-	QDialog::showEvent(event);
+	QWidget::showEvent(event);
 	getAvailablePools();
 	updateWidgets();
 }

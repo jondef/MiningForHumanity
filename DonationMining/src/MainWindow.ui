@@ -2,146 +2,913 @@
 <ui version="4.0">
  <class>uiMainWindow</class>
  <widget class="QMainWindow" name="uiMainWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>800</width>
-    <height>600</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>MainWindow</string>
-  </property>
-  <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="2" column="0">
-     <widget class="QDialogButtonBox" name="buttonBox">
-      <property name="standardButtons">
-       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-      </property>
+     <property name="geometry">
+         <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>1046</width>
+             <height>687</height>
+         </rect>
+     </property>
+     <property name="windowTitle">
+         <string>MainWindow</string>
+     </property>
+     <widget class="QWidget" name="centralwidget">
+         <layout class="QGridLayout" name="gridLayout_3">
+             <property name="leftMargin">
+                 <number>0</number>
+             </property>
+             <property name="topMargin">
+                 <number>0</number>
+             </property>
+             <property name="rightMargin">
+                 <number>0</number>
+             </property>
+             <property name="bottomMargin">
+                 <number>0</number>
+             </property>
+             <item row="1" column="1">
+                 <widget class="QStackedWidget" name="stackedWidget">
+                     <property name="sizePolicy">
+                         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                         </sizepolicy>
+                     </property>
+                     <property name="currentIndex">
+                         <number>4</number>
+                     </property>
+                     <widget class="QWidget" name="dashboardPage">
+                         <layout class="QGridLayout" name="gridLayout">
+                             <item row="2" column="0" colspan="2">
+                                 <layout class="QHBoxLayout" name="horizontalLayout_13">
+                                     <property name="rightMargin">
+                                         <number>0</number>
+                                     </property>
+                                     <item>
+                                         <layout class="QHBoxLayout" name="titleLabels">
+                                             <property name="topMargin">
+                                                 <number>0</number>
+                                             </property>
+                                             <property name="bottomMargin">
+                                                 <number>10</number>
+                                             </property>
+                                             <item>
+                                                 <widget class="QLabel" name="label">
+                                                     <property name="font">
+                                                         <font>
+                                                             <pointsize>14</pointsize>
+                                                             <weight>75</weight>
+                                                             <bold>true</bold>
+                                                         </font>
+                                                     </property>
+                                                     <property name="text">
+                                                         <string>Welcome back, Jon</string>
+                                                     </property>
+                                                 </widget>
+                                             </item>
+                                             <item>
+                                                 <widget class="QLabel" name="label_2">
+                                                     <property name="font">
+                                                         <font>
+                                                             <pointsize>8</pointsize>
+                                                         </font>
+                                                     </property>
+                                                     <property name="text">
+                                                         <string>Monday, 29 April 2020</string>
+                                                     </property>
+                                                     <property name="alignment">
+                                                         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                                                     </property>
+                                                 </widget>
+                                             </item>
+                                         </layout>
+                                     </item>
+                                     <item>
+                                         <spacer name="horizontalSpacer_10">
+                                             <property name="orientation">
+                                                 <enum>Qt::Horizontal</enum>
+                                             </property>
+                                             <property name="sizeHint" stdset="0">
+                                                 <size>
+                                                     <width>40</width>
+                                                     <height>20</height>
+                                                 </size>
+                                             </property>
+                                         </spacer>
+                                     </item>
+                                     <item>
+                                         <layout class="QHBoxLayout" name="horizontalLayout_15">
+                                             <property name="rightMargin">
+                                                 <number>0</number>
+                                             </property>
+                                             <item>
+                                                 <widget class="QLabel" name="label_10">
+                                                     <property name="font">
+                                                         <font>
+                                                             <pointsize>14</pointsize>
+                                                         </font>
+                                                     </property>
+                                                     <property name="text">
+                                                         <string>Currently donating to &quot;Médecins sans frontières&quot;</string>
+                                                     </property>
+                                                 </widget>
+                                             </item>
+                                         </layout>
+                                     </item>
+                                     <item>
+                                         <spacer name="horizontalSpacer_2">
+                                             <property name="orientation">
+                                                 <enum>Qt::Horizontal</enum>
+                                             </property>
+                                             <property name="sizeHint" stdset="0">
+                                                 <size>
+                                                     <width>40</width>
+                                                     <height>20</height>
+                                                 </size>
+                                             </property>
+                                         </spacer>
+                                     </item>
+                                     <item>
+                                         <widget class="QPushButton" name="pushButton">
+                                             <property name="styleSheet">
+                                                 <string notr="true">QPushButton {
+                                                     background: transparent;
+                                                     color: rgb(39, 121, 246);
+                                                     border-radius: 2px;
+                                                     text-decoration: underline;
+                                                     outline : none;
+                                                     }
+
+                                                     QPushButton:pressed {
+                                                     color: rgb(71, 42, 145);
+                                                     }
+                                                 </string>
+                                             </property>
+                                             <property name="text">
+                                                 <string>Start</string>
+                                             </property>
+                                         </widget>
+                                     </item>
+                                     <item>
+                                         <layout class="QHBoxLayout" name="horizontalLayout_14">
+                                             <property name="rightMargin">
+                                                 <number>0</number>
+                                             </property>
+                                             <item>
+                                                 <widget class="QLabel" name="label_4">
+                                                     <property name="styleSheet">
+                                                         <string notr="true">border-radius: 10px;
+                                                             color: white;
+                                                             background-color: red;
+                                                             padding: 2px 5px 2px 5px;
+                                                         </string>
+                                                     </property>
+                                                     <property name="text">
+                                                         <string>Inactive</string>
+                                                     </property>
+                                                 </widget>
+                                             </item>
+                                         </layout>
+                                     </item>
+                                 </layout>
+                             </item>
+                             <item row="3" column="0" colspan="2">
+                                 <layout class="QGridLayout" name="chartsLayout">
+                                     <property name="topMargin">
+                                         <number>0</number>
+                                     </property>
+                                     <property name="rightMargin">
+                                         <number>0</number>
+                                     </property>
+                                     <item row="0" column="0">
+                                         <widget class="QFrame" name="mainInfo_2">
+                                             <property name="styleSheet">
+                                                 <string notr="true">#colorLabelInfo_1, #colorLabelInfo_2, #colorLabelInfo_3, #colorLabelInfo_4
+                                                     {
+                                                     border-radius: 10px;
+                                                     color: white;
+                                                     background-color: #2196F3;
+                                                     height: 20px;
+                                                     width: 20px;
+                                                     padding: 2px 5px 2px 5px;
+                                                     }
+                                                 </string>
+                                             </property>
+                                             <layout class="QGridLayout" name="mainInfo">
+                                                 <property name="leftMargin">
+                                                     <number>9</number>
+                                                 </property>
+                                                 <property name="topMargin">
+                                                     <number>9</number>
+                                                 </property>
+                                                 <property name="rightMargin">
+                                                     <number>9</number>
+                                                 </property>
+                                                 <property name="bottomMargin">
+                                                     <number>9</number>
+                                                 </property>
+                                                 <property name="horizontalSpacing">
+                                                     <number>50</number>
+                                                 </property>
+                                                 <property name="verticalSpacing">
+                                                     <number>20</number>
+                                                 </property>
+                                                 <item row="1" column="1">
+                                                     <layout class="QVBoxLayout" name="infoPanel_4">
+                                                         <item>
+                                                             <layout class="QHBoxLayout" name="horizontalLayout_7">
+                                                                 <item>
+                                                                     <widget class="QLabel" name="label_16">
+                                                                         <property name="text">
+                                                                             <string>Completed</string>
+                                                                         </property>
+                                                                     </widget>
+                                                                 </item>
+                                                                 <item>
+                                                                     <spacer name="horizontalSpacer_5">
+                                                                         <property name="orientation">
+                                                                             <enum>Qt::Horizontal</enum>
+                                                                         </property>
+                                                                         <property name="sizeHint" stdset="0">
+                                                                             <size>
+                                                                                 <width>40</width>
+                                                                                 <height>20</height>
+                                                                             </size>
+                                                                         </property>
+                                                                     </spacer>
+                                                                 </item>
+                                                                 <item>
+                                                                     <widget class="QLabel" name="colorLabelInfo_4">
+                                                                         <property name="text">
+                                                                             <string>All time</string>
+                                                                         </property>
+                                                                     </widget>
+                                                                 </item>
+                                                             </layout>
+                                                         </item>
+                                                         <item>
+                                                             <widget class="QLabel" name="label_18">
+                                                                 <property name="font">
+                                                                     <font>
+                                                                         <pointsize>14</pointsize>
+                                                                     </font>
+                                                                 </property>
+                                                                 <property name="text">
+                                                                     <string>56%</string>
+                                                                 </property>
+                                                             </widget>
+                                                         </item>
+                                                         <item>
+                                                             <layout class="QHBoxLayout" name="horizontalLayout_4">
+                                                                 <item>
+                                                                     <widget class="QLabel" name="label_22">
+                                                                         <property name="styleSheet">
+                                                                             <string notr="true">color: rgb(0, 200, 0);</string>
+                                                                         </property>
+                                                                         <property name="text">
+                                                                             <string>+2%</string>
+                                                                         </property>
+                                                                     </widget>
+                                                                 </item>
+                                                                 <item>
+                                                                     <layout class="QHBoxLayout" name="horizontalLayout_12">
+                                                                         <property name="leftMargin">
+                                                                             <number>10</number>
+                                                                         </property>
+                                                                         <item>
+                                                                             <widget class="QLabel" name="label_21">
+                                                                                 <property name="text">
+                                                                                     <string>Since yesterday</string>
+                                                                                 </property>
+                                                                             </widget>
+                                                                         </item>
+                                                                     </layout>
+                                                                 </item>
+                                                                 <item>
+                                                                     <spacer name="horizontalSpacer_12">
+                                                                         <property name="orientation">
+                                                                             <enum>Qt::Horizontal</enum>
+                                                                         </property>
+                                                                         <property name="sizeHint" stdset="0">
+                                                                             <size>
+                                                                                 <width>40</width>
+                                                                                 <height>20</height>
+                                                                             </size>
+                                                                         </property>
+                                                                     </spacer>
+                                                                 </item>
+                                                             </layout>
+                                                         </item>
+                                                     </layout>
+                                                 </item>
+                                                 <item row="0" column="0">
+                                                     <layout class="QVBoxLayout" name="infoPanel_1">
+                                                         <item>
+                                                             <layout class="QHBoxLayout" name="horizontalLayout_5">
+                                                                 <item>
+                                                                     <widget class="QLabel" name="label_3">
+                                                                         <property name="text">
+                                                                             <string>Unique Donators</string>
+                                                                         </property>
+                                                                     </widget>
+                                                                 </item>
+                                                                 <item>
+                                                                     <spacer name="horizontalSpacer_3">
+                                                                         <property name="orientation">
+                                                                             <enum>Qt::Horizontal</enum>
+                                                                         </property>
+                                                                         <property name="sizeHint" stdset="0">
+                                                                             <size>
+                                                                                 <width>40</width>
+                                                                                 <height>20</height>
+                                                                             </size>
+                                                                         </property>
+                                                                     </spacer>
+                                                                 </item>
+                                                                 <item>
+                                                                     <widget class="QLabel" name="colorLabelInfo_1">
+                                                                         <property name="styleSheet">
+                                                                             <string notr="true"/>
+                                                                         </property>
+                                                                         <property name="text">
+                                                                             <string>Today</string>
+                                                                         </property>
+                                                                         <property name="alignment">
+                                                                             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                                                                         </property>
+                                                                     </widget>
+                                                                 </item>
+                                                             </layout>
+                                                         </item>
+                                                         <item>
+                                                             <widget class="QLabel" name="label_5">
+                                                                 <property name="font">
+                                                                     <font>
+                                                                         <pointsize>14</pointsize>
+                                                                     </font>
+                                                                 </property>
+                                                                 <property name="text">
+                                                                     <string>1253</string>
+                                                                 </property>
+                                                             </widget>
+                                                         </item>
+                                                         <item>
+                                                             <layout class="QHBoxLayout" name="horizontalLayout">
+                                                                 <item>
+                                                                     <widget class="QLabel" name="label_6">
+                                                                         <property name="styleSheet">
+                                                                             <string notr="true">color: rgb(0, 200, 0);</string>
+                                                                         </property>
+                                                                         <property name="text">
+                                                                             <string>+14%</string>
+                                                                         </property>
+                                                                     </widget>
+                                                                 </item>
+                                                                 <item>
+                                                                     <layout class="QHBoxLayout" name="horizontalLayout_10">
+                                                                         <property name="leftMargin">
+                                                                             <number>10</number>
+                                                                         </property>
+                                                                         <item>
+                                                                             <widget class="QLabel" name="label_7">
+                                                                                 <property name="text">
+                                                                                     <string>Since last week</string>
+                                                                                 </property>
+                                                                             </widget>
+                                                                         </item>
+                                                                     </layout>
+                                                                 </item>
+                                                                 <item>
+                                                                     <spacer name="horizontalSpacer_9">
+                                                                         <property name="orientation">
+                                                                             <enum>Qt::Horizontal</enum>
+                                                                         </property>
+                                                                         <property name="sizeHint" stdset="0">
+                                                                             <size>
+                                                                                 <width>40</width>
+                                                                                 <height>20</height>
+                                                                             </size>
+                                                                         </property>
+                                                                     </spacer>
+                                                                 </item>
+                                                             </layout>
+                                                         </item>
+                                                     </layout>
+                                                 </item>
+                                                 <item row="1" column="0">
+                                                     <layout class="QVBoxLayout" name="infoPanel_3">
+                                                         <item>
+                                                             <layout class="QHBoxLayout" name="horizontalLayout_6">
+                                                                 <item>
+                                                                     <widget class="QLabel" name="label_13">
+                                                                         <property name="text">
+                                                                             <string>Donators online</string>
+                                                                         </property>
+                                                                     </widget>
+                                                                 </item>
+                                                                 <item>
+                                                                     <spacer name="horizontalSpacer_4">
+                                                                         <property name="orientation">
+                                                                             <enum>Qt::Horizontal</enum>
+                                                                         </property>
+                                                                         <property name="sizeHint" stdset="0">
+                                                                             <size>
+                                                                                 <width>40</width>
+                                                                                 <height>20</height>
+                                                                             </size>
+                                                                         </property>
+                                                                     </spacer>
+                                                                 </item>
+                                                                 <item>
+                                                                     <widget class="QLabel" name="colorLabelInfo_3">
+                                                                         <property name="text">
+                                                                             <string>Now</string>
+                                                                         </property>
+                                                                     </widget>
+                                                                 </item>
+                                                             </layout>
+                                                         </item>
+                                                         <item>
+                                                             <widget class="QLabel" name="label_15">
+                                                                 <property name="font">
+                                                                     <font>
+                                                                         <pointsize>14</pointsize>
+                                                                     </font>
+                                                                 </property>
+                                                                 <property name="text">
+                                                                     <string>516</string>
+                                                                 </property>
+                                                             </widget>
+                                                         </item>
+                                                         <item>
+                                                             <layout class="QHBoxLayout" name="horizontalLayout_3">
+                                                                 <item>
+                                                                     <widget class="QLabel" name="label_20">
+                                                                         <property name="styleSheet">
+                                                                             <string notr="true">color: red;</string>
+                                                                         </property>
+                                                                         <property name="text">
+                                                                             <string>-16%</string>
+                                                                         </property>
+                                                                     </widget>
+                                                                 </item>
+                                                                 <item>
+                                                                     <layout class="QHBoxLayout" name="horizontalLayout_9">
+                                                                         <property name="leftMargin">
+                                                                             <number>10</number>
+                                                                         </property>
+                                                                         <property name="rightMargin">
+                                                                             <number>0</number>
+                                                                         </property>
+                                                                         <item>
+                                                                             <widget class="QLabel" name="label_19">
+                                                                                 <property name="text">
+                                                                                     <string>Since yesterday</string>
+                                                                                 </property>
+                                                                             </widget>
+                                                                         </item>
+                                                                     </layout>
+                                                                 </item>
+                                                                 <item>
+                                                                     <spacer name="horizontalSpacer_8">
+                                                                         <property name="orientation">
+                                                                             <enum>Qt::Horizontal</enum>
+                                                                         </property>
+                                                                         <property name="sizeHint" stdset="0">
+                                                                             <size>
+                                                                                 <width>40</width>
+                                                                                 <height>20</height>
+                                                                             </size>
+                                                                         </property>
+                                                                     </spacer>
+                                                                 </item>
+                                                             </layout>
+                                                         </item>
+                                                     </layout>
+                                                 </item>
+                                                 <item row="0" column="1">
+                                                     <layout class="QVBoxLayout" name="infoPanel_2">
+                                                         <item>
+                                                             <layout class="QHBoxLayout" name="horizontalLayout_8">
+                                                                 <item>
+                                                                     <widget class="QLabel" name="label_8">
+                                                                         <property name="text">
+                                                                             <string>Funds collected</string>
+                                                                         </property>
+                                                                     </widget>
+                                                                 </item>
+                                                                 <item>
+                                                                     <spacer name="horizontalSpacer_6">
+                                                                         <property name="orientation">
+                                                                             <enum>Qt::Horizontal</enum>
+                                                                         </property>
+                                                                         <property name="sizeHint" stdset="0">
+                                                                             <size>
+                                                                                 <width>40</width>
+                                                                                 <height>20</height>
+                                                                             </size>
+                                                                         </property>
+                                                                     </spacer>
+                                                                 </item>
+                                                                 <item>
+                                                                     <widget class="QLabel" name="colorLabelInfo_2">
+                                                                         <property name="text">
+                                                                             <string>All time</string>
+                                                                         </property>
+                                                                     </widget>
+                                                                 </item>
+                                                             </layout>
+                                                         </item>
+                                                         <item>
+                                                             <widget class="QLabel" name="label_9">
+                                                                 <property name="font">
+                                                                     <font>
+                                                                         <pointsize>14</pointsize>
+                                                                     </font>
+                                                                 </property>
+                                                                 <property name="text">
+                                                                     <string>2643$</string>
+                                                                 </property>
+                                                             </widget>
+                                                         </item>
+                                                         <item>
+                                                             <layout class="QHBoxLayout" name="horizontalLayout_2">
+                                                                 <item>
+                                                                     <widget class="QLabel" name="label_11">
+                                                                         <property name="styleSheet">
+                                                                             <string notr="true">color: rgb(0, 200, 0);</string>
+                                                                         </property>
+                                                                         <property name="text">
+                                                                             <string>+3%</string>
+                                                                         </property>
+                                                                     </widget>
+                                                                 </item>
+                                                                 <item>
+                                                                     <layout class="QHBoxLayout" name="horizontalLayout_11">
+                                                                         <property name="leftMargin">
+                                                                             <number>10</number>
+                                                                         </property>
+                                                                         <item>
+                                                                             <widget class="QLabel" name="label_12">
+                                                                                 <property name="text">
+                                                                                     <string>Since yesterday</string>
+                                                                                 </property>
+                                                                             </widget>
+                                                                         </item>
+                                                                     </layout>
+                                                                 </item>
+                                                                 <item>
+                                                                     <spacer name="horizontalSpacer_11">
+                                                                         <property name="orientation">
+                                                                             <enum>Qt::Horizontal</enum>
+                                                                         </property>
+                                                                         <property name="sizeHint" stdset="0">
+                                                                             <size>
+                                                                                 <width>40</width>
+                                                                                 <height>20</height>
+                                                                             </size>
+                                                                         </property>
+                                                                     </spacer>
+                                                                 </item>
+                                                             </layout>
+                                                         </item>
+                                                     </layout>
+                                                 </item>
+                                                 <item row="2" column="0">
+                                                     <spacer name="verticalSpacer_2">
+                                                         <property name="orientation">
+                                                             <enum>Qt::Vertical</enum>
+                                                         </property>
+                                                         <property name="sizeHint" stdset="0">
+                                                             <size>
+                                                                 <width>20</width>
+                                                                 <height>40</height>
+                                                             </size>
+                                                         </property>
+                                                     </spacer>
+                                                 </item>
+                                             </layout>
+                                         </widget>
+                                     </item>
+                                     <item row="1" column="0">
+                                         <spacer name="verticalSpacer">
+                                             <property name="orientation">
+                                                 <enum>Qt::Vertical</enum>
+                                             </property>
+                                             <property name="sizeHint" stdset="0">
+                                                 <size>
+                                                     <width>20</width>
+                                                     <height>40</height>
+                                                 </size>
+                                             </property>
+                                         </spacer>
+                                     </item>
+                                 </layout>
+                             </item>
+                         </layout>
+                     </widget>
+                     <widget class="QWidget" name="untitledPage">
+                         <layout class="QGridLayout" name="gridLayout_2"/>
+                     </widget>
+                     <widget class="QWidget" name="untitledPage_2">
+                         <layout class="QGridLayout" name="gridLayout_4"/>
+                     </widget>
+                     <widget class="QWidget" name="untitledPage_3"/>
+                     <widget class="QWidget" name="settingsPage">
+                         <layout class="QVBoxLayout" name="verticalLayout_2">
+                             <item>
+                                 <widget class="QLabel" name="label_14">
+                                     <property name="text">
+                                         <string>General Settings</string>
+                                     </property>
+                                 </widget>
+                             </item>
+                             <item>
+                                 <widget class="QTabWidget" name="tabWidget">
+                                     <property name="currentIndex">
+                                         <number>1</number>
+                                     </property>
+                                     <widget class="QWidget" name="tab">
+                                         <attribute name="title">
+                                             <string>General</string>
+                                         </attribute>
+                                     </widget>
+                                     <widget class="QWidget" name="tab_2">
+                                         <attribute name="title">
+                                             <string>Miner</string>
+                                         </attribute>
+                                         <layout class="QGridLayout" name="gridLayout_7"/>
+                                     </widget>
+                                     <widget class="QWidget" name="tab_3">
+                                         <attribute name="title">
+                                             <string>User</string>
+                                         </attribute>
+                                     </widget>
+                                     <widget class="QWidget" name="tab_4">
+                                         <attribute name="title">
+                                             <string>About</string>
+                                         </attribute>
+                                         <layout class="QGridLayout" name="gridLayout_5">
+                                             <item row="0" column="1">
+                                                 <spacer name="verticalSpacer_4">
+                                                     <property name="orientation">
+                                                         <enum>Qt::Vertical</enum>
+                                                     </property>
+                                                     <property name="sizeHint" stdset="0">
+                                                         <size>
+                                                             <width>20</width>
+                                                             <height>40</height>
+                                                         </size>
+                                                     </property>
+                                                 </spacer>
+                                             </item>
+                                             <item row="1" column="0">
+                                                 <spacer name="horizontalSpacer_7">
+                                                     <property name="orientation">
+                                                         <enum>Qt::Horizontal</enum>
+                                                     </property>
+                                                     <property name="sizeHint" stdset="0">
+                                                         <size>
+                                                             <width>40</width>
+                                                             <height>20</height>
+                                                         </size>
+                                                     </property>
+                                                 </spacer>
+                                             </item>
+                                             <item row="3" column="1">
+                                                 <spacer name="verticalSpacer_3">
+                                                     <property name="orientation">
+                                                         <enum>Qt::Vertical</enum>
+                                                     </property>
+                                                     <property name="sizeHint" stdset="0">
+                                                         <size>
+                                                             <width>20</width>
+                                                             <height>40</height>
+                                                         </size>
+                                                     </property>
+                                                 </spacer>
+                                             </item>
+                                             <item row="1" column="2">
+                                                 <spacer name="horizontalSpacer_13">
+                                                     <property name="orientation">
+                                                         <enum>Qt::Horizontal</enum>
+                                                     </property>
+                                                     <property name="sizeHint" stdset="0">
+                                                         <size>
+                                                             <width>40</width>
+                                                             <height>20</height>
+                                                         </size>
+                                                     </property>
+                                                 </spacer>
+                                             </item>
+                                             <item row="1" column="1">
+                                                 <layout class="QGridLayout" name="gridLayout_6">
+                                                     <property name="leftMargin">
+                                                         <number>9</number>
+                                                     </property>
+                                                     <property name="topMargin">
+                                                         <number>9</number>
+                                                     </property>
+                                                     <property name="rightMargin">
+                                                         <number>9</number>
+                                                     </property>
+                                                     <property name="bottomMargin">
+                                                         <number>9</number>
+                                                     </property>
+                                                     <item row="0" column="0">
+                                                         <widget class="QLabel" name="label_23">
+                                                             <property name="text">
+                                                                 <string>Version:</string>
+                                                             </property>
+                                                             <property name="alignment">
+                                                                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                                                             </property>
+                                                         </widget>
+                                                     </item>
+                                                     <item row="0" column="1">
+                                                         <widget class="QLabel" name="label_VERSION">
+                                                             <property name="text">
+                                                                 <string>TextLabel</string>
+                                                             </property>
+                                                         </widget>
+                                                     </item>
+                                                     <item row="1" column="0">
+                                                         <widget class="QLabel" name="label_24">
+                                                             <property name="text">
+                                                                 <string>Build Date:</string>
+                                                             </property>
+                                                             <property name="alignment">
+                                                                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                                                             </property>
+                                                         </widget>
+                                                     </item>
+                                                     <item row="1" column="1">
+                                                         <widget class="QLabel" name="label_BUILDDATE">
+                                                             <property name="text">
+                                                                 <string>TextLabel</string>
+                                                             </property>
+                                                         </widget>
+                                                     </item>
+                                                     <item row="2" column="0">
+                                                         <widget class="QLabel" name="label_17">
+                                                             <property name="text">
+                                                                 <string>Git Commit Date:</string>
+                                                             </property>
+                                                             <property name="alignment">
+                                                                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                                                             </property>
+                                                         </widget>
+                                                     </item>
+                                                     <item row="2" column="1">
+                                                         <widget class="QLabel" name="label_GIT_COMMIT_DATE">
+                                                             <property name="text">
+                                                                 <string>TextLabel</string>
+                                                             </property>
+                                                         </widget>
+                                                     </item>
+                                                     <item row="3" column="0">
+                                                         <widget class="QLabel" name="label_26">
+                                                             <property name="text">
+                                                                 <string>Git Commit Hash:</string>
+                                                             </property>
+                                                             <property name="alignment">
+                                                                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                                                             </property>
+                                                         </widget>
+                                                     </item>
+                                                     <item row="3" column="1">
+                                                         <widget class="QLabel" name="label_GIT_COMMIT_HASH">
+                                                             <property name="text">
+                                                                 <string>TextLabel</string>
+                                                             </property>
+                                                         </widget>
+                                                     </item>
+                                                     <item row="4" column="0">
+                                                         <widget class="QLabel" name="label_25">
+                                                             <property name="text">
+                                                                 <string>Git Branch:</string>
+                                                             </property>
+                                                             <property name="alignment">
+                                                                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                                                             </property>
+                                                         </widget>
+                                                     </item>
+                                                     <item row="4" column="1">
+                                                         <widget class="QLabel" name="label_GIT_BRANCH">
+                                                             <property name="text">
+                                                                 <string>TextLabel</string>
+                                                             </property>
+                                                         </widget>
+                                                     </item>
+                                                 </layout>
+                                             </item>
+                                         </layout>
+                                     </widget>
+                                 </widget>
+                             </item>
+                         </layout>
+                     </widget>
+                 </widget>
+             </item>
+             <item row="0" column="0" rowspan="2">
+                 <widget class="QWidget" name="BurgermenuWidget" native="true">
+                     <property name="styleSheet">
+                         <string notr="true"/>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout">
+                         <property name="spacing">
+                             <number>0</number>
+                         </property>
+                         <property name="leftMargin">
+                             <number>0</number>
+                         </property>
+                         <property name="topMargin">
+                             <number>0</number>
+                         </property>
+                         <property name="rightMargin">
+                             <number>0</number>
+                         </property>
+                         <property name="bottomMargin">
+                             <number>0</number>
+                         </property>
+                     </layout>
+                 </widget>
+             </item>
+             <item row="0" column="1">
+                 <layout class="QHBoxLayout" name="toolBar">
+                     <property name="topMargin">
+                         <number>10</number>
+                     </property>
+                     <property name="rightMargin">
+                         <number>10</number>
+                     </property>
+                     <item>
+                         <spacer name="horizontalSpacer">
+                             <property name="orientation">
+                                 <enum>Qt::Horizontal</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                                 <size>
+                                     <width>40</width>
+                                     <height>20</height>
+                                 </size>
+                             </property>
+                         </spacer>
+                     </item>
+                 </layout>
+             </item>
+         </layout>
      </widget>
-    </item>
-    <item row="0" column="0">
-     <layout class="QFormLayout" name="formLayout">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Curreny</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Pool address e.g. pool.example.com:3333</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Username (wallet address or pool login)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QComboBox" name="comboBox_currency">
-        <item>
-         <property name="text">
-          <string>monero</string>
+     <widget class="QStatusBar" name="statusbar"/>
+     <widget class="QMenuBar" name="menubar">
+         <property name="geometry">
+             <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>1046</width>
+                 <height>28</height>
+             </rect>
          </property>
-        </item>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="lineEdit_poolAdress"/>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="lineEdit_username"/>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Password (mostly empty or x):</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="lineEdit_password"/>
-      </item>
-      <item row="4" column="0">
-       <widget class="Line" name="line">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_5">
-        <property name="text">
-         <string>Does this pool port support TLS/SSL? Leave unchecked if unsure</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QCheckBox" name="checkBox_SSLSupport"/>
-      </item>
-     </layout>
-    </item>
-    <item row="1" column="0">
-     <widget class="QPlainTextEdit" name="plainTextEdit"/>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuQuit">
-    <property name="title">
-     <string>File</string>
-    </property>
-    <addaction name="actionQuit"/>
-   </widget>
-   <widget class="QMenu" name="menuEdit">
-    <property name="title">
-     <string>Edit</string>
-    </property>
-    <addaction name="actionSettings"/>
-   </widget>
-   <widget class="QMenu" name="menuHelp">
-    <property name="title">
-     <string>Help</string>
-    </property>
-    <addaction name="actionAbout"/>
-   </widget>
-   <addaction name="menuQuit"/>
-   <addaction name="menuEdit"/>
-   <addaction name="menuHelp"/>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionQuit">
-   <property name="text">
-    <string>Quit</string>
-   </property>
-  </action>
-  <action name="actionSettings">
-   <property name="text">
-    <string>Settings</string>
-   </property>
-  </action>
-  <action name="actionAbout">
-   <property name="text">
-    <string>About</string>
-   </property>
-  </action>
+         <widget class="QMenu" name="menuQuit">
+             <property name="title">
+                 <string>File</string>
+             </property>
+         </widget>
+         <widget class="QMenu" name="menuEdit">
+             <property name="title">
+                 <string>Edit</string>
+             </property>
+             <addaction name="actionSettings"/>
+         </widget>
+         <widget class="QMenu" name="menuHelp">
+             <property name="title">
+                 <string>Help</string>
+             </property>
+             <addaction name="actionAbout"/>
+         </widget>
+         <addaction name="menuQuit"/>
+         <addaction name="menuEdit"/>
+         <addaction name="menuHelp"/>
+     </widget>
+     <action name="actionQuit">
+         <property name="text">
+             <string>Quit</string>
+         </property>
+     </action>
+     <action name="actionSettings">
+         <property name="text">
+             <string>Settings</string>
+         </property>
+     </action>
+     <action name="actionAbout">
+         <property name="text">
+             <string>About</string>
+         </property>
+     </action>
  </widget>
- <resources/>
- <connections/>
+    <resources>
+        <include location="../Resources/resources.qrc"/>
+    </resources>
+    <connections/>
 </ui>

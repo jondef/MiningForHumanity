@@ -10,7 +10,7 @@
 #include <QObject>
 #include <QtNetwork>
 
-class SettingsWindow : public QDialog {
+class SettingsWindow : public QWidget {
 Q_OBJECT
 
 private:
