@@ -61,6 +61,8 @@ endif ()
 ################################
 # Qt configuration
 ################################
+
+
 if (WIN32)
 	add_definitions(-DQT_STATICPLUGIN)
 	set(USE_STATIC_QT_BY_DEFAULT ON)
@@ -69,17 +71,25 @@ if (WIN32)
 	link_directories("${QT_PLUGINS_DIR}/platforms")
 	link_directories("${QT_PLUGINS_DIR}/imageformats")
 	link_directories("/usr/x86_64-w64-mingw32/lib/")
-	#set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
+	#	set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
+	message("fuck")
+	print_all_variables()
+
+	foreach (plugin ${Qt5Gui_PLUGINS})
+		get_target_property(_loc ${plugin} LOCATION)
+		message("Plugin ${plugin} is at location ${_loc}")
+		set(plugin_libs ${plugin_libs} ${_loc})
+	endforeach ()
 endif ()
-
+print_all_variables()
 FIND_PACKAGE(Qt5 COMPONENTS Core Gui Widgets Charts Network PrintSupport Test QuickTest REQUIRED)
-
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON) # Find includes in corresponding build directories
 set(CMAKE_AUTOMOC ON) # Instruct CMake to run moc automatically when needed
 set(CMAKE_AUTOUIC ON) # Create code from a list of Qt designer ui files
 set(CMAKE_AUTORCC ON) # Create Resource files
 SET(QT_USE_QTNETWORK true)
+
 
 ################################
 # Pre-compilation steps
@@ -90,8 +100,8 @@ include_directories(
 )
 
 file(GLOB SOURCE_FILES
-        ${PROJECT_SOURCE_DIR}/src/*.cpp
-        ${PROJECT_SOURCE_DIR}/src/*.c
+		${PROJECT_SOURCE_DIR}/src/main.cpp
+		${PROJECT_SOURCE_DIR}/src/*.c
         )
 
 #file(GLOB HEADER_FILES
@@ -124,7 +134,7 @@ set(LIBRARY_OUTPUT_PATH "bin" CACHE STRING "Path to place libraries relative to 
 ################################
 # Linking
 ################################
-target_link_libraries(DonationMining Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Charts Qt5::Network)
+target_link_libraries(DonationMining Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Network)
 if (WIN32)
-	target_link_libraries(DonationMining Qt5::QWindowsIntegrationPlugin Qt5::QICOPlugin Qt5::QGenericEnginePlugin qjpeg qgif qico)
+	target_link_libraries(DonationMining Qt5::QWindowsIntegrationPlugin Qt5::QGenericEnginePlugin Qt5::QJpegPlugin Qt5::QGifPlugin Qt5::QICOPlugin)
 endif ()
