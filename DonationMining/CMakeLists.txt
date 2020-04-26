@@ -61,12 +61,19 @@ endif ()
 ################################
 # Qt configuration
 ################################
-#add_definitions(-DQT_STATICPLUGIN)
-#set(USE_STATIC_QT_BY_DEFAULT ON)
+if (WIN32)
+	add_definitions(-DQT_STATICPLUGIN)
+	set(USE_STATIC_QT_BY_DEFAULT ON)
 
+	set(QT_PLUGINS_DIR /usr/x86_64-w64-mingw32/lib/qt/plugins)
+	link_directories("${QT_PLUGINS_DIR}/platforms")
+	link_directories("${QT_PLUGINS_DIR}/imageformats")
+	link_directories("/usr/x86_64-w64-mingw32/lib/")
+	#set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
+endif ()
 
-#set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
 FIND_PACKAGE(Qt5 COMPONENTS Core Gui Widgets Charts Network PrintSupport Test QuickTest REQUIRED)
+
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON) # Find includes in corresponding build directories
 set(CMAKE_AUTOMOC ON) # Instruct CMake to run moc automatically when needed
@@ -105,7 +112,11 @@ file(GLOB QRC_FILES
 ################################
 qt5_wrap_ui(ui_wrap ${UI_FILES})
 
-add_executable(DonationMining ${SOURCE_FILES} ${HEADER_FILES} ${ui_wrap} ${QRC_FILES})
+if (WIN32)
+	add_executable(DonationMining WIN32 ${SOURCE_FILES} ${HEADER_FILES} ${ui_wrap} ${QRC_FILES})
+else ()
+	add_executable(DonationMining ${SOURCE_FILES} ${HEADER_FILES} ${ui_wrap} ${QRC_FILES})
+endif ()
 
 set(EXECUTABLE_OUTPUT_PATH "bin" CACHE STRING "Path to place executables relative to ${CMAKE_INSTALL_PREFIX}")
 set(LIBRARY_OUTPUT_PATH "bin" CACHE STRING "Path to place libraries relative to ${CMAKE_INSTALL_PREFIX}")
@@ -113,7 +124,7 @@ set(LIBRARY_OUTPUT_PATH "bin" CACHE STRING "Path to place libraries relative to 
 ################################
 # Linking
 ################################
+target_link_libraries(DonationMining Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Charts Qt5::Network)
 if (WIN32)
-	set_target_properties(DonationMining PROPERTIES LINK_FLAGS "-mwindows") # disable command prompt
+	target_link_libraries(DonationMining Qt5::QWindowsIntegrationPlugin Qt5::QICOPlugin Qt5::QGenericEnginePlugin qjpeg qgif qico)
 endif ()
-target_link_libraries(DonationMining PUBLIC Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Charts Qt5::Network)

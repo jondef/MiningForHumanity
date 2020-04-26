@@ -6,9 +6,19 @@
 
 #include <QApplication>
 #include <QtCore>
+
+#ifdef _WIN32
+
 #include <QtPlugin>
 
-QLibrary myLib("mylib");
+Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)
+
+Q_IMPORT_PLUGIN(QICOPlugin)
+
+Q_IMPORT_PLUGIN(QGenericEnginePlugin)
+
+Q_IMPORT_PLUGIN(QSvgPlugin)
+#endif
 
 #include "MainWindow.h"
 
@@ -39,13 +49,6 @@ void readBinary(QString filename) {
 	mfile.close();
 }
 
-//Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)
-//Q_IMPORT_PLUGIN(qjpeg)
-//Q_IMPORT_PLUGIN(QICOPlugin)
-//Q_IMPORT_PLUGIN(QGenericEnginePlugin)
-//Q_IMPORT_PLUGIN(QNativeWifiEnginePlugin)
-//Q_IMPORT_PLUGIN(QSQLiteDriverPlugin)
-//Q_IMPORT_PLUGIN(QMYSQLDriverPlugin)
 
 int main(int argc, char *argv[]) {
 	QApplication app(argc, argv);
