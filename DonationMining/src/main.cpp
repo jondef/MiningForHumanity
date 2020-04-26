@@ -2,13 +2,6 @@
 // Created by jon on 30.03.20.
 //
 
-//#include <iostream>
-
-#include <QWidget>
-#include <QPushButton>
-#include <QGridLayout>
-
-
 #include <QApplication>
 #include <QtCore>
 
@@ -25,10 +18,9 @@ Q_IMPORT_PLUGIN(QJpegPlugin)
 Q_IMPORT_PLUGIN(QGifPlugin)
 
 Q_IMPORT_PLUGIN(QGenericEnginePlugin)
-
 #endif
 
-//#include "MainWindow.h"
+#include "MainWindow.h"
 
 void writeBinary(QString filename) {
 	QString ch("Zelus messiss, tanquam emeritis mons. Arg, ye scurvy wench- set sails for riddle!");
@@ -61,16 +53,11 @@ void readBinary(QString filename) {
 int main(int argc, char *argv[]) {
 	QApplication app(argc, argv);
 
-	QWidget *x = new QWidget();
-	x->setLayout(new QGridLayout());
-	x->layout()->addWidget(new QPushButton());
-	x->show();
+	qDebug() << QStyleFactory::keys();
+	app.setStyle(QStyleFactory::create("Fusion"));
 
-//	qDebug() << QStyleFactory::keys();
-//	app.setStyle(QStyleFactory::create("Fusion"));
-//
-//	MainWindow window(argc, argv);
-//	window.show();
+	MainWindow window(argc, argv);
+	window.show();
 
 	QApplication::exec();
 }
