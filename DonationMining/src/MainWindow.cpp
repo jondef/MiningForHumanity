@@ -27,6 +27,7 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	QCoreApplication::setOrganizationName("MiningForHumanity");
 	QCoreApplication::setOrganizationDomain("MiningForHumanity.org");
 	QCoreApplication::setApplicationName("DonationMining");
+	setWindowIcon(QIcon(":/images/icon"));
 	QSettings settings;
 
 	// populate the about tab in settings
@@ -71,14 +72,14 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	button->setIcon(QIcon(":/images/power_off_icon"));
 	button->setIconSize(QSize(20, 20));
 	button->setStyleSheet("QPushButton { background: transparent; outline: none; border: 0px solid black; border-radius: 10px; }"
-	                      "QPushButton::menu-indicator { width: 0px; }");
+						  "QPushButton::menu-indicator { width: 0px; }");
 
 	QMenu *submenu = new QMenu(this);
 	submenu->setStyleSheet("QMenu { color: black; background-color: white; border: 1px solid grey; outline : none; }"
-	                       "QMenu::item { height: 25px; width: 100px; }" // doesn't seem to work
-	                       "QMenu::item:selected { color: black; background-color: lightgrey; }"
-	                       "QMenu::item:pressed { color: white; background-color: grey; }"
-	                       "QMenu::separator { color: black; }");
+						   "QMenu::item { height: 25px; width: 100px; }" // doesn't seem to work
+						   "QMenu::item:selected { color: black; background-color: lightgrey; }"
+						   "QMenu::item:pressed { color: white; background-color: grey; }"
+						   "QMenu::separator { color: black; }");
 
 	connect(submenu->addAction(tr("Sign out")), &QAction::triggered, [this]() { showLoginScreen(); });
 	connect(submenu->addAction(tr("Minimize")), &QAction::triggered, [this]() { close(); });
@@ -105,13 +106,13 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 #define BURGERMENU_BACKGROUND_COLOR "#1B2430"
 
 	setStyleSheet("BurgerMenu                  { background-color: " BURGERMENU_BACKGROUND_COLOR ";   }"
-	              "#BurgerMenu                 { background-color: " BURGERMENU_BACKGROUND_COLOR ";   }"
-	              "#BurgerButton               { background-color: " BURGERMENU_BACKGROUND_COLOR ";   color: white; font-size: 18px; }" // buttons
-	              "#BurgerButton:hover         { background-color: #3480D2; }"
-	              "#BurgerButton:checked       { background-color: #106EBE; }"
-	              "#BurgerButton:checked:hover { background-color: #3480D2; }"
-	              "#MainBurgerButton           { background-color: " BURGERMENU_BACKGROUND_COLOR ";   border: none; } "
-	              "#MainBurgerButton:hover     { background-color: #333;    } "
+				  "#BurgerMenu                 { background-color: " BURGERMENU_BACKGROUND_COLOR ";   }"
+				  "#BurgerButton               { background-color: " BURGERMENU_BACKGROUND_COLOR ";   color: white; font-size: 18px; }" // buttons
+				  "#BurgerButton:hover         { background-color: #3480D2; }"
+				  "#BurgerButton:checked       { background-color: #106EBE; }"
+				  "#BurgerButton:checked:hover { background-color: #3480D2; }"
+				  "#MainBurgerButton           { background-color: " BURGERMENU_BACKGROUND_COLOR ";   border: none; } "
+				  "#MainBurgerButton:hover     { background-color: #333;    } "
 	);
 
 	connect(menu, &BurgerMenu::triggered, [this, menu](QAction *action) {
@@ -237,7 +238,7 @@ void MainWindow::closeEvent(QCloseEvent *event) {
 	}
 }
 
-void MainWindow::showDashboard(const QString& username, const QString& password) {
+void MainWindow::showDashboard(const QString &username, const QString &password) {
 	takeCentralWidget(); // don't need to take ownership of it because it is already a member
 	setCentralWidget(centralWidget);
 }

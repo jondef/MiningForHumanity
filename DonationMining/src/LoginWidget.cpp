@@ -32,10 +32,11 @@ void LoginWidget::checkCredentials() {
 	QString email = ui->lineEdit_loginEmail->text();
 	QString password = ui->lineEdit_loginPassword->text();
 	bool rememberMe = ui->checkBox_rememberMe->isChecked();
+	LoginWidget::AccountType user;
 
 	// create login save file
 
-	emit userAuthorized(email, password);
+	emit userAuthorized(email, password, user);
 }
 
 /*
@@ -51,3 +52,4 @@ void LoginWidget::checkCredentials() {
 bool LoginWidget::autoLogin() {
 	return false;
 }
+

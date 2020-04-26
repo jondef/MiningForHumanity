@@ -3,7 +3,8 @@ project(DonationMining)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 if (${CMAKE_BUILD_TYPE} STREQUAL Debug)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall --coverage")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+	#	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall --coverage")
 endif ()
 
 
@@ -18,7 +19,7 @@ endfunction()
 ################################
 # xmr-stak
 ################################
-add_subdirectory(xmr-stak)
+#add_subdirectory(xmr-stak)
 
 ################################
 # DonationMining

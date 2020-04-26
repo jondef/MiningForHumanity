@@ -6,6 +6,9 @@
 
 #include <QApplication>
 #include <QtCore>
+#include <QtPlugin>
+
+QLibrary myLib("mylib");
 
 #include "MainWindow.h"
 
@@ -36,8 +39,22 @@ void readBinary(QString filename) {
 	mfile.close();
 }
 
+//Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)
+//Q_IMPORT_PLUGIN(qjpeg)
+//Q_IMPORT_PLUGIN(QICOPlugin)
+//Q_IMPORT_PLUGIN(QGenericEnginePlugin)
+//Q_IMPORT_PLUGIN(QNativeWifiEnginePlugin)
+//Q_IMPORT_PLUGIN(QSQLiteDriverPlugin)
+//Q_IMPORT_PLUGIN(QMYSQLDriverPlugin)
+
 int main(int argc, char *argv[]) {
 	QApplication app(argc, argv);
+
+
+//	QWidget *x = new QWidget();
+//	x->setLayout(new QGridLayout());
+//	x->layout()->addWidget(new QPushButton());
+//	x->show();
 
 	qDebug() << QStyleFactory::keys();
 	app.setStyle(QStyleFactory::create("Fusion"));

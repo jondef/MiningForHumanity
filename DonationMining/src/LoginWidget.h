@@ -14,6 +14,12 @@ class LoginWidget : public QWidget {
 Q_OBJECT
 
 public:
+	enum AccountType {
+		Organisation,
+		Donator
+	};
+
+public:
 	explicit LoginWidget(QWidget *parent = nullptr);
 
 	~LoginWidget();
@@ -26,7 +32,7 @@ private slots:
 
 Q_SIGNALS:
 
-	void userAuthorized(QString username, QString password);
+	void userAuthorized(QString username, QString password, AccountType type);
 
 private:
 	Ui::uiLogin *ui;

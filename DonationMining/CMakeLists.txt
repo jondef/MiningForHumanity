@@ -9,7 +9,7 @@ set(VERSION 0.1)
 # get current date time
 if(WIN32)
 	execute_process(
-			COMMAND date /t
+			COMMAND date -R # date /t
 			WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 			OUTPUT_VARIABLE BUILDDATE
 			OUTPUT_STRIP_TRAILING_WHITESPACE
@@ -45,22 +45,27 @@ execute_process(
 )
 
 add_definitions(-DVERSION="${VERSION}")
-if(NOT BUILDDATE STREQUAL "")
+if (NOT BUILDDATE STREQUAL "")
 	add_definitions(-DBUILDDATE="${BUILDDATE}")
-endif()
-if(NOT GIT_COMMIT_HASH STREQUAL "")
+endif ()
+if (NOT GIT_COMMIT_HASH STREQUAL "")
 	add_definitions(-DGIT_COMMIT_HASH="${GIT_COMMIT_HASH}")
-endif()
-if(NOT GIT_COMMIT_DATE STREQUAL "")
+endif ()
+if (NOT GIT_COMMIT_DATE STREQUAL "")
 	add_definitions(-DGIT_COMMIT_DATE="${GIT_COMMIT_DATE}")
-endif()
-if(NOT GIT_BRANCH STREQUAL "")
+endif ()
+if (NOT GIT_BRANCH STREQUAL "")
 	add_definitions(-DGIT_BRANCH="${GIT_BRANCH}")
-endif()
+endif ()
 
 ################################
 # Qt configuration
 ################################
+#add_definitions(-DQT_STATICPLUGIN)
+#set(USE_STATIC_QT_BY_DEFAULT ON)
+
+
+#set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
 FIND_PACKAGE(Qt5 COMPONENTS Core Gui Widgets Charts Network PrintSupport Test QuickTest REQUIRED)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON) # Find includes in corresponding build directories
@@ -108,4 +113,7 @@ set(LIBRARY_OUTPUT_PATH "bin" CACHE STRING "Path to place libraries relative to 
 ################################
 # Linking
 ################################
+if (WIN32)
+	set_target_properties(DonationMining PROPERTIES LINK_FLAGS "-mwindows") # disable command prompt
+endif ()
 target_link_libraries(DonationMining PUBLIC Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Charts Qt5::Network)
