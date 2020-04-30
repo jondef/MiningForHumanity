@@ -36,16 +36,16 @@ public:
 
 	QAction *action() const;
 
-	QHBoxLayout *getLayout();
+	QHBoxLayout *getLayout() const;
 
 	void setLayout(QHBoxLayout *layout);
 
-	bool hovered = false;
 
 private:
 	QSize mIconSize;
 	QAction *mAction;
 	QHBoxLayout *layout;
+	bool hovered;
 
 
 signals:

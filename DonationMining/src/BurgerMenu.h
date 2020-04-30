@@ -40,9 +40,6 @@ public:
 
 
 signals:
-
-	void mouseEnter(BurgerButton *button);
-
 	void iconChanged() const;
 
 	void iconSizeChanged(const QSize &size) const;

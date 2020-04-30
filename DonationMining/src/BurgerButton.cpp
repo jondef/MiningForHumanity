@@ -4,7 +4,7 @@
 
 #include "BurgerButton.h"
 
-BurgerButton::BurgerButton(QAction *action, QWidget *parent) : QPushButton(parent), mIconSize(QSize(64, 64)), mAction(action) {
+BurgerButton::BurgerButton(QAction *action, QWidget *parent) : QPushButton(parent), mIconSize(QSize(64, 64)), mAction(action), hovered(false) {
 	setObjectName(BurgerButtonObjectName);
 	connect(action, &QAction::destroyed, this, &BurgerButton::deleteLater);
 	setCursor(Qt::PointingHandCursor);
@@ -62,6 +62,6 @@ bool BurgerButton::event(QEvent *event) {
 
 QAction *BurgerButton::action() const { return mAction; }
 
-QHBoxLayout *BurgerButton::getLayout() { return layout; }
+QHBoxLayout *BurgerButton::getLayout() const { return layout; }
 
 void BurgerButton::setLayout(QHBoxLayout *layout) { this->layout = layout; }
