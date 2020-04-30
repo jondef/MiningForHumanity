@@ -45,10 +45,6 @@ BurgerMenu::BurgerMenu(QWidget *parent) : QWidget(parent), mActions(new QActionG
 	connect(mBurgerButton, &QPushButton::toggled, this, &BurgerMenu::setExpansionState);
 	connect(mBurgerButton, &QPushButton::toggled, this, &BurgerMenu::expandedChanged);
 	connect(mActions, &QActionGroup::triggered, this, &BurgerMenu::triggered);
-
-	m_tooltipWidget->setLayout(new QHBoxLayout());
-	m_tooltipWidget->layout()->setContentsMargins(0, 0, 0, 0);
-	m_tooltipWidget->layout()->setSpacing(0);
 }
 
 QIcon BurgerMenu::burgerIcon() const {
@@ -157,17 +153,15 @@ void BurgerMenu::registerAction(QAction *action, bool top) {
 	connect(button, &BurgerButton::mouseEnterButton, this, [this](BurgerButton *button) {
 		if (expanded()) { return; }
 		QPoint position = button->mapTo(this, button->rect().topLeft());
-		m_tooltipWidget->setGeometry(position.x(), position.y(), button->size().rwidth() + mMenuWidth, button->size().rheight());
 		button->getLayout()->setContentsMargins(0, 0, 0, button->height());
-		m_tooltipWidget->layout()->addWidget(button);
-		m_tooltipWidget->setParent(parentWidget()->parentWidget()); // cannot call parentWidget() in the constructor
-		m_tooltipWidget->show();
+		button->setParent(parentWidget()->parentWidget(), Qt::Widget);
+		button->setGeometry(position.x(), position.y(), button->size().rwidth() + mMenuWidth, button->size().rheight());
+		button->show();
 	});
 	connect(button, &BurgerButton::mouseLeaveButton, this, [this](BurgerButton *button) {
 		if (expanded()) { return; }
 		button->getLayout()->addWidget(button);
 		button->getLayout()->setContentsMargins(0, 0, 0, 0);
-		m_tooltipWidget->hide(); // ! order matters! Seg fault can happen if at the wrong place!
 	});
 
 	button->setIconSize(mBurgerButton->iconSize());

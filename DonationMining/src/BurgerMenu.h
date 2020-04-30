@@ -89,8 +89,6 @@ private:
 	QPushButton *mBurgerButton;
 	int mMenuWidth;
 	bool mAnimated;
-
-	QWidget *m_tooltipWidget = new QWidget();
 };
 
 #endif //DONATIONMINING_BURGERMENU_H
