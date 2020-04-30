@@ -9,6 +9,7 @@ Add the following cmake options to the project:
 
 # Building for Windows
 ## Get Dependencies
+See: https://stackoverflow.com/a/48467983/10450514
 `yay -Sy mingw-w64-qt5-base mingw-w64-boost` and always select bootstrap when possible
 For 64 bit, execute `x86_64-w64-mingw32-cmake`
 For 32 bit, execute `i686-w64-mingw32-cmake`

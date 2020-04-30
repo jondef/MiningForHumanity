@@ -11,13 +11,14 @@
 
 Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)
 
+Q_IMPORT_PLUGIN(QGenericEnginePlugin)
+
 Q_IMPORT_PLUGIN(QICOPlugin)
 
 Q_IMPORT_PLUGIN(QJpegPlugin)
 
 Q_IMPORT_PLUGIN(QGifPlugin)
 
-Q_IMPORT_PLUGIN(QGenericEnginePlugin)
 #endif
 
 #include "MainWindow.h"
@@ -52,6 +53,11 @@ void readBinary(QString filename) {
 
 int main(int argc, char *argv[]) {
 	QApplication app(argc, argv);
+
+	// these are used for qSettings
+	QCoreApplication::setOrganizationName("MiningForHumanity");
+	QCoreApplication::setOrganizationDomain("MiningForHumanity.org");
+	QCoreApplication::setApplicationName("DonationMining");
 
 	qDebug() << QStyleFactory::keys();
 	app.setStyle(QStyleFactory::create("Fusion"));

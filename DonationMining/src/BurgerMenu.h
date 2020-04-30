@@ -1,9 +1,11 @@
-#pragma once
+#ifndef DONATIONMINING_BURGERMENU_H
+#define DONATIONMINING_BURGERMENU_H
 
 #include <QWidget>
 #include <QList>
 #include <QSize>
 #include <QIcon>
+#include "BurgerButton.h"
 
 class QPushButton;
 
@@ -36,7 +38,10 @@ public:
 
 	bool expanded() const;
 
+
 signals:
+
+	void mouseEnter(BurgerButton *button);
 
 	void iconChanged() const;
 
@@ -84,4 +89,8 @@ private:
 	QPushButton *mBurgerButton;
 	int mMenuWidth;
 	bool mAnimated;
+
+	QWidget *m_tooltipWidget = new QWidget();
 };
+
+#endif //DONATIONMINING_BURGERMENU_H

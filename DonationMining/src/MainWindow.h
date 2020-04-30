@@ -11,7 +11,7 @@
 #include <QtCharts>
 #include "BurgerMenu.h"
 #include "ui_MainWindow.h"
-#include "SettingsWindow.h"
+#include "MinerManager.h"
 #include "LoginWidget.h"
 
 #include <future>
@@ -34,9 +34,8 @@ private:
 	int argc;
 	char **argv;
 	Ui::uiMainWindow *ui;
-	QProcess *myProcess = new QProcess(this);
 
-	SettingsWindow *settingsWindow = new SettingsWindow();
+	MinerManager *settingsWindow = new MinerManager();
 	LoginWidget *loginWindow = new LoginWidget();
 	QWidget *centralWidget;
 

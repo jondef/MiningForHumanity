@@ -20,13 +20,9 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	this->argv = argv;
 
 	if (!loginWindow->autoLogin()) {
-		showLoginScreen();
+//		showLoginScreen();
 	}
 
-	// these are used for qSettings
-	QCoreApplication::setOrganizationName("MiningForHumanity");
-	QCoreApplication::setOrganizationDomain("MiningForHumanity.org");
-	QCoreApplication::setApplicationName("DonationMining");
 	setWindowIcon(QIcon(":/images/icon"));
 	QSettings settings;
 
@@ -64,7 +60,7 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 			}
 		}
 	});
-
+	connect(ui->pushButton_startStopMiner, &QPushButton::clicked, settingsWindow, &MinerManager::startMiner);
 	connect(loginWindow, &LoginWidget::userAuthorized, this, &MainWindow::showDashboard);
 
 	// toolbar
@@ -88,8 +84,6 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 
 	QHBoxLayout *lay = static_cast<QHBoxLayout *>(ui->toolBar->layout());
 	lay->insertWidget(lay->count() + 1, button);
-
-
 
 	// BURGERMENU
 	BurgerMenu *menu = new BurgerMenu();
@@ -119,6 +113,7 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 		uint8_t index = menu->actions().indexOf(action);
 		ui->stackedWidget->setCurrentIndex(index);
 	});
+
 
 	//////////////////////////////////
 
@@ -178,7 +173,6 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 MainWindow::~MainWindow() {
 	delete ui;
 }
-
 
 DataTable generateRandomData(int listCount, int valueMax, int valueCount) {
 	DataTable dataTable;

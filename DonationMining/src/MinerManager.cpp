@@ -2,29 +2,42 @@
 // Created by jon on 11.04.20.
 //
 
-#include "SettingsWindow.h"
+#include "MinerManager.h"
 
 // ! FOR POOLS WIDGET SETTINGS USE A TABLE
 
-// todo: rename this class MinerManager?
-
-SettingsWindow::SettingsWindow(QWidget *parent) : QWidget(parent), ui(new Ui::uiSettingsWindow) {
+MinerManager::MinerManager(QWidget *parent) : QWidget(parent), ui(new Ui::uiSettingsWindow) {
 	ui->setupUi(this);
 
-	connect(ui->buttonBox, &QDialogButtonBox::accepted, this, [this]() { updateConfigFile(); });
-	connect(ui->buttonBox, &QDialogButtonBox::rejected, this, [this]() { this->close(); });
+//	connect(ui->buttonBox, &QDialogButtonBox::accepted, this, [this]() { updateConfigFile(); });
+//	connect(ui->buttonBox, &QDialogButtonBox::rejected, this, [this]() { this->close(); });
 
-//	connect(networkManager, &QNetworkAccessManager::finished, this, &SettingsWindow::getAvailablePools);
+//	connect(networkManager, &QNetworkAccessManager::finished, this, &MinerManager::getAvailablePools);
 
 //	connect(button, clicked, this, [&]() { networkManager->get(QNetworkRequest(QUrl("https://httpbin.org/get"))); }
+	connect(myProcess, &QProcess::readyReadStandardOutput, [this]() { ui->plainTextEdit->appendPlainText(myProcess->readAllStandardOutput()); });
+	connect(myProcess, &QProcess::readyReadStandardError, [this]() { ui->plainTextEdit->appendPlainText(myProcess->readAllStandardError()); });
+//	connect(myProcess, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this, &MainWindow::close);
+//	connect(ui->lineEdit_poolAdress, &QLineEdit::returnPressed, [this](){ myProcess->write(ui->lineEdit_poolAdress->text().toLatin1() + "\n"); ui->lineEdit_poolAdress->clear(); });
 
 }
 
-SettingsWindow::~SettingsWindow() {
+MinerManager::~MinerManager() {
 	delete ui;
 }
 
-void SettingsWindow::showEvent(QShowEvent *event) {
+void MinerManager::startMiner() {
+	QString poolId = "xmr.pool.minergate.com:45700";
+	QString username = "ludwig.landji@gmail.com";
+	QString password = "";
+	QString RIGID = "TestRig";
+	bool SSLSupport = false;
+	mMinerArgs << "--noTest" << "--noDevSupport" << "--currency" << "monero" << "--h-print-time" << "5" << "--url" << poolId << "--rigid" << RIGID
+			   << "--httpd" << "0" << "--user" << username << "--pass" << password;
+	myProcess->start(mMinerExecutable, mMinerArgs);
+}
+
+void MinerManager::showEvent(QShowEvent *event) {
 	QWidget::showEvent(event);
 	getAvailablePools();
 	updateWidgets();
@@ -34,7 +47,7 @@ void SettingsWindow::showEvent(QShowEvent *event) {
  * Reads the state of every widget
  * and writes the changes to the file
  */
-void SettingsWindow::updateConfigFile() {
+void MinerManager::updateConfigFile() {
 	QJsonObject jsonConfig = readConfigFile(QStringLiteral("config.txt"));
 	jsonConfig["h_print_time"] = ui->hashraterateReportFreqencySpinBox->value();
 
@@ -44,13 +57,13 @@ void SettingsWindow::updateConfigFile() {
 /*
  * reads the config file and updates the widget accordingly
  */
-void SettingsWindow::updateWidgets() {
+void MinerManager::updateWidgets() {
 	QJsonObject jsonConfig = readConfigFile(QStringLiteral("config.txt"));
 	ui->callTimeoutSpinBox->setValue(jsonConfig["call_timeout"].toInt());
 	ui->hashraterateReportFreqencySpinBox->setValue(jsonConfig["h_print_time"].toInt());
 }
 
-QJsonObject SettingsWindow::readConfigFile(const QString &config) {
+QJsonObject MinerManager::readConfigFile(const QString &config) {
 	QFile loadFile(config);
 
 	if (!loadFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -119,7 +132,7 @@ QJsonObject SettingsWindow::readConfigFile(const QString &config) {
 	return jsonDocument.object();
 }
 
-bool SettingsWindow::writeConfigFile(const QString &fileName, const QJsonObject& jsonConfig) {
+bool MinerManager::writeConfigFile(const QString &fileName, const QJsonObject &jsonConfig) {
 	QJsonDocument jsonDocument;
 	jsonDocument.setObject(jsonConfig);
 	QByteArray fileData = jsonDocument.toJson(QJsonDocument::Indented); // ! Compact makes it crash
@@ -165,10 +178,10 @@ bool SettingsWindow::writeConfigFile(const QString &fileName, const QJsonObject&
  * Fetches the json data from the website
  * and returns a json object (or an empty one if an error occurred)
  */
-QJsonObject SettingsWindow::getAvailablePools() {
+QJsonObject MinerManager::getAvailablePools() {
 	reply = networkManager->get(QNetworkRequest(QUrl("https://httpbin.org/get")));
 
-	connect(reply, &QIODevice::readyRead, this, &SettingsWindow::networkReplyOrganizations);
+	connect(reply, &QIODevice::readyRead, this, &MinerManager::networkReplyOrganizations);
 //	connect(reply, QOverload<QNetworkReply::NetworkError>::of(&QNetworkReply::error), this, &MyClass::slotError);
 //	connect(reply, &QNetworkReply::sslErrors, this, &MyClass::slotSslErrors);
 
@@ -182,7 +195,7 @@ QJsonObject SettingsWindow::getAvailablePools() {
 	return QJsonObject();
 }
 
-void SettingsWindow::networkReplyOrganizations(){
+void MinerManager::networkReplyOrganizations() {
 	QString string("{ \"automatic\": 5 }");
 	QByteArray a;
 	a += string;
@@ -194,6 +207,6 @@ void SettingsWindow::networkReplyOrganizations(){
 	}
 //	QJsonObject jsonRoot = QJsonDocument::fromJson(a).object(); // reply->readAll()
 	reply->deleteLater();
-	disconnect(reply, &QIODevice::readyRead, this, &SettingsWindow::networkReplyOrganizations);
+	disconnect(reply, &QIODevice::readyRead, this, &MinerManager::networkReplyOrganizations);
 	qDebug() << jsonDocument.object();
 }

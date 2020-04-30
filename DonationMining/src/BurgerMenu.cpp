@@ -1,5 +1,7 @@
 #include "BurgerMenu.h"
 #include <QStackedWidget>
+#include <QtCore>
+#include <QtGui>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QPushButton>
@@ -8,64 +10,13 @@
 #include <QStyleOption>
 #include <QPainter>
 #include <QPropertyAnimation>
-
-static const QString BurgerButtonObjectName("BurgerButton");
-static const QString BurgerMenuName("BurgerMenu");
-static const QString MainBurgerButtonObjectName("MainBurgerButton");
-
-class BurgerButton : public QPushButton {
-public:
-	BurgerButton(QAction *action, QWidget *parent) : QPushButton(parent), mIconSize(QSize(64, 64)), mAction(action) {
-		setObjectName(BurgerButtonObjectName);
-		connect(action, &QAction::destroyed, this, &BurgerButton::deleteLater);
-		setCursor(Qt::PointingHandCursor);
-
-		connect(mAction, SIGNAL(changed()), this, SLOT(update()));
-		connect(this, &BurgerButton::clicked, [&] {
-			if (mAction->isCheckable() && !mAction->isChecked())
-				mAction->toggle();
-
-			mAction->trigger();
-		});
-	}
-
-	void paintEvent(QPaintEvent *) override {
-		QPainter painter(this);
-		QStyleOptionButton opt;
-		opt.initFrom(this);
-		opt.state |= (mAction->isChecked() ? QStyle::State_On : QStyle::State_Off);
-
-		style()->drawPrimitive(QStyle::PE_Widget, &opt, &painter, this);
-		const QRect contentsRect = style()->subElementRect(QStyle::SE_PushButtonContents, &opt, this);
-		if (!mAction->icon().isNull()) {
-			QIcon::Mode mode = ((opt.state & QStyle::State_MouseOver) == 0) ? QIcon::Normal : QIcon::Active;
-			if (!isEnabled())
-				mode = QIcon::Disabled;
-			QIcon::State state = mAction->isChecked() ? QIcon::On : QIcon::Off;
-			painter.drawPixmap(QRect(contentsRect.topLeft(), mIconSize), mAction->icon().pixmap(mIconSize, mode, state));
-		}
-
-		opt.rect = contentsRect.adjusted(mIconSize.width() + 1, 0, 0, 0);
-		opt.text = fontMetrics().elidedText(mAction->iconText(), Qt::ElideRight, opt.rect.width(), Qt::TextShowMnemonic);
-		style()->drawControl(QStyle::CE_CheckBoxLabel, &opt, &painter, this);
-	}
-
-	void setIconSize(const QSize &size) {
-		mIconSize = size;
-		setFixedHeight(mIconSize.height());
-		update();
-	}
-
-	QAction *action() const { return mAction; }
-
-private:
-	QSize mIconSize;
-	QAction *mAction;
-};
+#include <QDebug>
+#include <QEvent>
+#include <QPaintEvent>
 
 
 BurgerMenu::BurgerMenu(QWidget *parent) : QWidget(parent), mActions(new QActionGroup(this)), mBurgerButton(new QPushButton(this)), mMenuWidth(200),
-                                          mAnimated(true) {
+										  mAnimated(true) {
 	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
 	mBurgerButton->setObjectName(MainBurgerButtonObjectName);
 	mBurgerButton->setFlat(true);
@@ -94,6 +45,10 @@ BurgerMenu::BurgerMenu(QWidget *parent) : QWidget(parent), mActions(new QActionG
 	connect(mBurgerButton, &QPushButton::toggled, this, &BurgerMenu::setExpansionState);
 	connect(mBurgerButton, &QPushButton::toggled, this, &BurgerMenu::expandedChanged);
 	connect(mActions, &QActionGroup::triggered, this, &BurgerMenu::triggered);
+
+	m_tooltipWidget->setLayout(new QHBoxLayout());
+	m_tooltipWidget->layout()->setContentsMargins(0, 0, 0, 0);
+	m_tooltipWidget->layout()->setSpacing(0);
 }
 
 QIcon BurgerMenu::burgerIcon() const {
@@ -192,14 +147,36 @@ void BurgerMenu::setExpansionState(bool expanded) {
 }
 
 void BurgerMenu::registerAction(QAction *action, bool top) {
-	auto button = new BurgerButton(action, this);
+	BurgerButton *button = new BurgerButton(action, this);
+	QHBoxLayout *buttonLayout = new QHBoxLayout();
+	buttonLayout->addWidget(button);
+	buttonLayout->setContentsMargins(0, 0, 0, 0);
+	buttonLayout->setSpacing(0);
+	button->setLayout(buttonLayout);
+
+	connect(button, &BurgerButton::mouseEnterButton, this, [this](BurgerButton *button) {
+		if (expanded()) { return; }
+		QPoint position = button->mapTo(this, button->rect().topLeft());
+		m_tooltipWidget->setGeometry(position.x(), position.y(), button->size().rwidth() + mMenuWidth, button->size().rheight());
+		button->getLayout()->setContentsMargins(0, 0, 0, button->height());
+		m_tooltipWidget->layout()->addWidget(button);
+		m_tooltipWidget->setParent(parentWidget()->parentWidget()); // cannot call parentWidget() in the constructor
+		m_tooltipWidget->show();
+	});
+	connect(button, &BurgerButton::mouseLeaveButton, this, [this](BurgerButton *button) {
+		if (expanded()) { return; }
+		button->getLayout()->addWidget(button);
+		button->getLayout()->setContentsMargins(0, 0, 0, 0);
+		m_tooltipWidget->hide(); // ! order matters! Seg fault can happen if at the wrong place!
+	});
+
 	button->setIconSize(mBurgerButton->iconSize());
 	auto lay = static_cast<QVBoxLayout *>(layout());
 
 	if (top) {
-		lay->insertWidget(lay->count() - 1, button);
+		lay->insertLayout(lay->count() - 1, buttonLayout);
 	} else {
-		lay->insertWidget(lay->count(), button);
+		lay->insertLayout(lay->count(), buttonLayout);
 	}
 }
 
@@ -230,9 +207,10 @@ void BurgerMenu::setExpanded(bool expanded) {
 	mBurgerButton->setChecked(expanded);
 }
 
-void BurgerMenu::paintEvent(QPaintEvent *) {
+void BurgerMenu::paintEvent(QPaintEvent *event) {
 	QPainter painter(this);
 	QStyleOption opt;
 	opt.initFrom(this);
 	style()->drawPrimitive(QStyle::PE_Widget, &opt, &painter, this);
 }
+
