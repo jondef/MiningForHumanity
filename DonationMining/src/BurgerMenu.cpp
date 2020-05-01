@@ -14,8 +14,6 @@
 #include <QEvent>
 #include <QPaintEvent>
 
-// todo: remove the f. crlf line separators on this file and its header!!!
-
 BurgerMenu::BurgerMenu(QWidget *parent) : QWidget(parent), mActions(new QActionGroup(this)), mBurgerButton(new QPushButton(this)), mMenuWidth(200),
 										  mAnimated(true) {
 	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
