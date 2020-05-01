@@ -71,14 +71,14 @@ QAction *BurgerMenu::addMenuAction(QAction *action, bool top) {
 }
 
 QAction *BurgerMenu::addMenuAction(const QString &label, bool top) {
-	auto action = mActions->addAction(label);
+	QAction *action = mActions->addAction(label);
 	action->setCheckable(true);
 	registerAction(action, top);
 	return action;
 }
 
 QAction *BurgerMenu::addMenuAction(const QIcon &icon, const QString &label, bool top) {
-	auto action = mActions->addAction(icon, label);
+	QAction *action = mActions->addAction(icon, label);
 	action->setCheckable(true);
 	registerAction(action, top);
 	return action;
@@ -100,8 +100,8 @@ void BurgerMenu::setIconSize(const QSize &size) {
 
 	mBurgerButton->setIconSize(size);
 	mBurgerButton->setFixedSize(size);
-	auto buttons = findChildren<BurgerButton *>(BurgerButtonObjectName);
-	for (auto btn : buttons)
+	QList<BurgerButton *> buttons = findChildren<BurgerButton *>(BurgerButtonObjectName);
+	for (BurgerButton *btn : buttons)
 		btn->setIconSize(size);
 
 	if (mBurgerButton->isChecked())
@@ -128,7 +128,7 @@ void BurgerMenu::setMenuWidth(int width) {
 
 void BurgerMenu::setExpansionState(bool expanded) {
 	if (mAnimated) {
-		auto anim = new QPropertyAnimation(this, "minimumWidth", this);
+		QPropertyAnimation *anim = new QPropertyAnimation(this, "minimumWidth", this);
 		anim->setDuration(250);
 		anim->setStartValue(mBurgerButton->width());
 		anim->setEndValue(mBurgerButton->width() + mMenuWidth);
@@ -166,7 +166,7 @@ void BurgerMenu::registerAction(QAction *action, bool top) {
 	});
 
 	button->setIconSize(mBurgerButton->iconSize());
-	auto lay = static_cast<QVBoxLayout *>(layout());
+	QVBoxLayout *lay = static_cast<QVBoxLayout *>(layout());
 
 	if (top) {
 		lay->insertLayout(lay->count() - 1, buttonLayout);
@@ -176,8 +176,8 @@ void BurgerMenu::registerAction(QAction *action, bool top) {
 }
 
 void BurgerMenu::unRegisterAction(QAction *action) {
-	auto buttons = findChildren<BurgerButton *>(BurgerButtonObjectName);
-	auto btn = std::find_if(buttons.begin(), buttons.end(), [&](BurgerButton *btn) { return btn->action() == action; });
+	QList<BurgerButton *> buttons = findChildren<BurgerButton *>(BurgerButtonObjectName);
+	QList<BurgerButton *>::iterator btn = std::find_if(buttons.begin(), buttons.end(), [&](BurgerButton *btn) { return btn->action() == action; });
 	if (btn != buttons.end())
 		delete *btn;
 }
