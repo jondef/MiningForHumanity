@@ -4,6 +4,7 @@
 
 #include "BurgerButton.h"
 
+
 BurgerButton::BurgerButton(QAction *action, QWidget *parent) : QPushButton(parent), mIconSize(QSize(64, 64)), mAction(action), hovered(false) {
 	setObjectName(BurgerButtonObjectName);
 	connect(action, &QAction::destroyed, this, &BurgerButton::deleteLater);
@@ -11,9 +12,9 @@ BurgerButton::BurgerButton(QAction *action, QWidget *parent) : QPushButton(paren
 
 	connect(mAction, SIGNAL(changed()), this, SLOT(update()));
 	connect(this, &BurgerButton::clicked, this, [&] {
-		if (mAction->isCheckable() && !mAction->isChecked())
+		if (mAction->isCheckable() && !mAction->isChecked()) {
 			mAction->toggle();
-
+		}
 		mAction->trigger();
 	});
 }
@@ -28,8 +29,9 @@ void BurgerButton::paintEvent(QPaintEvent *) {
 	const QRect contentsRect = style()->subElementRect(QStyle::SE_PushButtonContents, &opt, this);
 	if (!mAction->icon().isNull()) {
 		QIcon::Mode mode = ((opt.state & QStyle::State_MouseOver) == 0) ? QIcon::Normal : QIcon::Active;
-		if (!isEnabled())
+		if (!isEnabled()) {
 			mode = QIcon::Disabled;
+		}
 		QIcon::State state = mAction->isChecked() ? QIcon::On : QIcon::Off;
 		painter.drawPixmap(QRect(contentsRect.topLeft(), mIconSize), mAction->icon().pixmap(mIconSize, mode, state));
 	}

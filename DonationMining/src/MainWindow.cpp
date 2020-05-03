@@ -92,10 +92,13 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	menu->setMenuWidth(100);
 	menu->setBurgerIcon(QIcon(":/icons/burger/burger"));
 	menu->addMenuAction(QIcon(":/icons/burger/collections"), "Dashboard");
-	menu->addMenuAction(QIcon(":/icons/burger/collections"), "Reports");
-	menu->addMenuAction(QIcon(":/icons/burger/folders"), "Logs");
-	menu->addMenuAction(QIcon(":/icons/burger/collections"), "Logs", false);
-	menu->addMenuAction(QIcon(":/icons/burger/settings_icon"), "Settings", false);
+	menu->addMenuAction(QIcon(":/icons/burger/albums"), "Reports");
+	menu->addStretch();
+	menu->addMenuAction(QIcon(":/icons/burger/twitter_icon"), "Twitter");
+	menu->addMenuAction(QIcon(":/icons/burger/facebook_icon"), "Facebook");
+	menu->addMenuAction(QIcon(":/icons/burger/instagram_icon"), "Instagram");
+	menu->addStretch();
+	menu->addMenuAction(QIcon(":/icons/burger/settings_icon"), "Settings");
 
 #define BURGERMENU_BACKGROUND_COLOR "#1B2430"
 

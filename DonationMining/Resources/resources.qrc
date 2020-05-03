@@ -11,5 +11,8 @@
         <file alias="folders">burger/folders.png</file>
         <file alias="albums">burger/albums.png</file>
         <file alias="settings_icon">burger/settings_icon.png</file>
+        <file alias="facebook_icon">burger/facebook_icon.png</file>
+        <file alias="twitter_icon">burger/twitter_icon.png</file>
+        <file alias="instagram_icon">burger/instagram_icon.png</file>
     </qresource>
 </RCC>

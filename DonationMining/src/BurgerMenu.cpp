@@ -23,6 +23,7 @@ BurgerMenu::BurgerMenu(QWidget *parent) : QWidget(parent), mActions(new QActionG
 	mBurgerButton->setFixedSize(48, 48);
 	mBurgerButton->setCheckable(true);
 	mBurgerButton->setCursor(Qt::PointingHandCursor);
+	mBurgerButton->setStyleSheet("outline : none;");
 	mActions->setExclusive(true);
 
 	QWidget *burgerWidget = new QWidget(this);
@@ -38,7 +39,7 @@ BurgerMenu::BurgerMenu(QWidget *parent) : QWidget(parent), mActions(new QActionG
 	static_cast<QVBoxLayout *>(layout())->setSpacing(0);
 
 	static_cast<QVBoxLayout *>(layout())->addLayout(burgerLay);
-	static_cast<QVBoxLayout *>(layout())->addStretch();
+//	static_cast<QVBoxLayout *>(layout())->addStretch();
 	setFixedWidth(48);
 
 	connect(mBurgerButton, &QPushButton::toggled, this, &BurgerMenu::setExpansionState);
@@ -62,23 +63,23 @@ QList<QAction *> BurgerMenu::actions() const {
 	return mActions->actions();
 }
 
-QAction *BurgerMenu::addMenuAction(QAction *action, bool top) {
+QAction *BurgerMenu::addMenuAction(QAction *action) {
 	mActions->addAction(action);
-	registerAction(action, top);
+	registerAction(action);
 	return action;
 }
 
-QAction *BurgerMenu::addMenuAction(const QString &label, bool top) {
+QAction *BurgerMenu::addMenuAction(const QString &label) {
 	QAction *action = mActions->addAction(label);
 	action->setCheckable(true);
-	registerAction(action, top);
+	registerAction(action);
 	return action;
 }
 
-QAction *BurgerMenu::addMenuAction(const QIcon &icon, const QString &label, bool top) {
+QAction *BurgerMenu::addMenuAction(const QIcon &icon, const QString &label) {
 	QAction *action = mActions->addAction(icon, label);
 	action->setCheckable(true);
-	registerAction(action, top);
+	registerAction(action);
 	return action;
 }
 
@@ -87,40 +88,45 @@ void BurgerMenu::removeMenuAction(QAction *action) {
 	unRegisterAction(action);
 }
 
+void BurgerMenu::addStretch() {
+	static_cast<QVBoxLayout *>(layout())->addStretch();
+}
+
 void BurgerMenu::setBurgerIcon(const QIcon &icon) {
 	mBurgerButton->setIcon(icon);
 	emit iconChanged();
 }
 
 void BurgerMenu::setIconSize(const QSize &size) {
-	if (size == mBurgerButton->iconSize())
+	if (size == mBurgerButton->iconSize()) {
 		return;
-
+	}
 	mBurgerButton->setIconSize(size);
 	mBurgerButton->setFixedSize(size);
 	QList<BurgerButton *> buttons = findChildren<BurgerButton *>(BurgerButtonObjectName);
-	for (BurgerButton *btn : buttons)
+	for (BurgerButton *btn : buttons) {
 		btn->setIconSize(size);
+	}
 
-	if (mBurgerButton->isChecked())
+	if (mBurgerButton->isChecked()) {
 		setFixedWidth(mBurgerButton->width() + mMenuWidth);
-	else
+	} else {
 		setFixedWidth(mBurgerButton->width());
+	}
 
 	emit iconSizeChanged(size);
 }
 
 void BurgerMenu::setMenuWidth(int width) {
-	if (width == mMenuWidth)
-		return;
+	if (width == mMenuWidth) { return; }
 
 	mMenuWidth = width;
 
-	if (mBurgerButton->isChecked())
+	if (mBurgerButton->isChecked()) {
 		setFixedWidth(mBurgerButton->width() + mMenuWidth);
-	else
+	} else {
 		setFixedWidth(mBurgerButton->width());
-
+	}
 	emit menuWidthChanged(mMenuWidth);
 }
 
@@ -134,14 +140,15 @@ void BurgerMenu::setExpansionState(bool expanded) {
 		anim->setEasingCurve(expanded ? QEasingCurve::OutCubic : QEasingCurve::InCubic);
 		anim->start(QAbstractAnimation::DeleteWhenStopped);
 	} else {
-		if (expanded)
+		if (expanded) {
 			setFixedWidth(mBurgerButton->width() + mMenuWidth);
-		else
+		} else {
 			setFixedWidth(mBurgerButton->width());
+		}
 	}
 }
 
-void BurgerMenu::registerAction(QAction *action, bool top) {
+void BurgerMenu::registerAction(QAction *action) {
 	BurgerButton *button = new BurgerButton(action, this);
 	QHBoxLayout *buttonLayout = new QHBoxLayout();
 	buttonLayout->addWidget(button);
@@ -166,18 +173,15 @@ void BurgerMenu::registerAction(QAction *action, bool top) {
 	button->setIconSize(mBurgerButton->iconSize());
 	QVBoxLayout *lay = static_cast<QVBoxLayout *>(layout());
 
-	if (top) {
-		lay->insertLayout(lay->count() - 1, buttonLayout);
-	} else {
-		lay->insertLayout(lay->count(), buttonLayout);
-	}
+	lay->insertLayout(lay->count(), buttonLayout);
 }
 
 void BurgerMenu::unRegisterAction(QAction *action) {
 	QList<BurgerButton *> buttons = findChildren<BurgerButton *>(BurgerButtonObjectName);
 	QList<BurgerButton *>::iterator btn = std::find_if(buttons.begin(), buttons.end(), [&](BurgerButton *btn) { return btn->action() == action; });
-	if (btn != buttons.end())
+	if (btn != buttons.end()) {
 		delete *btn;
+	}
 }
 
 bool BurgerMenu::animated() const {
@@ -189,9 +193,7 @@ bool BurgerMenu::expanded() const {
 }
 
 void BurgerMenu::setAnimated(bool animated) {
-	if (mAnimated == animated)
-		return;
-
+	if (mAnimated == animated) { return; }
 	mAnimated = animated;
 	emit animatedChanged(mAnimated);
 }
@@ -206,4 +208,3 @@ void BurgerMenu::paintEvent(QPaintEvent *event) {
 	opt.initFrom(this);
 	style()->drawPrimitive(QStyle::PE_Widget, &opt, &painter, this);
 }
-

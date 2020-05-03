@@ -19,9 +19,9 @@
 #include <QEvent>
 #include <QPaintEvent>
 
+static const QString MainBurgerButtonObjectName("MainBurgerButton");
 static const QString BurgerButtonObjectName("BurgerButton");
 static const QString BurgerMenuName("BurgerMenu");
-static const QString MainBurgerButtonObjectName("MainBurgerButton");
 
 class BurgerButton : public QPushButton {
 Q_OBJECT
@@ -40,21 +40,17 @@ public:
 
 	void setLayout(QHBoxLayout *layout);
 
-
-private:
-	QSize mIconSize;
-	QAction *mAction;
-	QHBoxLayout *layout;
-	bool hovered;
-
-
 signals:
 
 	void mouseEnterButton(BurgerButton *button);
 
 	void mouseLeaveButton(BurgerButton *button);
 
-
+private:
+	QSize mIconSize;
+	QAction *mAction;
+	QHBoxLayout *layout;
+	bool hovered;
 };
 
 

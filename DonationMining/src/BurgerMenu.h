@@ -38,8 +38,11 @@ public:
 
 	bool expanded() const;
 
+	void addStretch();
+
 
 signals:
+
 	void iconChanged() const;
 
 	void iconSizeChanged(const QSize &size) const;
@@ -54,11 +57,11 @@ signals:
 
 public slots:
 
-	QAction *addMenuAction(QAction *action, bool top = true);
+	QAction *addMenuAction(QAction *action);
 
-	QAction *addMenuAction(const QString &label, bool top = true);
+	QAction *addMenuAction(const QString &label);
 
-	QAction *addMenuAction(const QIcon &icon, const QString &label, bool top = true);
+	QAction *addMenuAction(const QIcon &icon, const QString &label);
 
 	void removeMenuAction(QAction *action);
 
@@ -76,7 +79,7 @@ protected:
 	void paintEvent(QPaintEvent *) override;
 
 private:
-	void registerAction(QAction *action, bool top = true);
+	void registerAction(QAction *action);
 
 	void unRegisterAction(QAction *action);
 
