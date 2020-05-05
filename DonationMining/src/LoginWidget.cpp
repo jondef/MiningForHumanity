@@ -8,10 +8,29 @@
 #include <QPainter>
 #include <QPaintEvent>
 #include "LoginWidget.h"
+#include <QDesktopWidget>
 
 
 LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent), ui(new Ui::uiLogin) {
 	ui->setupUi(this);
+
+	layer = new BlurLayer(ui->centralWidget);
+	QGraphicsBlurEffect *p_blur = new QGraphicsBlurEffect;
+	p_blur->setBlurRadius(10);
+	p_blur->setBlurHints(QGraphicsBlurEffect::PerformanceHint);
+	layer->setGraphicsEffect(p_blur);
+
+//	layer->setStyleSheet("background-color: red;");
+//	layer->setLayout(new QGridLayout);
+//	layer->layout()->setContentsMargins(0,0,0,0);
+//	layer->layout()->setSpacing(0);
+//	layer->setAttribute(Qt::WA_TransparentForMouseEvents);
+//	layer->setFocusPolicy(Qt::NoFocus);
+
+//	label = new QLabel();
+//	layer->layout()->addWidget(label);
+//	setStyleSheet("#centralWidget{ background-color:red; }");
+
 
 	connect(ui->pushButton_switchToRegisterPage, &QPushButton::clicked, this, [this]() {
 		ui->stackedWidget->setCurrentIndex(1);
@@ -26,6 +45,7 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent), ui(new Ui::uiLogin)
 		QDesktopServices::openUrl(QUrl("https://www.miningforhumanity.org/forgotpassword"));
 	});
 
+
 	QRegExp emailRegex(
 			"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
 	QValidator *emailValidator = new QRegExpValidator(emailRegex, ui->lineEdit_loginEmail);
@@ -36,35 +56,41 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent), ui(new Ui::uiLogin)
 	ui->lineEdit_username->setValidator(usernameValidator);
 	// todo: add validator for register email line edit
 
-
+	// set the logo at the top
 	QPixmap map(":/images/mining_for_humanity_logo");
 	QSize pixSize = map.size();
 	pixSize.scale(QSize(100, 100), Qt::KeepAspectRatio);
 	QPixmap scaledPix = map.scaled(pixSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
-
 	ui->label_title_logo->setPixmap(scaledPix);
-//	ui->pushButton_switchToRegisterPage->setAttribute(Qt::WA_TranslucentBackground);
-//	ui->loginForm->setAttribute(Qt::WA_TranslucentBackground);
-	setPixmap(QPixmap(":/images/login_bg"));
-//	setStyleSheet("#centralWidget{ border-image: url(:/images/login_bg); } ");
 
+	// set background image
+	setPixmap(QPixmap(":/images/login_bg"));
+}
+
+void LoginWidget::resizeEvent(QResizeEvent *event) {
+	QWidget::resizeEvent(event);
 }
 
 
 void LoginWidget::paintEvent(QPaintEvent *event) {
-	QWidget::paintEvent(event);
-
 	if (pix.isNull()) { return; }
 
 	QPainter painter(this);
 	painter.setRenderHint(QPainter::Antialiasing);
 
+	// set the background image of the login screen
 	QSize pixSize = pix.size();
-	pixSize.scale(event->rect().size(), Qt::KeepAspectRatioByExpanding);
+	pixSize.scale(size(), Qt::KeepAspectRatioByExpanding); // ! don't use event->rect().size() instead of size()
 	QPixmap scaledPix = pix.scaled(pixSize, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
-
 	painter.drawPixmap(QPoint(), scaledPix);
-	update();
+
+	// send the cropped pix map to the blur layer
+	QPoint position = ui->centralFrame->mapTo(this, ui->centralFrame->rect().topLeft());
+	layer->setGeometry(position.x(), position.y(), ui->centralFrame->size().rwidth(), ui->centralFrame->size().rheight());
+	QPixmap cropped = scaledPix.copy(QRect(position, ui->centralFrame->size()));
+	layer->pixmap = cropped;
+
+	QWidget::paintEvent(event);
 }
 
 const QPixmap *LoginWidget::pixmap() const {
@@ -75,38 +101,10 @@ void LoginWidget::setPixmap(const QPixmap &pixmap) {
 	pix = pixmap;
 }
 
-
 void LoginWidget::showEvent(QShowEvent *event) {
 	QWidget::showEvent(event);
-
-//	QWidget *layer = new QWidget(ui->centralWidget);
-//
-//
-//	QGraphicsBlurEffect *p_blur = new QGraphicsBlurEffect;
-//	p_blur->setBlurRadius(10);
-//	p_blur->setBlurHints(QGraphicsBlurEffect::QualityHint);
-////	layer->setGraphicsEffect(p_blur);
-//
-//	layer->setLayout(new QGridLayout);
-//	layer->layout()->setContentsMargins(0, 0, 0, 0);
-//	layer->layout()->setSpacing(0);
-//	QPoint position = ui->loginForm->mapTo(this, ui->loginForm->rect().topLeft());
-//	layer->setGeometry(position.x(), position.y(), ui->loginForm->size().rwidth(), ui->loginForm->size().rheight());
-//
-//
-//	QPixmap pic(":/images/login_bg");
-//	QPixmap scaled = pic.scaled(position.x(), position.y(), Qt::IgnoreAspectRatio, Qt::FastTransformation);
-//	QLabel *label = new QLabel();
-//	layer->layout()->addWidget(label);
-//	label->setPixmap(scaled);
-//
-//
-//
-//	layer->setAttribute(Qt::WA_TransparentForMouseEvents);
-//	layer->setFocusPolicy(Qt::NoFocus);
-//
-//	layer->show();
-
+	layer->show();
+	ui->centralFrame->raise();
 }
 
 LoginWidget::~LoginWidget() {

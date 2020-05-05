@@ -9,7 +9,7 @@
 #include <QObject>
 #include <QMainWindow>
 #include "ui_LoginWidget.h"
-#include "StackedWidget.h"
+#include "BlurLayer.h"
 
 class LoginWidget : public QWidget {
 Q_OBJECT
@@ -29,10 +29,14 @@ public:
 
 	const QPixmap *pixmap() const;
 
+	BlurLayer *layer;
+
 protected:
 	void showEvent(QShowEvent *event) override;
 
 	void paintEvent(QPaintEvent *) override;
+
+	void resizeEvent(QResizeEvent *event) override;
 
 private slots:
 

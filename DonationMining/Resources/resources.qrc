@@ -3,6 +3,7 @@
     <qresource prefix="/">
         <file alias="images/icon">mining_for_humanity_icon.png</file>
         <file alias="images/login_bg">login_bg_3.jpg</file>
+        <file alias="images/login_bg_2">login_bg_2.jpg</file>
         <file alias="images/power_off_icon">power_off_icon.png</file>
         <file alias="images/mining_for_humanity_logo">mining_for_humanity_icon.png</file>
     </qresource>
