@@ -9,6 +9,7 @@
 #include <QObject>
 #include <QMainWindow>
 #include "ui_LoginWidget.h"
+#include "StackedWidget.h"
 
 class LoginWidget : public QWidget {
 Q_OBJECT
