@@ -53,7 +53,7 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent), ui(new Ui::uiLogin)
 	ui->label_title_logo->setPixmap(scaledPix);
 
 	// set background image
-	setPixmap(QPixmap(":/images/login_bg"));
+	setPixmap(QPixmap(":/images/new_york"));
 }
 
 void LoginWidget::paintEvent(QPaintEvent *event) {

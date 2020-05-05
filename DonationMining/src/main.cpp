@@ -59,10 +59,8 @@ int main(int argc, char *argv[]) {
 	QCoreApplication::setOrganizationDomain("MiningForHumanity.org");
 	QCoreApplication::setApplicationName("DonationMining");
 
-#if !defined(_WIN32) || !defined(WIN32)
 	qDebug() << QStyleFactory::keys();
 	QApplication::setStyle(QStyleFactory::create("Fusion"));
-#endif
 
 	MainWindow window(argc, argv);
 	window.show();
