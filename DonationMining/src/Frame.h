@@ -14,7 +14,7 @@ protected:
 	void paintEvent(QPaintEvent *event) override {
 		QFrame::paintEvent(event);
 		QColor backgroundColor = palette().light().color();
-		backgroundColor.setAlpha(150);
+		backgroundColor.setAlpha(128);
 		QPainter customPainter(this);
 		customPainter.fillRect(rect(), backgroundColor);
 	}
