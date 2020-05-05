@@ -20,7 +20,7 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	this->argv = argv;
 
 	if (!loginWindow->autoLogin()) {
-//		showLoginScreen();
+		showLoginScreen();
 	}
 
 	setWindowIcon(QIcon(":/images/icon"));

@@ -26,9 +26,18 @@ public:
 
 	bool autoLogin();
 
+	const QPixmap *pixmap() const;
+
+protected:
+	void showEvent(QShowEvent *event) override;
+
+	void paintEvent(QPaintEvent *) override;
+
 private slots:
 
 	void checkCredentials();
+
+	void setPixmap(const QPixmap &);
 
 Q_SIGNALS:
 
@@ -36,8 +45,7 @@ Q_SIGNALS:
 
 private:
 	Ui::uiLogin *ui;
-
-
+	QPixmap pix;
 };
 
 

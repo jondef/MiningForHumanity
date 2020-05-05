@@ -2,22 +2,100 @@
 // Created by jon on 17.04.20.
 //
 
+#include <QtWidgets/QGraphicsBlurEffect>
+#include <QtGui/QDesktopServices>
+#include <QtGui/QRegExpValidator>
+#include <QPainter>
+#include <QPaintEvent>
 #include "LoginWidget.h"
 
 
 LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent), ui(new Ui::uiLogin) {
 	ui->setupUi(this);
 
-	connect(ui->pushButton_switchToRegisterPage, &QPushButton::clicked, this, [this](){
+	connect(ui->pushButton_switchToRegisterPage, &QPushButton::clicked, this, [this]() {
 		ui->stackedWidget->setCurrentIndex(1);
 	});
-	connect(ui->pushButton_switchToLoginPage, &QPushButton::clicked, this, [this](){
+	connect(ui->pushButton_switchToLoginPage, &QPushButton::clicked, this, [this]() {
 		ui->stackedWidget->setCurrentIndex(0);
 	});
 
 	connect(ui->pushButton_login, &QPushButton::clicked, this, &LoginWidget::checkCredentials);
-	connect(ui->pushButton_register, &QPushButton::clicked, this, [this](){});
-	connect(ui->pushButton_forgotPassword, &QPushButton::clicked, this, [this](){});
+	connect(ui->pushButton_register, &QPushButton::clicked, this, [this]() {});
+	connect(ui->pushButton_forgotPassword, &QPushButton::clicked, this, [this]() {
+		QDesktopServices::openUrl(QUrl("https://www.miningforhumanity.org/forgotpassword"));
+	});
+
+	QRegExp rx(
+			"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
+	QValidator *validator = new QRegExpValidator(rx, ui->lineEdit_loginEmail);
+	ui->lineEdit_loginEmail->setValidator(validator);
+
+//	ui->loginForm->setAttribute(Qt::WA_TranslucentBackground);
+	setPixmap(QPixmap(":/images/login_bg"));
+//	setStyleSheet("#centralWidget{ border-image: url(:/images/login_bg); } ");
+
+}
+
+
+void LoginWidget::paintEvent(QPaintEvent *event) {
+	QWidget::paintEvent(event);
+
+	if (pix.isNull()) { return; }
+
+	QPainter painter(this);
+	painter.setRenderHint(QPainter::Antialiasing);
+
+	QSize pixSize = pix.size();
+	pixSize.scale(event->rect().size(), Qt::KeepAspectRatioByExpanding);
+
+	QPixmap scaledPix = pix.scaled(pixSize, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
+
+	painter.drawPixmap(QPoint(), scaledPix);
+
+	update();
+}
+
+const QPixmap *LoginWidget::pixmap() const {
+	return &pix;
+}
+
+void LoginWidget::setPixmap(const QPixmap &pixmap) {
+	pix = pixmap;
+}
+
+
+void LoginWidget::showEvent(QShowEvent *event) {
+	QWidget::showEvent(event);
+
+//	QWidget *layer = new QWidget(ui->centralWidget);
+//
+//
+//	QGraphicsBlurEffect *p_blur = new QGraphicsBlurEffect;
+//	p_blur->setBlurRadius(10);
+//	p_blur->setBlurHints(QGraphicsBlurEffect::QualityHint);
+////	layer->setGraphicsEffect(p_blur);
+//
+//	layer->setLayout(new QGridLayout);
+//	layer->layout()->setContentsMargins(0, 0, 0, 0);
+//	layer->layout()->setSpacing(0);
+//	QPoint position = ui->loginForm->mapTo(this, ui->loginForm->rect().topLeft());
+//	layer->setGeometry(position.x(), position.y(), ui->loginForm->size().rwidth(), ui->loginForm->size().rheight());
+//
+//
+//	QPixmap pic(":/images/login_bg");
+//	QPixmap scaled = pic.scaled(position.x(), position.y(), Qt::IgnoreAspectRatio, Qt::FastTransformation);
+//	QLabel *label = new QLabel();
+//	layer->layout()->addWidget(label);
+//	label->setPixmap(scaled);
+//
+//
+//
+//	layer->setAttribute(Qt::WA_TransparentForMouseEvents);
+//	layer->setFocusPolicy(Qt::NoFocus);
+//
+//	layer->show();
+
 }
 
 LoginWidget::~LoginWidget() {
