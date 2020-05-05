@@ -34,6 +34,7 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent), ui(new Ui::uiLogin)
 	QRegExp usernameRegex("[A-Za-z0-9-_.]+");
 	QValidator *usernameValidator = new QRegExpValidator(usernameRegex, ui->lineEdit_username);
 	ui->lineEdit_username->setValidator(usernameValidator);
+	// todo: add validator for register email line edit
 
 
 	QPixmap map(":/images/mining_for_humanity_logo");
@@ -60,11 +61,9 @@ void LoginWidget::paintEvent(QPaintEvent *event) {
 
 	QSize pixSize = pix.size();
 	pixSize.scale(event->rect().size(), Qt::KeepAspectRatioByExpanding);
-
 	QPixmap scaledPix = pix.scaled(pixSize, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
 
 	painter.drawPixmap(QPoint(), scaledPix);
-
 	update();
 }
 
