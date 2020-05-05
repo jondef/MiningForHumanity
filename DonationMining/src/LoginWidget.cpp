@@ -14,22 +14,11 @@
 LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent), ui(new Ui::uiLogin) {
 	ui->setupUi(this);
 
-	layer = new BlurLayer(ui->centralWidget);
+	blurLayer = new BlurLayer(ui->centralWidget);
 	QGraphicsBlurEffect *p_blur = new QGraphicsBlurEffect;
 	p_blur->setBlurRadius(10);
 	p_blur->setBlurHints(QGraphicsBlurEffect::PerformanceHint);
-	layer->setGraphicsEffect(p_blur);
-
-//	layer->setStyleSheet("background-color: red;");
-//	layer->setLayout(new QGridLayout);
-//	layer->layout()->setContentsMargins(0,0,0,0);
-//	layer->layout()->setSpacing(0);
-//	layer->setAttribute(Qt::WA_TransparentForMouseEvents);
-//	layer->setFocusPolicy(Qt::NoFocus);
-
-//	label = new QLabel();
-//	layer->layout()->addWidget(label);
-//	setStyleSheet("#centralWidget{ background-color:red; }");
+	blurLayer->setGraphicsEffect(p_blur);
 
 
 	connect(ui->pushButton_switchToRegisterPage, &QPushButton::clicked, this, [this]() {
@@ -67,11 +56,6 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent), ui(new Ui::uiLogin)
 	setPixmap(QPixmap(":/images/login_bg"));
 }
 
-void LoginWidget::resizeEvent(QResizeEvent *event) {
-	QWidget::resizeEvent(event);
-}
-
-
 void LoginWidget::paintEvent(QPaintEvent *event) {
 	if (pix.isNull()) { return; }
 
@@ -86,9 +70,9 @@ void LoginWidget::paintEvent(QPaintEvent *event) {
 
 	// send the cropped pix map to the blur layer
 	QPoint position = ui->centralFrame->mapTo(this, ui->centralFrame->rect().topLeft());
-	layer->setGeometry(position.x(), position.y(), ui->centralFrame->size().rwidth(), ui->centralFrame->size().rheight());
+	blurLayer->setGeometry(position.x(), position.y(), ui->centralFrame->size().rwidth(), ui->centralFrame->size().rheight());
 	QPixmap cropped = scaledPix.copy(QRect(position, ui->centralFrame->size()));
-	layer->pixmap = cropped;
+	blurLayer->pixmap = cropped;
 
 	QWidget::paintEvent(event);
 }
@@ -103,7 +87,7 @@ void LoginWidget::setPixmap(const QPixmap &pixmap) {
 
 void LoginWidget::showEvent(QShowEvent *event) {
 	QWidget::showEvent(event);
-	layer->show();
+	blurLayer->show();
 	ui->centralFrame->raise();
 }
 

@@ -29,14 +29,10 @@ public:
 
 	const QPixmap *pixmap() const;
 
-	BlurLayer *layer;
-
 protected:
 	void showEvent(QShowEvent *event) override;
 
 	void paintEvent(QPaintEvent *) override;
-
-	void resizeEvent(QResizeEvent *event) override;
 
 private slots:
 
@@ -51,6 +47,7 @@ Q_SIGNALS:
 private:
 	Ui::uiLogin *ui;
 	QPixmap pix;
+	BlurLayer *blurLayer;
 };
 
 
