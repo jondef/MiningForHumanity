@@ -77,7 +77,10 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 						   "QMenu::item:pressed { color: white; background-color: grey; }"
 						   "QMenu::separator { color: black; }");
 
-	connect(submenu->addAction(tr("Sign out")), &QAction::triggered, [this]() { showLoginScreen(); });
+	connect(submenu->addAction(tr("Sign out")), &QAction::triggered, [this]() {
+		QFile::remove("account.dat");
+		showLoginScreen();
+	});
 	connect(submenu->addAction(tr("Minimize")), &QAction::triggered, [this]() { close(); });
 	connect(submenu->addAction(tr("Quit")), &QAction::triggered, []() { qApp->quit(); });
 	button->setMenu(submenu);

@@ -49,6 +49,10 @@ private slots:
 
 	void createUserAccount();
 
+	static QByteArray readBinary(const QString &fileName);
+
+	static void writeBinary(const QString &fileName, const QByteArray &data);
+
 Q_SIGNALS:
 
 	void userAuthorized(QString username, QString password, AccountType type);

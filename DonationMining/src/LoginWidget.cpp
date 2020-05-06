@@ -75,6 +75,7 @@ LoginWidget::~LoginWidget() {
 }
 
 void LoginWidget::paintEvent(QPaintEvent *event) {
+	QWidget::paintEvent(event);
 	if (pix.isNull()) { return; }
 
 	QPainter painter(this);
@@ -91,8 +92,6 @@ void LoginWidget::paintEvent(QPaintEvent *event) {
 	blurLayer->setGeometry(position.x(), position.y(), ui->centralFrame->size().rwidth(), ui->centralFrame->size().rheight());
 	QPixmap cropped = scaledPix.copy(QRect(position, ui->centralFrame->size()));
 	blurLayer->pixmap = cropped;
-
-	QWidget::paintEvent(event);
 }
 
 void LoginWidget::showEvent(QShowEvent *event) {
@@ -116,7 +115,6 @@ void LoginWidget::setPixmap(const QPixmap &pixmap) {
 void LoginWidget::checkCredentials() {
 	QString email = ui->lineEdit_loginEmail->text();
 	QString password = ui->lineEdit_loginPassword->text();
-	bool rememberMe = ui->checkBox_rememberMe->isChecked();
 	LoginWidget::AccountType user = Organisation;
 
 	QString command = QString("SELECT password FROM user_login WHERE email = '%1'").arg(email);
@@ -137,10 +135,14 @@ void LoginWidget::checkCredentials() {
 			return;
 		}
 
+		if (ui->checkBox_rememberMe->isChecked()) {
+			QByteArray input;
+			input.append(email + "\n" + password);
+			writeBinary("account.dat", input);
+		}
+
 		emit userAuthorized(email, password, user);
 	}
-
-	// create login save file
 }
 
 void LoginWidget::createUserAccount() {
@@ -184,7 +186,21 @@ void LoginWidget::createUserAccount() {
  * @return false if no file is found or a file without a remember field
  */
 bool LoginWidget::autoLogin() {
-	return false;
+	QByteArray data = readBinary("account.dat");
+
+	if (data.isNull()) { return false; }
+	QString email = data.split('\n').at(0);
+	QString password = data.split('\n').at(1);
+	QString command = QString("SELECT password FROM user_login WHERE email = '%1'").arg(email);
+
+	QSqlQuery query(db);
+	if (query.exec(command)) {
+		if (!query.first()) {
+			return false;
+		}
+		QByteArray hash = query.value(0).toByteArray();
+		return validatePassword(password, hash);
+	}
 }
 
 QByteArray LoginWidget::hashPassword(const QString &password) {
@@ -198,4 +214,30 @@ bool LoginWidget::validatePassword(const QString &password, const QByteArray &ha
 	return BCrypt::validatePassword(password.toStdString(), QByteArray::fromHex(hash).toStdString());
 }
 
+void LoginWidget::writeBinary(const QString &fileName, const QByteArray &data) {
+	QFile mfile(fileName);
+	if (!mfile.open(QFile::WriteOnly)) {
+		qDebug() << "Could not open file for writing";
+		return;
+	}
+	QDataStream out(&mfile);
+	out.setVersion(QDataStream::Qt_5_14);
+	out << data.toHex();
+	mfile.close();
+}
+
+QByteArray LoginWidget::readBinary(const QString &fileName) {
+	QFile mfile(fileName);
+	QByteArray data;
+	if (!mfile.open(QFile::ReadOnly)) {
+		qDebug() << "Could not open file for reading";
+		return QByteArray();
+	}
+	QDataStream in(&mfile);
+	in.setVersion(QDataStream::Qt_5_14);
+	in >> data;
+	mfile.close();
+
+	return QByteArray::fromHex(data);
+}
 
