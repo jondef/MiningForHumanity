@@ -41,9 +41,13 @@ private slots:
 
 	void setPixmap(const QPixmap &);
 
-	QByteArray hashPassword(QString password);
+	static QByteArray hashPassword(const QString &password);
+
+	static bool validatePassword(const QString &password, const QByteArray &hash);
 
 	const QPixmap *pixmap() const;
+
+	void createUserAccount();
 
 Q_SIGNALS:
 
