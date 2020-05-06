@@ -2,3 +2,6 @@
 	path = xmr-stak
 	url = https://github.com/jondef/xmr-stak.git
 	branch = xmr-stak-rx
+[submodule "libbcrypt"]
+	path = libbcrypt
+	url = https://github.com/trusch/libbcrypt

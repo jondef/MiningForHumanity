@@ -8,6 +8,9 @@
 #include <QtCore>
 #include <QObject>
 #include <QMainWindow>
+#include <QtSql>
+#include <QSqlDatabase>
+#include <QSqlQuery>
 #include "ui_LoginWidget.h"
 #include "BlurLayer.h"
 
@@ -27,8 +30,6 @@ public:
 
 	bool autoLogin();
 
-	const QPixmap *pixmap() const;
-
 protected:
 	void showEvent(QShowEvent *event) override;
 
@@ -40,6 +41,10 @@ private slots:
 
 	void setPixmap(const QPixmap &);
 
+	QByteArray hashPassword(QString password);
+
+	const QPixmap *pixmap() const;
+
 Q_SIGNALS:
 
 	void userAuthorized(QString username, QString password, AccountType type);
@@ -48,6 +53,8 @@ private:
 	Ui::uiLogin *ui;
 	QPixmap pix;
 	BlurLayer *blurLayer;
+	QSqlDatabase db;
+
 };
 
 

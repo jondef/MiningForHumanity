@@ -80,7 +80,7 @@ if (WIN32)
 	#	set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
 endif ()
 
-FIND_PACKAGE(Qt5 COMPONENTS Core Gui Widgets Charts Network PrintSupport Test QuickTest REQUIRED)
+FIND_PACKAGE(Qt5 COMPONENTS Core Gui Widgets Charts Network Sql PrintSupport Test QuickTest REQUIRED)
 
 foreach (plugin ${Qt5Gui_PLUGINS})
 	get_target_property(_loc ${plugin} LOCATION)
@@ -100,6 +100,7 @@ SET(QT_USE_QTNETWORK true)
 include_directories(
 		#	${PROJECT_SOURCE_DIR}/Headers
 		${PROJECT_SOURCE_DIR}/src
+		${CMAKE_HOME_DIRECTORY}/libbcrypt/include
 )
 
 file(GLOB SOURCE_FILES
@@ -137,7 +138,11 @@ set(LIBRARY_OUTPUT_PATH "bin" CACHE STRING "Path to place libraries relative to 
 ################################
 # Linking
 ################################
-target_link_libraries(DonationMining Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Charts Qt5::Network)
+target_link_libraries(DonationMining Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Charts Qt5::Network Qt5::Sql)
+
+# link against libbcrypt
+target_link_libraries(DonationMining ${CMAKE_BINARY_DIR}/libbcrypt/bin/libbcrypt.a)
+
 if (WIN32)
 	target_link_libraries(DonationMining Qt5::QWindowsIntegrationPlugin Qt5::QGenericEnginePlugin Qt5::QJpegPlugin Qt5::QGifPlugin Qt5::QICOPlugin)
 endif ()

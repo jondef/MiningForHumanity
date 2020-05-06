@@ -25,3 +25,5 @@ add_subdirectory(xmr-stak)
 # DonationMining
 ################################
 add_subdirectory(DonationMining)
+
+add_subdirectory(libbcrypt)
