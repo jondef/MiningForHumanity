@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
 
 	// these are used for qSettings
 	QCoreApplication::setOrganizationName("MiningForHumanity");
-	QCoreApplication::setOrganizationDomain("MiningForHumanity.org");
+	QCoreApplication::setOrganizationDomain("miningforhumanity.org");
 	QCoreApplication::setApplicationName("DonationMining");
 
 	qDebug() << QStyleFactory::keys();

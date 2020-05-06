@@ -121,36 +121,39 @@ void LoginWidget::checkCredentials() {
 
 	QSqlQuery query(db);
 	if (query.exec(command)) {
-
 		if (!query.first()) {
 			ui->label_incorrectLogin->show();
 			QTimer::singleShot(5000, this, [this]() { ui->label_incorrectLogin->hide(); });
 			return;
 		}
-
 		QByteArray hash = query.value(0).toByteArray();
 		if (!validatePassword(password, hash)) {
 			ui->label_incorrectLogin->show();
 			QTimer::singleShot(5000, this, [this]() { ui->label_incorrectLogin->hide(); });
 			return;
 		}
-
 		if (ui->checkBox_rememberMe->isChecked()) {
 			QByteArray input;
 			input.append(email + "\n" + password);
 			writeBinary(accountFileName, input);
 		}
-
 		emit userAuthorized(email, password, user);
 	}
 }
 
 void LoginWidget::createUserAccount() {
 	QSqlQuery query(db);
-
 	QString email = ui->lineEdit_registerEmail->text();
 	QString password = ui->lineEdit_registerPassword->text();
 
+	// make sure the email address if valid
+	const QRegExpValidator *valid = dynamic_cast<const QRegExpValidator *>(ui->lineEdit_loginEmail->validator());
+	int x = 0;
+	QValidator::State state = valid->validate(email, x);
+	if (state == QValidator::Invalid || state == QValidator::Intermediate) {
+		QMessageBox::warning(this, "Warning!", "Invalid email address.");
+		return;
+	}
 	// check if email already exists
 	query.exec("SELECT email FROM user_login WHERE email = '" + email + "'");
 	if (query.first()) {
@@ -189,11 +192,10 @@ void LoginWidget::createUserAccount() {
 bool LoginWidget::autoLogin() {
 	QByteArray data = readBinary(accountFileName);
 	if (data.isNull()) { return false; }
-	if (data.isEmpty()) {
+	if (data.isEmpty()) { // if data in file has been edited by user / is invalid
 		LoginWidget::deleteAccountFile();
 		return false;
 	}
-
 	QString email = data.split('\n').at(0);
 	QString password = data.split('\n').at(1);
 	QString command = QString("SELECT password FROM user_login WHERE email = '%1'").arg(email);
