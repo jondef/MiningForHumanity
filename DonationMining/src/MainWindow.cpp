@@ -78,7 +78,7 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 						   "QMenu::separator { color: black; }");
 
 	connect(submenu->addAction(tr("Sign out")), &QAction::triggered, [this]() {
-		QFile::remove("account.dat");
+		LoginWidget::deleteAccountFile();
 		showLoginScreen();
 	});
 	connect(submenu->addAction(tr("Minimize")), &QAction::triggered, [this]() { close(); });

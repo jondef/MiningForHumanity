@@ -138,7 +138,7 @@ void LoginWidget::checkCredentials() {
 		if (ui->checkBox_rememberMe->isChecked()) {
 			QByteArray input;
 			input.append(email + "\n" + password);
-			writeBinary("account.dat", input);
+			writeBinary(accountFileName, input);
 		}
 
 		emit userAuthorized(email, password, user);
@@ -177,7 +177,8 @@ void LoginWidget::createUserAccount() {
 
 /*
  * returns true if an automatic login is possible
- * checks if a credentials file exists and with a remember field in it
+ * checks for a credentials file. If one is found,
+ * the login is matched against the database
  *
  * if a file is found that doesn't contain the remember field then
  * read the email address and update the line edit and insert it
@@ -186,9 +187,13 @@ void LoginWidget::createUserAccount() {
  * @return false if no file is found or a file without a remember field
  */
 bool LoginWidget::autoLogin() {
-	QByteArray data = readBinary("account.dat");
-
+	QByteArray data = readBinary(accountFileName);
 	if (data.isNull()) { return false; }
+	if (data.isEmpty()) {
+		LoginWidget::deleteAccountFile();
+		return false;
+	}
+
 	QString email = data.split('\n').at(0);
 	QString password = data.split('\n').at(1);
 	QString command = QString("SELECT password FROM user_login WHERE email = '%1'").arg(email);
@@ -239,5 +244,9 @@ QByteArray LoginWidget::readBinary(const QString &fileName) {
 	mfile.close();
 
 	return QByteArray::fromHex(data);
+}
+
+void LoginWidget::deleteAccountFile() {
+	QFile::remove(accountFileName);
 }
 

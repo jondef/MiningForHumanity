@@ -14,6 +14,8 @@
 #include "ui_LoginWidget.h"
 #include "BlurLayer.h"
 
+static const QString accountFileName("account.dat");
+
 class LoginWidget : public QWidget {
 Q_OBJECT
 
@@ -28,8 +30,6 @@ public:
 
 	~LoginWidget();
 
-	bool autoLogin();
-
 protected:
 	void showEvent(QShowEvent *event) override;
 
@@ -41,17 +41,23 @@ private slots:
 
 	void setPixmap(const QPixmap &);
 
-	static QByteArray hashPassword(const QString &password);
-
-	static bool validatePassword(const QString &password, const QByteArray &hash);
-
 	const QPixmap *pixmap() const;
 
 	void createUserAccount();
 
+	static QByteArray hashPassword(const QString &password);
+
+	static bool validatePassword(const QString &password, const QByteArray &hash);
+
 	static QByteArray readBinary(const QString &fileName);
 
 	static void writeBinary(const QString &fileName, const QByteArray &data);
+
+public slots:
+
+	bool autoLogin();
+
+	static void deleteAccountFile();
 
 Q_SIGNALS:
 
@@ -62,7 +68,6 @@ private:
 	QPixmap pix;
 	BlurLayer *blurLayer;
 	QSqlDatabase db;
-
 };
 
 
