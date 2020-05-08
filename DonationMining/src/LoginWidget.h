@@ -57,7 +57,7 @@ public slots:
 
 	bool autoLogin();
 
-	static void deleteAccountFile();
+	static void logOutUser();
 
 Q_SIGNALS:
 

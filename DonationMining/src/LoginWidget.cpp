@@ -145,8 +145,9 @@ void LoginWidget::createUserAccount() {
 	QSqlQuery query(db);
 	QString email = ui->lineEdit_registerEmail->text();
 	QString password = ui->lineEdit_registerPassword->text();
+	QString username = ui->lineEdit_username->text();
 
-	// make sure the email address if valid
+	// make sure the email address is valid
 	const QRegExpValidator *valid = dynamic_cast<const QRegExpValidator *>(ui->lineEdit_loginEmail->validator());
 	int x = 0;
 	QValidator::State state = valid->validate(email, x);
@@ -160,10 +161,22 @@ void LoginWidget::createUserAccount() {
 		QMessageBox::warning(this, "Warning!", "Email already exists.");
 		return;
 	}
-	// todo: check if user name already exists and if valid
-
+	// make sure the username is valid
+	valid = dynamic_cast<const QRegExpValidator *>(ui->lineEdit_username->validator());
+	x = 0;
+	state = valid->validate(username, x);
+	if (state == QValidator::Invalid || state == QValidator::Intermediate) {
+		QMessageBox::warning(this, "Warning!", "Invalid username.");
+		return;
+	}
+	// check if username already exists
+	query.exec("SELECT username FROM user_login WHERE username = '" + username + "'");
+	if (query.first()) {
+		QMessageBox::warning(this, "Warning!", "Username already taken.");
+		return;
+	}
 	// check if password length is good
-	if (ui->lineEdit_registerPassword->text().length() < 8) {
+	if (password.length() < 8) {
 		QMessageBox::warning(this, "Warning!", "Password too short.");
 		return;
 	}
@@ -172,7 +185,7 @@ void LoginWidget::createUserAccount() {
 		QMessageBox::warning(this, "Warning!", "Passwords do not match.");
 		return;
 	}
-	query.exec("INSERT INTO user_login (email, password) VALUES ('" + email + "', '" + hashPassword(password) + "');");
+	query.exec("INSERT INTO user_login (email,password,username) VALUES ('" + email + "', '" + hashPassword(password) + "', '" + username + "');");
 	QMessageBox::information(this, "Success!", "Account created successfully. Please verify your address.");
 	ui->stackedWidget->setCurrentIndex(0);
 	// todo: send confirmation email
@@ -193,10 +206,10 @@ bool LoginWidget::autoLogin() {
 	QByteArray data = readBinary(accountFileName);
 	if (data.isNull()) { return false; }
 	if (data.isEmpty()) { // if data in file has been edited by user / is invalid
-		LoginWidget::deleteAccountFile();
+		LoginWidget::logOutUser();
 		return false;
 	}
-	QString email = data.split('\n').at(0);
+	QString email = data.split('\n').at(0); // todo: use QVariant
 	QString password = data.split('\n').at(1);
 	QString command = QString("SELECT password FROM user_login WHERE email = '%1'").arg(email);
 
@@ -237,8 +250,8 @@ QByteArray LoginWidget::readBinary(const QString &fileName) {
 	QFile mfile(fileName);
 	QByteArray data;
 	if (!mfile.open(QFile::ReadOnly)) {
-		qDebug() << "Could not open file for reading";
-		return QByteArray();
+		qDebug() << "Could not open file for reading"; // todo: which file? include filename.
+		return data;
 	}
 	QDataStream in(&mfile);
 	in.setVersion(QDataStream::Qt_5_14);
@@ -248,7 +261,11 @@ QByteArray LoginWidget::readBinary(const QString &fileName) {
 	return QByteArray::fromHex(data);
 }
 
-void LoginWidget::deleteAccountFile() {
+void LoginWidget::logOutUser() {
 	QFile::remove(accountFileName);
 }
+
+//QPair LoginWidget::getUserInfo() {
+//	return QPair
+//}
 

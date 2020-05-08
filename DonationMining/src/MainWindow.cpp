@@ -19,7 +19,9 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	this->argc = argc;
 	this->argv = argv;
 
-	if (!loginWindow->autoLogin()) {
+	if (loginWindow->autoLogin()) {
+		showDashboard("", "");
+	} else {
 		showLoginScreen();
 	}
 
@@ -78,7 +80,7 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 						   "QMenu::separator { color: black; }");
 
 	connect(submenu->addAction(tr("Sign out")), &QAction::triggered, [this]() {
-		LoginWidget::deleteAccountFile();
+		LoginWidget::logOutUser();
 		showLoginScreen();
 	});
 	connect(submenu->addAction(tr("Minimize")), &QAction::triggered, [this]() { close(); });
@@ -123,7 +125,7 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 
 	//////////////////////////////////
 
-
+#pragma region graph
 	// Assign names to the set of bars used
 	QBarSet *set0 = new QBarSet("Altuve");
 
@@ -174,12 +176,14 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	qApp->setPalette(pal);*/
 
 	ui->chartsLayout->addWidget(chartView, 0, 1, 1, 1);
+#pragma endregion graph
 }
 
 MainWindow::~MainWindow() {
 	delete ui;
 }
 
+#pragma region graph
 DataTable generateRandomData(int listCount, int valueMax, int valueCount) {
 	DataTable dataTable;
 
@@ -223,6 +227,7 @@ QChart *createSplineChart() {
 	return chart;
 }
 
+#pragma endregion graph
 
 void MainWindow::showEvent(QShowEvent *event) {
 	// If the user opens the app for the first time,
@@ -238,6 +243,10 @@ void MainWindow::closeEvent(QCloseEvent *event) {
 	}
 }
 
+/*
+ * This function hides the login widget and shows the dashboard.
+ * It must update all the data on the dashboard as well.
+ */
 void MainWindow::showDashboard(const QString &username, const QString &password) {
 	takeCentralWidget(); // don't need to take ownership of it because it is already a member
 	setCentralWidget(centralWidget);
