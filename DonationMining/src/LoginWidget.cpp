@@ -251,7 +251,7 @@ QByteArray LoginWidget::readBinary(const QString &fileName) {
 	QByteArray data;
 	if (!mfile.open(QFile::ReadOnly)) {
 		qDebug() << "Could not open file for reading"; // todo: which file? include filename.
-		return data;
+		return QByteArray();
 	}
 	QDataStream in(&mfile);
 	in.setVersion(QDataStream::Qt_5_14);
