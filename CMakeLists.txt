@@ -16,9 +16,9 @@ function(print_all_variables)
 endfunction()
 
 ################################
-# xmr-stak
+# xmrig
 ################################
-#add_subdirectory(xmr-stak)
+add_subdirectory(xmrig)
 
 ################################
 # BCrypt
