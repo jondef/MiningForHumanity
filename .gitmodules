@@ -3,5 +3,5 @@
 	url = https://github.com/trusch/libbcrypt
 [submodule "xmrig"]
 	path = xmrig
-	url = https://github.com/xmrig/xmrig
+	url = https://github.com/jondef/xmrig
 	branch = master
