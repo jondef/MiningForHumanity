@@ -19,7 +19,7 @@ MinerManager::MinerManager(QWidget *parent) : QWidget(parent), ui(new Ui::uiSett
 	connect(myProcess, &QProcess::readyReadStandardError, [this]() { ui->plainTextEdit->appendPlainText(myProcess->readAllStandardError()); });
 //	connect(myProcess, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this, &MainWindow::close);
 //	connect(ui->lineEdit_poolAdress, &QLineEdit::returnPressed, [this](){ myProcess->write(ui->lineEdit_poolAdress->text().toLatin1() + "\n"); ui->lineEdit_poolAdress->clear(); });
-
+//	connect(myProcess, &QProcess::started, this, [](){ qDebug() << "Process successfully started!"; });
 }
 
 MinerManager::~MinerManager() {

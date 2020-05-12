@@ -18,7 +18,7 @@ endfunction()
 ################################
 # xmr-stak
 ################################
-add_subdirectory(xmr-stak)
+#add_subdirectory(xmr-stak)
 
 ################################
 # BCrypt
