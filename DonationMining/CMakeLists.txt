@@ -132,16 +132,13 @@ else ()
 	add_executable(DonationMining ${SOURCE_FILES} ${HEADER_FILES} ${ui_wrap} ${QRC_FILES})
 endif ()
 
-set(EXECUTABLE_OUTPUT_PATH "bin" CACHE STRING "Path to place executables relative to ${CMAKE_INSTALL_PREFIX}")
-set(LIBRARY_OUTPUT_PATH "bin" CACHE STRING "Path to place libraries relative to ${CMAKE_INSTALL_PREFIX}")
-
 ################################
 # Linking
 ################################
 target_link_libraries(DonationMining Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Charts Qt5::Network Qt5::Sql)
 
 # link against libbcrypt
-target_link_libraries(DonationMining ${CMAKE_BINARY_DIR}/libbcrypt/bin/libbcrypt.a)
+target_link_libraries(DonationMining ${CMAKE_BINARY_DIR}/lib/libbcrypt.a)
 
 if (WIN32)
 	target_link_libraries(DonationMining Qt5::QWindowsIntegrationPlugin Qt5::QGenericEnginePlugin Qt5::QJpegPlugin Qt5::QGifPlugin Qt5::QICOPlugin)
