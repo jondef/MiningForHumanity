@@ -5,7 +5,7 @@
 #include <QApplication>
 #include <QtCore>
 
-#if (defined(_WIN32) || defined(WIN32)) & defined(QT_STATICPLUGIN)
+#if (defined(_WIN32) || defined(WIN32)) && defined(QT_STATICPLUGIN)
 
 #include <QtPlugin>
 
