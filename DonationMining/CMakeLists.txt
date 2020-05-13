@@ -1,6 +1,8 @@
 set(CMAKE_CXX_STANDARD 20)
 project(DonationMining)
 
+option(STATIC_BUILD_WIN "Link Qt statically for target Windows" OFF)
+
 ################################
 # Versioning
 ################################
@@ -69,24 +71,27 @@ endif ()
 # Qt configuration
 ################################
 
-if (WIN32)
-	message("WIN32")
+if (WIN32 AND STATIC_BUILD_WIN)
+	message("BUILDING TARGET FOR WINDOWS WITH STATIC LINKING")
 	add_definitions(-DQT_STATICPLUGIN)
 	set(USE_STATIC_QT_BY_DEFAULT ON)
 	set(QT_PLUGINS_DIR /usr/x86_64-w64-mingw32/lib/qt/plugins)
 	link_directories("${QT_PLUGINS_DIR}/platforms")
 	link_directories("${QT_PLUGINS_DIR}/imageformats")
+	link_directories("${QT_PLUGINS_DIR}/sqldrivers")
 	link_directories("/usr/x86_64-w64-mingw32/lib/")
 	#	set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
 endif ()
 
 FIND_PACKAGE(Qt5 COMPONENTS Core Gui Widgets Charts Network Sql PrintSupport Test QuickTest REQUIRED)
 
-foreach (plugin ${Qt5Gui_PLUGINS})
-	get_target_property(_loc ${plugin} LOCATION)
-	message("Plugin ${plugin} is at location ${_loc}")
-	set(plugin_libs ${plugin_libs} ${_loc})
-endforeach ()
+if (WIN32 AND STATIC_BUILD_WIN)
+	foreach (plugin ${Qt5Gui_PLUGINS})
+		get_target_property(_loc ${plugin} LOCATION)
+		message("Plugin ${plugin} is at location ${_loc}")
+		set(plugin_libs ${plugin_libs} ${_loc})
+	endforeach ()
+endif ()
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON) # Find includes in corresponding build directories
 set(CMAKE_AUTOMOC ON) # Instruct CMake to run moc automatically when needed
@@ -138,8 +143,11 @@ endif ()
 target_link_libraries(DonationMining Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Charts Qt5::Network Qt5::Sql)
 
 if (WIN32)
-	target_link_libraries(DonationMining Qt5::QWindowsIntegrationPlugin Qt5::QGenericEnginePlugin Qt5::QJpegPlugin Qt5::QGifPlugin Qt5::QICOPlugin)
 	target_link_libraries(DonationMining ${CMAKE_BINARY_DIR}/lib/libbcrypt.dll.a)
 else ()
 	target_link_libraries(DonationMining ${CMAKE_BINARY_DIR}/lib/libbcrypt.a)
 endif ()
+
+if (WIN32 AND STATIC_BUILD_WIN)
+	target_link_libraries(DonationMining Qt5::QWindowsIntegrationPlugin Qt5::QGenericEnginePlugin Qt5::QJpegPlugin Qt5::QGifPlugin Qt5::QICOPlugin)
+endif()

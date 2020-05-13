@@ -34,13 +34,13 @@ protected:
 
 	void showEvent(QShowEvent *event) override;
 
+public slots:
+
+private slots:
 	void showLoginScreen();
 
 	void updateDashboard(const QString &username);
 
-public slots:
-
-private slots:
 	void showDashboard(const QString &username);
 
 public:

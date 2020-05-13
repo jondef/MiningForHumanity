@@ -33,11 +33,11 @@ public slots:
 
 	void startMiner();
 
-	void startingMiner();
-
 	void stopMiner();
 
 private slots:
+	void startingMiner();
+
 	void setMinerState(MinerState aState);
 
 	static QJsonObject readConfigFile(const QString &config);

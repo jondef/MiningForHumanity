@@ -50,7 +50,6 @@ void MinerManager::stopMiner() {
 void MinerManager::startMiner() {
 	setMinerState(MinerState::Starting);
 	connect(myProcess, &QProcess::readyReadStandardOutput, this, &MinerManager::startingMiner);
-
 	myProcess->start(mMinerExecutable, mMinerArgs);
 }
 
@@ -60,9 +59,8 @@ void MinerManager::startingMiner() {
 	if (output.contains("READY")) {
 		setMinerState(MinerState::Mining);
 		disconnect(myProcess, &QProcess::readyReadStandardOutput, this, &MinerManager::startingMiner);
-		minerConnection = connect(myProcess, &QProcess::readyReadStandardOutput, [this]() {
-			ui->plainTextEdit->appendPlainText(myProcess->readAllStandardOutput().trimmed());
-		});
+		minerConnection = connect(myProcess, &QProcess::readyReadStandardOutput, this, [this]() {
+			ui->plainTextEdit->appendPlainText(myProcess->readAllStandardOutput().trimmed()); });
 	}
 }
 

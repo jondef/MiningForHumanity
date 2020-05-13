@@ -65,14 +65,14 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	connect(loginWindow, &LoginWidget::userAuthorized, this, &MainWindow::showDashboard);
 
 	// * miner start / stop connections
-	connect(ui->pushButton_startStopMiner, &QPushButton::clicked, this, [this](){
+	connect(ui->pushButton_startStopMiner, &QPushButton::clicked, this, [this]() {
 		if (settingsWindow->getMinerState() == MinerManager::NotMining) {
 			settingsWindow->startMiner();
 		} else if (settingsWindow->getMinerState() == MinerManager::Mining) {
 			settingsWindow->stopMiner();
 		}
 	});
-	connect(settingsWindow, &MinerManager::minerChangedState, this, [this](MinerManager::MinerState state){
+	connect(settingsWindow, &MinerManager::minerChangedState, this, [this](MinerManager::MinerState state) {
 		if (state == MinerManager::Starting) {
 			ui->pushButton_startStopMiner->setDisabled(true);
 			ui->pushButton_startStopMiner->setText("Wait");
