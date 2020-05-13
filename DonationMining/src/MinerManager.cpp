@@ -21,6 +21,12 @@ MinerManager::MinerManager(QWidget *parent) : QWidget(parent), ui(new Ui::uiSett
 	connect(myProcess, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this, [this](){ setMinerState(MinerState::NotMining); });
 //	connect(ui->lineEdit_poolAdress, &QLineEdit::returnPressed, [this](){ myProcess->write(ui->lineEdit_poolAdress->text().toLatin1() + "\n"); ui->lineEdit_poolAdress->clear(); });
 //	connect(myProcess, &QProcess::started, this, [](){ qDebug() << "Process successfully started!"; });
+	QString poolId = "xmr.pool.minergate.com:45700";
+	QString username = "ludwig.landji@gmail.com";
+	QString password = "";
+	QString RIGID = "TestRig";
+	bool SSLSupport = false;
+	mMinerArgs  << "--url" << poolId << "--user" << username << "--pass" << password << "--coin" << "monero" << "--rig-id" << RIGID << "--print-time" << "5" << "--keepalive" << "--no-color";
 }
 
 MinerManager::~MinerManager() {
@@ -42,13 +48,6 @@ void MinerManager::stopMiner() {
 }
 
 void MinerManager::startMiner() {
-	QString poolId = "xmr.pool.minergate.com:45700";
-	QString username = "ludwig.landji@gmail.com";
-	QString password = "";
-	QString RIGID = "TestRig";
-	bool SSLSupport = false;
-	mMinerArgs  << "--url" << poolId << "--user" << username << "--pass" << password << "--coin" << "monero" << "--rig-id" << RIGID << "--print-time" << "5" << "--keepalive" << "--no-color";
-
 	setMinerState(MinerState::Starting);
 	connect(myProcess, &QProcess::readyReadStandardOutput, this, &MinerManager::startingMiner);
 

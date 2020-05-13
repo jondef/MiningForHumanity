@@ -13,9 +13,6 @@
 class MinerManager : public QWidget {
 Q_OBJECT
 
-private:
-	Ui::uiSettingsWindow *ui;
-
 public:
 	enum MinerState {
 		NotMining,
@@ -23,15 +20,16 @@ public:
 		Mining
 	};
 
+public:
 	explicit MinerManager(QWidget *parent = nullptr);
 
 	~MinerManager();
 
-	static QJsonObject readConfigFile(const QString &config);
-
-	static bool writeConfigFile(const QString &fileName, const QJsonObject &jsonConfig);
+protected:
+	void showEvent(QShowEvent *event) override;
 
 public slots:
+	MinerState getMinerState();
 
 	void startMiner();
 
@@ -39,12 +37,12 @@ public slots:
 
 	void stopMiner();
 
-Q_SIGNALS:
+private slots:
+	void setMinerState(MinerState aState);
 
-	void minerChangedState(MinerState);
+	static QJsonObject readConfigFile(const QString &config);
 
-protected:
-	void showEvent(QShowEvent *event) override;
+	static bool writeConfigFile(const QString &fileName, const QJsonObject &jsonConfig);
 
 	void updateWidgets();
 
@@ -52,21 +50,26 @@ protected:
 
 	QJsonObject getAvailablePools();
 
-	QNetworkAccessManager *networkManager = new QNetworkAccessManager(this);
-	QNetworkReply *reply;
+	void networkReplyOrganizations();
+
+Q_SIGNALS:
+	void minerChangedState(MinerState);
+
+private:
+	Ui::uiSettingsWindow *ui;
 
 	QProcess *myProcess = new QProcess(this);
 	QString mMinerExecutable = "xmrig"; // this works on both Windows and Unix, no need to specify file extension.
 	QStringList mMinerArgs;
+
 	MinerState state = MinerState::NotMining;
 	QMetaObject::Connection minerConnection;
 
-	void networkReplyOrganizations();
-
-	void setMinerState(MinerState aState);
+	QNetworkAccessManager *networkManager = new QNetworkAccessManager(this);
+	QNetworkReply *reply;
 
 public:
-	MinerState getMinerState();
+
 };
 
 

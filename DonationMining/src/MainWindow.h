@@ -29,18 +29,6 @@ public:
 
 	~MainWindow();
 
-private:
-	bool closing = false;
-	int argc;
-	char **argv;
-	Ui::uiMainWindow *ui;
-
-	MinerManager *settingsWindow = new MinerManager();
-	LoginWidget *loginWindow = new LoginWidget();
-	QWidget *centralWidget = nullptr;
-
-	void showDashboard(const QString &username);
-
 protected:
 	void closeEvent(QCloseEvent *event) override;
 
@@ -49,6 +37,23 @@ protected:
 	void showLoginScreen();
 
 	void updateDashboard(const QString &username);
+
+public slots:
+
+private slots:
+	void showDashboard(const QString &username);
+
+public:
+
+private:
+	Ui::uiMainWindow *ui;
+	int argc;
+	char **argv;
+	bool closing = false;
+
+	MinerManager *settingsWindow = new MinerManager();
+	LoginWidget *loginWindow = new LoginWidget();
+	QWidget *centralWidget = nullptr;
 };
 
 
