@@ -31,7 +31,7 @@ void MinerManager::startMiner() {
 	QString password = "";
 	QString RIGID = "TestRig";
 	bool SSLSupport = false;
-	mMinerArgs  << "--url" << poolId << "--user" << username << "--pass" << "" << "--coin" << "monero" << "--rig-id" << RIGID << "--print-time" << "5" << "--keepalive" << "--no-color";
+	mMinerArgs  << "--url" << poolId << "--user" << username << "--pass" << password << "--coin" << "monero" << "--rig-id" << RIGID << "--print-time" << "5" << "--keepalive" << "--no-color";
 	myProcess->start(mMinerExecutable, mMinerArgs);
 }
 
