@@ -57,7 +57,7 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent), ui(new Ui::uiLogin)
 	connect(ui->pushButton_switchToLoginPage, &QPushButton::clicked, this, [this]() { ui->stackedWidget->setCurrentIndex(0); });
 
 	// login / register / forgot password buttons
-	connect(ui->pushButton_login, &QPushButton::clicked, this, &LoginWidget::checkCredentials);
+	connect(ui->pushButton_login, &QPushButton::clicked, this, &LoginWidget::LoginButtonPressed);
 	connect(ui->pushButton_register, &QPushButton::clicked, this, &LoginWidget::createUserAccount);
 	connect(ui->pushButton_forgotPassword, &QPushButton::clicked, this, [this]() {
 		QDesktopServices::openUrl(QUrl("https://www.miningforhumanity.org/forgotpassword"));
@@ -79,15 +79,15 @@ LoginWidget::~LoginWidget() {
 
 void LoginWidget::paintEvent(QPaintEvent *event) {
 	QWidget::paintEvent(event);
-	if (pix.isNull()) { return; }
+	if (backgroundPixmap.isNull()) { return; }
 
 	QPainter painter(this);
 	painter.setRenderHint(QPainter::Antialiasing);
 
 	// set the background image of the login screen
-	QSize pixSize = pix.size();
+	QSize pixSize = backgroundPixmap.size();
 	pixSize.scale(size(), Qt::KeepAspectRatioByExpanding); // ! don't use event->rect().size() instead of size()
-	QPixmap scaledPix = pix.scaled(pixSize, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
+	QPixmap scaledPix = backgroundPixmap.scaled(pixSize, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
 	painter.drawPixmap(QPoint(), scaledPix);
 
 	// send the cropped pix map to the blur layer
@@ -104,22 +104,20 @@ void LoginWidget::showEvent(QShowEvent *event) {
 }
 
 const QPixmap *LoginWidget::pixmap() const {
-	return &pix;
+	return &backgroundPixmap;
 }
 
 void LoginWidget::setPixmap(const QPixmap &pixmap) {
-	pix = pixmap;
+	backgroundPixmap = pixmap;
 }
 
 /*
  * Gets the input from the line edits and
  * verifies them. If they are valid, a signal is emitted
  */
-void LoginWidget::checkCredentials() {
+void LoginWidget::LoginButtonPressed() {
 	QString email = ui->lineEdit_loginEmail->text();
 	QString password = ui->lineEdit_loginPassword->text();
-	LoginWidget::AccountType user = Organisation;
-
 	QString command = QString("SELECT password FROM user_login WHERE email = '%1'").arg(email);
 
 	QSqlQuery query(db);
@@ -140,7 +138,7 @@ void LoginWidget::checkCredentials() {
 			input.append(email + "\n" + password);
 			writeBinary(accountFileName, input);
 		}
-		emit userAuthorized(email, password, user);
+		emit userAuthorized(getUsername(email));
 	}
 }
 
@@ -217,13 +215,14 @@ bool LoginWidget::autoLogin() {
 	QString command = QString("SELECT password FROM user_login WHERE email = '%1'").arg(email);
 
 	QSqlQuery query(db);
-	if (query.exec(command)) {
-		if (!query.first()) {
-			return false;
-		}
-		QByteArray hash = query.value(0).toByteArray();
-		return validatePassword(password, hash);
-	}
+	if (!query.exec(command)) { return false; }
+	if (!query.first()) { return false;	}
+
+	QByteArray hash = query.value(0).toByteArray();
+	if (!validatePassword(password, hash)) { return false; }
+
+	username = getUsername(email);
+	return true;
 }
 
 QByteArray LoginWidget::hashPassword(const QString &password) {
@@ -264,11 +263,19 @@ QByteArray LoginWidget::readBinary(const QString &fileName) {
 	return QByteArray::fromHex(data);
 }
 
+/*
+ * Removes the .dat file that contains user login info
+ * for automatic login
+ */
 void LoginWidget::logOutUser() {
 	QFile::remove(accountFileName);
 }
 
-//QPair LoginWidget::getUserInfo() {
-//	return QPair
-//}
+QString LoginWidget::getUsername(const QString &email) {
+	QString command = QString("SELECT username FROM user_login WHERE email = '%1'").arg(email);
+	QSqlQuery query(db);
+	if (!query.exec(command)) {	return QString(); }
+	if (!query.first()) { return QString();	}
+	return query.value(0).toString();
+}
 

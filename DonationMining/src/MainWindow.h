@@ -39,7 +39,7 @@ private:
 	LoginWidget *loginWindow = new LoginWidget();
 	QWidget *centralWidget = nullptr;
 
-	void showDashboard();
+	void showDashboard(const QString &username);
 
 protected:
 	void closeEvent(QCloseEvent *event) override;

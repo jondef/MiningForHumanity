@@ -19,6 +19,7 @@ static const QString accountFileName("account.dat");
 class LoginWidget : public QWidget {
 Q_OBJECT
 
+
 public:
 	enum AccountType {
 		Organisation,
@@ -37,7 +38,7 @@ protected:
 
 private slots:
 
-	void checkCredentials();
+	void LoginButtonPressed();
 
 	void setPixmap(const QPixmap &);
 
@@ -55,19 +56,24 @@ private slots:
 
 public slots:
 
+	QString getUsername(const QString &email);
+
 	bool autoLogin();
 
 	static void logOutUser();
 
 Q_SIGNALS:
 
-	void userAuthorized(QString username, QString password, AccountType type);
+	void userAuthorized(QString username);
 
 private:
 	Ui::uiLogin *ui;
-	QPixmap pix;
+	QPixmap backgroundPixmap;
 	BlurLayer *blurLayer;
 	QSqlDatabase db;
+
+public:
+	QString username;
 };
 
 
