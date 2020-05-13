@@ -62,8 +62,44 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 			}
 		}
 	});
-	connect(ui->pushButton_startStopMiner, &QPushButton::clicked, settingsWindow, &MinerManager::startMiner);
 	connect(loginWindow, &LoginWidget::userAuthorized, this, &MainWindow::showDashboard);
+
+	// * miner start / stop connections
+	connect(ui->pushButton_startStopMiner, &QPushButton::clicked, this, [this](){
+		if (settingsWindow->getMinerState() == MinerManager::NotMining) {
+			settingsWindow->startMiner();
+		} else if (settingsWindow->getMinerState() == MinerManager::Mining) {
+			settingsWindow->stopMiner();
+		}
+	});
+	connect(settingsWindow, &MinerManager::minerChangedState, this, [this](MinerManager::MinerState state){
+		if (state == MinerManager::Starting) {
+			ui->pushButton_startStopMiner->setDisabled(true);
+			ui->pushButton_startStopMiner->setText("Wait");
+			ui->label_minerState->setText("Starting");
+			ui->label_minerState->setStyleSheet("border-radius: 10px;\n"
+												"color: white;\n"
+												"background-color: blue;\n"
+												"padding: 2px 5px 2px 5px;");
+		} else if (state == MinerManager::Mining) {
+			ui->pushButton_startStopMiner->setDisabled(false);
+			ui->pushButton_startStopMiner->setText("Stop");
+			ui->label_minerState->setText("Donating");
+			ui->label_minerState->setStyleSheet("border-radius: 10px;\n"
+												"color: white;\n"
+												"background-color: green;\n"
+												"padding: 2px 5px 2px 5px;");
+		} else if (state == MinerManager::NotMining) {
+			ui->pushButton_startStopMiner->setDisabled(false);
+			ui->pushButton_startStopMiner->setText("Start");
+			ui->label_minerState->setText("Inactive");
+			ui->label_minerState->setStyleSheet("border-radius: 10px;\n"
+												"color: white;\n"
+												"background-color: red;\n"
+												"padding: 2px 5px 2px 5px;");
+		}
+	});
+
 
 	// toolbar
 	QPushButton *button = new QPushButton;

@@ -3,6 +3,7 @@
 //
 
 #include "MinerManager.h"
+#include <QScrollBar>
 
 // ! FOR POOLS WIDGET SETTINGS USE A TABLE
 
@@ -14,15 +15,30 @@ MinerManager::MinerManager(QWidget *parent) : QWidget(parent), ui(new Ui::uiSett
 
 //	connect(networkManager, &QNetworkAccessManager::finished, this, &MinerManager::getAvailablePools);
 //	connect(button, clicked, this, [&]() { networkManager->get(QNetworkRequest(QUrl("https://httpbin.org/get"))); }
-	connect(myProcess, &QProcess::readyReadStandardOutput, [this]() { ui->plainTextEdit->appendPlainText(myProcess->readAllStandardOutput().trimmed()); });
+//	connect(myProcess, &QProcess::readyReadStandardOutput, [this]() { qDebug() << myProcess->readAllStandardOutput().trimmed(); });
+//	connect(myProcess, &QProcess::readyReadStandardOutput, [this]() { ui->plainTextEdit->appendPlainText(myProcess->readAllStandardOutput().trimmed()); });
 	connect(myProcess, &QProcess::readyReadStandardError, [this]() { ui->plainTextEdit->appendPlainText(myProcess->readAllStandardError().trimmed()); });
-//	connect(myProcess, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this, &MainWindow::close);
+	connect(myProcess, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this, [this](){ setMinerState(MinerState::NotMining); });
 //	connect(ui->lineEdit_poolAdress, &QLineEdit::returnPressed, [this](){ myProcess->write(ui->lineEdit_poolAdress->text().toLatin1() + "\n"); ui->lineEdit_poolAdress->clear(); });
 //	connect(myProcess, &QProcess::started, this, [](){ qDebug() << "Process successfully started!"; });
 }
 
 MinerManager::~MinerManager() {
 	delete ui;
+}
+
+void MinerManager::showEvent(QShowEvent *event) {
+	QWidget::showEvent(event);
+//	getAvailablePools();
+//	updateWidgets();
+}
+
+void MinerManager::stopMiner() {
+	myProcess->kill();
+	ui->plainTextEdit->appendPlainText("----- Process killed -----");
+	if (minerConnection != nullptr) {
+		disconnect(minerConnection);
+	}
 }
 
 void MinerManager::startMiner() {
@@ -32,13 +48,32 @@ void MinerManager::startMiner() {
 	QString RIGID = "TestRig";
 	bool SSLSupport = false;
 	mMinerArgs  << "--url" << poolId << "--user" << username << "--pass" << password << "--coin" << "monero" << "--rig-id" << RIGID << "--print-time" << "5" << "--keepalive" << "--no-color";
+
+	setMinerState(MinerState::Starting);
+	connect(myProcess, &QProcess::readyReadStandardOutput, this, &MinerManager::startingMiner);
+
 	myProcess->start(mMinerExecutable, mMinerArgs);
 }
 
-void MinerManager::showEvent(QShowEvent *event) {
-	QWidget::showEvent(event);
-	getAvailablePools();
-	updateWidgets();
+void MinerManager::startingMiner() {
+	QByteArray output = myProcess->readAllStandardOutput().trimmed();
+	ui->plainTextEdit->appendPlainText(output);
+	if (output.contains("READY")) {
+		setMinerState(MinerState::Mining);
+		disconnect(myProcess, &QProcess::readyReadStandardOutput, this, &MinerManager::startingMiner);
+		minerConnection = connect(myProcess, &QProcess::readyReadStandardOutput, [this]() {
+			ui->plainTextEdit->appendPlainText(myProcess->readAllStandardOutput().trimmed());
+		});
+	}
+}
+
+void MinerManager::setMinerState(MinerManager::MinerState aState) {
+	state = aState;
+	emit minerChangedState(state);
+}
+
+MinerManager::MinerState MinerManager::getMinerState() {
+	return state;
 }
 
 /*
@@ -208,3 +243,4 @@ void MinerManager::networkReplyOrganizations() {
 	disconnect(reply, &QIODevice::readyRead, this, &MinerManager::networkReplyOrganizations);
 	qDebug() << jsonDocument.object();
 }
+

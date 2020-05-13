@@ -17,6 +17,12 @@ private:
 	Ui::uiSettingsWindow *ui;
 
 public:
+	enum MinerState {
+		NotMining,
+		Starting,
+		Mining
+	};
+
 	explicit MinerManager(QWidget *parent = nullptr);
 
 	~MinerManager();
@@ -29,9 +35,13 @@ public slots:
 
 	void startMiner();
 
+	void startingMiner();
+
+	void stopMiner();
+
 Q_SIGNALS:
 
-	void userAuthorized(QString username, QString password);
+	void minerChangedState(MinerState);
 
 protected:
 	void showEvent(QShowEvent *event) override;
@@ -48,8 +58,15 @@ protected:
 	QProcess *myProcess = new QProcess(this);
 	QString mMinerExecutable = "xmrig"; // this works on both Windows and Unix, no need to specify file extension.
 	QStringList mMinerArgs;
+	MinerState state = MinerState::NotMining;
+	QMetaObject::Connection minerConnection;
 
 	void networkReplyOrganizations();
+
+	void setMinerState(MinerState aState);
+
+public:
+	MinerState getMinerState();
 };
 
 
