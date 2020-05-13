@@ -45,8 +45,11 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent), ui(new Ui::uiLogin)
 	db.setUserName("application_user");
 	db.setPassword("miningforhumanity");
 	if (!db.open()) {
-		qDebug() << "FAILED TO CONNECT TO DATABASE";
-		return;
+		db.setHostName("62.203.57.210");
+		if (!db.open()) {
+			qDebug() << "FAILED TO CONNECT TO DATABASE";
+			QMessageBox::warning(this, "Warning", "Failed to connect to database!");
+		}
 	}
 
 	// page switching connections

@@ -46,7 +46,7 @@ protected:
 	QNetworkReply *reply;
 
 	QProcess *myProcess = new QProcess(this);
-	QString mMinerExecutable = "xmr-stak-rx"; // this works on both Windows and Linux, no need to specify file extension.
+	QString mMinerExecutable = "xmrig"; // this works on both Windows and Unix, no need to specify file extension.
 	QStringList mMinerArgs;
 
 	void networkReplyOrganizations();

@@ -20,9 +20,9 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	this->argv = argv;
 
 	if (loginWindow->autoLogin()) {
-		showDashboard("", "");
+		showDashboard();
 	} else {
-//		showLoginScreen();
+		showLoginScreen();
 	}
 
 	setWindowIcon(QIcon(":/images/icon"));
@@ -244,12 +244,21 @@ void MainWindow::closeEvent(QCloseEvent *event) {
 }
 
 /*
- * This function hides the login widget and shows the dashboard.
- * It must update all the data on the dashboard as well.
+ * This function hides the login widget and shows the dashboard
  */
-void MainWindow::showDashboard(const QString &username, const QString &password) {
-	takeCentralWidget(); // don't need to take ownership of it because it is already a member
-	setCentralWidget(centralWidget);
+void MainWindow::showDashboard() {
+	if (centralWidget != nullptr) {
+		takeCentralWidget(); // don't need to take ownership of the login widget because it is already a member
+		setCentralWidget(centralWidget);
+	}
+	updateDashboard("");
+}
+
+/*
+ * Updates the widgets on the dashboard: username, date, etc...
+ */
+void MainWindow::updateDashboard(const QString &username) {
+
 }
 
 /*
@@ -260,4 +269,5 @@ void MainWindow::showLoginScreen() {
 	centralWidget = takeCentralWidget();
 	setCentralWidget(loginWindow);
 }
+
 

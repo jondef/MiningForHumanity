@@ -37,9 +37,9 @@ private:
 
 	MinerManager *settingsWindow = new MinerManager();
 	LoginWidget *loginWindow = new LoginWidget();
-	QWidget *centralWidget;
+	QWidget *centralWidget = nullptr;
 
-	void showDashboard(const QString &username, const QString &password);
+	void showDashboard();
 
 protected:
 	void closeEvent(QCloseEvent *event) override;
@@ -47,6 +47,8 @@ protected:
 	void showEvent(QShowEvent *event) override;
 
 	void showLoginScreen();
+
+	void updateDashboard(const QString &username);
 };
 
 

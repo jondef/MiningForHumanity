@@ -137,9 +137,9 @@ endif ()
 ################################
 target_link_libraries(DonationMining Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Charts Qt5::Network Qt5::Sql)
 
-# link against libbcrypt
-target_link_libraries(DonationMining ${CMAKE_BINARY_DIR}/lib/libbcrypt.a)
-
 if (WIN32)
 	target_link_libraries(DonationMining Qt5::QWindowsIntegrationPlugin Qt5::QGenericEnginePlugin Qt5::QJpegPlugin Qt5::QGifPlugin Qt5::QICOPlugin)
+	target_link_libraries(DonationMining ${CMAKE_BINARY_DIR}/lib/libbcrypt.dll.a)
+else ()
+	target_link_libraries(DonationMining ${CMAKE_BINARY_DIR}/lib/libbcrypt.a)
 endif ()

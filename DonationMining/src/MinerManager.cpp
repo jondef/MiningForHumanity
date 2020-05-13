@@ -13,10 +13,9 @@ MinerManager::MinerManager(QWidget *parent) : QWidget(parent), ui(new Ui::uiSett
 //	connect(ui->buttonBox, &QDialogButtonBox::rejected, this, [this]() { this->close(); });
 
 //	connect(networkManager, &QNetworkAccessManager::finished, this, &MinerManager::getAvailablePools);
-
 //	connect(button, clicked, this, [&]() { networkManager->get(QNetworkRequest(QUrl("https://httpbin.org/get"))); }
-	connect(myProcess, &QProcess::readyReadStandardOutput, [this]() { ui->plainTextEdit->appendPlainText(myProcess->readAllStandardOutput()); });
-	connect(myProcess, &QProcess::readyReadStandardError, [this]() { ui->plainTextEdit->appendPlainText(myProcess->readAllStandardError()); });
+	connect(myProcess, &QProcess::readyReadStandardOutput, [this]() { ui->plainTextEdit->appendPlainText(myProcess->readAllStandardOutput().trimmed()); });
+	connect(myProcess, &QProcess::readyReadStandardError, [this]() { ui->plainTextEdit->appendPlainText(myProcess->readAllStandardError().trimmed()); });
 //	connect(myProcess, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this, &MainWindow::close);
 //	connect(ui->lineEdit_poolAdress, &QLineEdit::returnPressed, [this](){ myProcess->write(ui->lineEdit_poolAdress->text().toLatin1() + "\n"); ui->lineEdit_poolAdress->clear(); });
 //	connect(myProcess, &QProcess::started, this, [](){ qDebug() << "Process successfully started!"; });
@@ -32,8 +31,7 @@ void MinerManager::startMiner() {
 	QString password = "";
 	QString RIGID = "TestRig";
 	bool SSLSupport = false;
-	mMinerArgs << "--noTest" << "--noDevSupport" << "--currency" << "monero" << "--h-print-time" << "5" << "--url" << poolId << "--rigid" << RIGID
-			   << "--httpd" << "0" << "--user" << username << "--pass" << password;
+	mMinerArgs  << "--url" << poolId << "--user" << username << "--pass" << "" << "--coin" << "monero" << "--rig-id" << RIGID << "--print-time" << "5" << "--keepalive" << "--no-color";
 	myProcess->start(mMinerExecutable, mMinerArgs);
 }
 
