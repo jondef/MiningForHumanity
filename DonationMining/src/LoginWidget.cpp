@@ -38,21 +38,18 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent), ui(new Ui::uiLogin)
 	ui->label_incorrectLogin->hide();
 
 	// configure the database
-	qDebug() << "Plugins loaded from: " << QCoreApplication::libraryPaths();
-	db = QSqlDatabase::addDatabase("QMYSQL");
-	db.addDatabase("QMYSQL", "loginManager");
+	db = QSqlDatabase::addDatabase("QMYSQL", "loginManager");
 	db.setHostName("192.168.0.8");
 	db.setPort(3306);
 	db.setDatabaseName("userdb");
 	db.setUserName("application_user");
 	db.setPassword("miningforhumanity");
-	qDebug() << db.open();
 	if (!db.open()) {
-//		db.setHostName("62.203.57.210");
-//		if (!db.open()) {
+		db.setHostName("62.203.57.210");
+		if (!db.open()) {
 			qDebug() << "FAILED TO CONNECT TO DATABASE";
 			QMessageBox::warning(this, "Warning", "Failed to connect to database!");
-//		}
+		}
 	}
 
 	// page switching connections

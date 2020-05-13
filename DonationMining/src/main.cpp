@@ -33,6 +33,7 @@ int main(int argc, char *argv[]) {
 	QCoreApplication::setApplicationName("DonationMining");
 
 	qDebug() << QStyleFactory::keys();
+	qDebug() << "Plugins loaded from: " << QCoreApplication::libraryPaths();
 	QApplication::setStyle(QStyleFactory::create("Fusion"));
 
 	MainWindow window(argc, argv);

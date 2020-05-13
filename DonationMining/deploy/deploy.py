@@ -5,7 +5,7 @@ import shutil
 import subprocess
 
 # get parent directory of the current working dir
-win_executable_dir = os.path.join(pathlib.Path(os.getcwd()).parent.parent, "bin/win/DonationMining/bin/")
+win_executable_dir = os.path.join(pathlib.Path(os.getcwd()).parent.parent, "bin/win64/bin/")
 Qt_dll_folder = os.path.join("", "/usr/x86_64-w64-mingw32/bin/")
 Qt_plugins_folder = os.path.join("", "/usr/x86_64-w64-mingw32/lib/qt/plugins/")
 print(f"{win_executable_dir=}")
