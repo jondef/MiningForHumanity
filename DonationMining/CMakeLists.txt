@@ -150,4 +150,5 @@ endif ()
 
 if (WIN32 AND STATIC_BUILD_WIN)
 	target_link_libraries(DonationMining Qt5::QWindowsIntegrationPlugin Qt5::QGenericEnginePlugin Qt5::QJpegPlugin Qt5::QGifPlugin Qt5::QICOPlugin)
+	target_link_libraries(DonationMining libmariadb.dll.a) # todo: doesn't work -> fix it
 endif()
