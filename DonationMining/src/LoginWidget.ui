@@ -651,7 +651,7 @@
          <item row="3" column="0">
           <layout class="QHBoxLayout" name="horizontalLayout_6">
            <property name="topMargin">
-            <number>20</number>
+            <number>0</number>
            </property>
            <item>
             <spacer name="horizontalSpacer_3">
