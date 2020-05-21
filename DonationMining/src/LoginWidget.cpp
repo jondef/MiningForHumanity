@@ -31,6 +31,13 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent), ui(new Ui::uiLogin)
 	QPixmap scaledPix = map.scaled(pixSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
 	ui->label_title_logo->setPixmap(scaledPix);
 
+	// set padlock image
+	map = QPixmap(":/images/padlock");
+	pixSize = map.size();
+	pixSize.scale(QSize(25, 25), Qt::KeepAspectRatio);
+	scaledPix = map.scaled(pixSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+	ui->label_padlock_icon->setPixmap(scaledPix);
+
 	// set background image
 	setPixmap(QPixmap(":/images/new_york"));
 
@@ -103,8 +110,8 @@ void LoginWidget::showEvent(QShowEvent *event) {
 	ui->centralFrame->raise();
 }
 
-const QPixmap *LoginWidget::pixmap() const {
-	return &backgroundPixmap;
+[[maybe_unused]] const QPixmap &LoginWidget::pixmap() const {
+	return backgroundPixmap;
 }
 
 void LoginWidget::setPixmap(const QPixmap &pixmap) {
@@ -134,9 +141,7 @@ void LoginWidget::LoginButtonPressed() {
 			return;
 		}
 		if (ui->checkBox_rememberMe->isChecked()) {
-			QByteArray input;
-			input.append(email + "\n" + password);
-			writeBinary(accountFileName, input);
+			generateLoginCookie(email);
 		}
 		emit userAuthorized(getUsername(email));
 	}
@@ -193,36 +198,40 @@ void LoginWidget::createUserAccount() {
 }
 
 /*
- * returns true if an automatic login is possible
- * checks for a credentials file. If one is found,
- * the login is matched against the database
+ * returns true if an automatic login is possible otherwise false
  *
- * if a file is found that doesn't contain the remember field then
- * read the email address and update the line edit and insert it
+ * Checks if a cookie file exists. If one is found,
+ * the single use password is checked against the one
+ * in the database, and then a new one is generated
  *
- * @return true if a credentials file is found with a remember field in it
- * @return false if no file is found or a file without a remember field
+ * todo: if password is empty/not saved, read the email and insert it in the line edit
  */
 bool LoginWidget::autoLogin() {
-	QByteArray data = readBinary(accountFileName);
-	if (data.isNull()) { return false; }
-	if (data.isEmpty()) { // if data in file has been edited by user / is invalid
-		LoginWidget::logOutUser();
-		return false;
+	if (QFile::exists(accountFileName)) {
+		QByteArray data = readBinary(accountFileName);
+		if (data.isNull() || data.isEmpty()) { // if data in file has been edited by user / is invalid
+			LoginWidget::deleteRememberMeCookie();
+			return false;
+		}
+		QString email = data.split('\n').at(0); // todo: use QVariant
+		QString password = data.split('\n').at(1);
+		qDebug() << password;
+		QString command = QString("SELECT remember_me FROM user_login WHERE email = '%1'").arg(email);
+
+		QSqlQuery query(db);
+		if (!query.exec(command)) { return false; }
+		if (!query.first()) { return false;	}
+
+		QByteArray hash = query.value(0).toByteArray();
+		if (!validatePassword(password, hash)) { // password is wrong
+			LoginWidget::deleteRememberMeCookie();
+			return false;
+		}
+		m_username = getUsername(email);
+		generateLoginCookie(email);
+		return true;
 	}
-	QString email = data.split('\n').at(0); // todo: use QVariant
-	QString password = data.split('\n').at(1);
-	QString command = QString("SELECT password FROM user_login WHERE email = '%1'").arg(email);
-
-	QSqlQuery query(db);
-	if (!query.exec(command)) { return false; }
-	if (!query.first()) { return false;	}
-
-	QByteArray hash = query.value(0).toByteArray();
-	if (!validatePassword(password, hash)) { return false; }
-
-	username = getUsername(email);
-	return true;
+	return false;
 }
 
 QByteArray LoginWidget::hashPassword(const QString &password) {
@@ -239,7 +248,7 @@ bool LoginWidget::validatePassword(const QString &password, const QByteArray &ha
 void LoginWidget::writeBinary(const QString &fileName, const QByteArray &data) {
 	QFile mfile(fileName);
 	if (!mfile.open(QFile::WriteOnly)) {
-		qDebug() << "Could not open file for writing";
+		qDebug() << "Could not open file" << fileName << "for writing";
 		return;
 	}
 	QDataStream out(&mfile);
@@ -252,7 +261,7 @@ QByteArray LoginWidget::readBinary(const QString &fileName) {
 	QFile mfile(fileName);
 	QByteArray data;
 	if (!mfile.open(QFile::ReadOnly)) {
-		qDebug() << "Could not open file for reading"; // todo: which file? include filename.
+		qDebug() << "Could not open file" << fileName << "for reading";
 		return QByteArray();
 	}
 	QDataStream in(&mfile);
@@ -264,10 +273,10 @@ QByteArray LoginWidget::readBinary(const QString &fileName) {
 }
 
 /*
- * Removes the .dat file that contains user login info
+ * Removes the cookie file that contains user login info used
  * for automatic login
  */
-void LoginWidget::logOutUser() {
+void LoginWidget::deleteRememberMeCookie() {
 	QFile::remove(accountFileName);
 }
 
@@ -279,3 +288,23 @@ QString LoginWidget::getUsername(const QString &email) {
 	return query.value(0).toString();
 }
 
+quint64 LoginWidget::generateRandomNumber() {
+	return QRandomGenerator::global()->generate64();
+}
+
+/*
+ * This function creates a second - single use password for the account.
+ * This password is saved in plain text in a file on the user's pc and
+ * a hashed version thereof on the database. Every time the user logs in,
+ * a new password is generated and saved
+ */
+void LoginWidget::generateLoginCookie(const QString& email) {
+	QSqlQuery query(db);
+	QString rememberMePW = QString::number(generateRandomNumber());
+
+	query.exec("UPDATE user_login SET remember_me = '" + hashPassword(rememberMePW) + "' WHERE email = '" + email + "';");
+
+	QByteArray input;
+	input.append(email + "\n" + rememberMePW);
+	writeBinary(accountFileName, input);
+}

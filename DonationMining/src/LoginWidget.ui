@@ -2,91 +2,91 @@
 <ui version="4.0">
  <class>uiLogin</class>
  <widget class="QWidget" name="uiLogin">
-     <property name="geometry">
-         <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>932</width>
-             <height>656</height>
-         </rect>
-     </property>
-     <property name="windowTitle">
-         <string>Form</string>
-     </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>932</width>
+    <height>656</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <item row="2" column="0">
+    <widget class="QWidget" name="centralWidget" native="true">
      <property name="styleSheet">
-         <string notr="true"/>
+      <string notr="true"/>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
-         <property name="leftMargin">
-             <number>0</number>
-         </property>
-         <property name="topMargin">
-             <number>0</number>
-         </property>
-         <property name="rightMargin">
-             <number>0</number>
-         </property>
-         <property name="bottomMargin">
-             <number>0</number>
-         </property>
-         <property name="spacing">
-             <number>0</number>
-         </property>
-         <item row="2" column="0">
-             <widget class="QWidget" name="centralWidget" native="true">
-                 <property name="styleSheet">
-                     <string notr="true"/>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout_2">
-                     <item row="6" column="3">
-                         <spacer name="horizontalSpacer_2">
-                             <property name="orientation">
-                                 <enum>Qt::Horizontal</enum>
-                             </property>
-                             <property name="sizeHint" stdset="0">
-                                 <size>
-                                     <width>40</width>
-                                     <height>20</height>
-                                 </size>
-                             </property>
-                         </spacer>
-                     </item>
-                     <item row="7" column="2">
-                         <spacer name="verticalSpacer_2">
-                             <property name="orientation">
-                                 <enum>Qt::Vertical</enum>
-                             </property>
-                             <property name="sizeHint" stdset="0">
-                                 <size>
-                                     <width>20</width>
-                                     <height>40</height>
-                                 </size>
-                             </property>
-                         </spacer>
-                     </item>
-                     <item row="6" column="0">
-                         <spacer name="horizontalSpacer">
-                             <property name="orientation">
-                                 <enum>Qt::Horizontal</enum>
-                             </property>
-                             <property name="sizeHint" stdset="0">
-                                 <size>
-                                     <width>40</width>
-                                     <height>20</height>
-                                 </size>
-                             </property>
-                         </spacer>
-                     </item>
-                     <item row="6" column="2">
-                         <widget class="Frame" name="centralFrame">
-                             <property name="sizePolicy">
-                                 <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-                                     <horstretch>0</horstretch>
-                                     <verstretch>0</verstretch>
-                                 </sizepolicy>
-                             </property>
-                             <property name="styleSheet">
-                                 <string notr="true">#centralFrame
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="6" column="3">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="7" column="2">
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="6" column="0">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="6" column="2">
+       <widget class="Frame" name="centralFrame">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#centralFrame
                                      {
                                      border: 0px solid grey;
                                      border-radius: 0px;
@@ -131,655 +131,695 @@
                                      color: rgb(255,0,0);
                                      }
                                  </string>
-                             </property>
-                             <property name="frameShape">
-                                 <enum>QFrame::StyledPanel</enum>
-                             </property>
-                             <property name="frameShadow">
-                                 <enum>QFrame::Raised</enum>
-                             </property>
-                             <property name="lineWidth">
-                                 <number>1</number>
-                             </property>
-                             <layout class="QGridLayout" name="gridLayout_6">
-                                 <property name="leftMargin">
-                                     <number>50</number>
-                                 </property>
-                                 <property name="topMargin">
-                                     <number>50</number>
-                                 </property>
-                                 <property name="rightMargin">
-                                     <number>50</number>
-                                 </property>
-                                 <property name="bottomMargin">
-                                     <number>50</number>
-                                 </property>
-                                 <item row="0" column="0">
-                                     <layout class="QHBoxLayout" name="horizontalLayout_5">
-                                         <property name="topMargin">
-                                             <number>0</number>
-                                         </property>
-                                         <item>
-                                             <spacer name="horizontalSpacer_9">
-                                                 <property name="orientation">
-                                                     <enum>Qt::Horizontal</enum>
-                                                 </property>
-                                                 <property name="sizeHint" stdset="0">
-                                                     <size>
-                                                         <width>40</width>
-                                                         <height>20</height>
-                                                     </size>
-                                                 </property>
-                                             </spacer>
-                                         </item>
-                                         <item>
-                                             <widget class="QLabel" name="label_title_logo">
-                                                 <property name="text">
-                                                     <string>logo goes here</string>
-                                                 </property>
-                                             </widget>
-                                         </item>
-                                         <item>
-                                             <spacer name="horizontalSpacer_10">
-                                                 <property name="orientation">
-                                                     <enum>Qt::Horizontal</enum>
-                                                 </property>
-                                                 <property name="sizeHint" stdset="0">
-                                                     <size>
-                                                         <width>40</width>
-                                                         <height>20</height>
-                                                     </size>
-                                                 </property>
-                                             </spacer>
-                                         </item>
-                                     </layout>
-                                 </item>
-                                 <item row="2" column="0">
-                                     <widget class="StackedWidget" name="stackedWidget">
-                                         <property name="currentIndex">
-                                             <number>0</number>
-                                         </property>
-                                         <widget class="QWidget" name="loginPage">
-                                             <layout class="QVBoxLayout" name="verticalLayout_2">
-                                                 <property name="spacing">
-                                                     <number>9</number>
-                                                 </property>
-                                                 <property name="leftMargin">
-                                                     <number>0</number>
-                                                 </property>
-                                                 <property name="topMargin">
-                                                     <number>0</number>
-                                                 </property>
-                                                 <property name="rightMargin">
-                                                     <number>0</number>
-                                                 </property>
-                                                 <property name="bottomMargin">
-                                                     <number>0</number>
-                                                 </property>
-                                                 <item>
-                                                     <layout class="QHBoxLayout" name="horizontalLayout_2">
-                                                         <property name="topMargin">
-                                                             <number>0</number>
-                                                         </property>
-                                                         <property name="bottomMargin">
-                                                             <number>0</number>
-                                                         </property>
-                                                         <item>
-                                                             <widget class="QLabel" name="label_3">
-                                                                 <property name="font">
-                                                                     <font>
-                                                                         <pointsize>16</pointsize>
-                                                                     </font>
-                                                                 </property>
-                                                                 <property name="text">
-                                                                     <string>Sign In</string>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                         <item>
-                                                             <widget class="QLabel" name="label_incorrectLogin">
-                                                                 <property name="enabled">
-                                                                     <bool>true</bool>
-                                                                 </property>
-                                                                 <property name="font">
-                                                                     <font>
-                                                                         <pointsize>10</pointsize>
-                                                                         <weight>50</weight>
-                                                                         <italic>false</italic>
-                                                                         <bold>false</bold>
-                                                                         <underline>false</underline>
-                                                                         <strikeout>false</strikeout>
-                                                                     </font>
-                                                                 </property>
-                                                                 <property name="text">
-                                                                     <string>Incorrect email or password</string>
-                                                                 </property>
-                                                                 <property name="alignment">
-                                                                     <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                     </layout>
-                                                 </item>
-                                                 <item>
-                                                     <layout class="QVBoxLayout" name="verticalLayout_4">
-                                                         <property name="topMargin">
-                                                             <number>0</number>
-                                                         </property>
-                                                         <item>
-                                                             <widget class="QLabel" name="label_2">
-                                                                 <property name="text">
-                                                                     <string>Email:</string>
-                                                                 </property>
-                                                                 <property name="alignment">
-                                                                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                         <item>
-                                                             <widget class="QLineEdit" name="lineEdit_loginEmail">
-                                                                 <property name="minimumSize">
-                                                                     <size>
-                                                                         <width>150</width>
-                                                                         <height>25</height>
-                                                                     </size>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                     </layout>
-                                                 </item>
-                                                 <item>
-                                                     <layout class="QVBoxLayout" name="verticalLayout_5">
-                                                         <property name="topMargin">
-                                                             <number>0</number>
-                                                         </property>
-                                                         <item>
-                                                             <widget class="QLabel" name="label">
-                                                                 <property name="text">
-                                                                     <string>Password:</string>
-                                                                 </property>
-                                                                 <property name="alignment">
-                                                                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                         <item>
-                                                             <widget class="QLineEdit" name="lineEdit_loginPassword">
-                                                                 <property name="minimumSize">
-                                                                     <size>
-                                                                         <width>150</width>
-                                                                         <height>25</height>
-                                                                     </size>
-                                                                 </property>
-                                                                 <property name="inputMask">
-                                                                     <string/>
-                                                                 </property>
-                                                                 <property name="text">
-                                                                     <string/>
-                                                                 </property>
-                                                                 <property name="echoMode">
-                                                                     <enum>QLineEdit::Password</enum>
-                                                                 </property>
-                                                                 <property name="placeholderText">
-                                                                     <string/>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                     </layout>
-                                                 </item>
-                                                 <item>
-                                                     <layout class="QHBoxLayout" name="horizontalLayout_7">
-                                                         <property name="topMargin">
-                                                             <number>0</number>
-                                                         </property>
-                                                         <item>
-                                                             <widget class="QCheckBox" name="checkBox_rememberMe">
-                                                                 <property name="sizePolicy">
-                                                                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                                                                         <horstretch>0</horstretch>
-                                                                         <verstretch>0</verstretch>
-                                                                     </sizepolicy>
-                                                                 </property>
-                                                                 <property name="text">
-                                                                     <string>Remember me</string>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                         <item>
-                                                             <widget class="Line" name="line">
-                                                                 <property name="orientation">
-                                                                     <enum>Qt::Vertical</enum>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                         <item>
-                                                             <widget class="QPushButton" name="pushButton_forgotPassword">
-                                                                 <property name="styleSheet">
-                                                                     <string notr="true"/>
-                                                                 </property>
-                                                                 <property name="text">
-                                                                     <string>Forgot password?</string>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                     </layout>
-                                                 </item>
-                                                 <item>
-                                                     <widget class="QPushButton" name="pushButton_login">
-                                                         <property name="minimumSize">
-                                                             <size>
-                                                                 <width>260</width>
-                                                                 <height>35</height>
-                                                             </size>
-                                                         </property>
-                                                         <property name="font">
-                                                             <font>
-                                                                 <family>Cantarell</family>
-                                                             </font>
-                                                         </property>
-                                                         <property name="styleSheet">
-                                                             <string notr="true"/>
-                                                         </property>
-                                                         <property name="text">
-                                                             <string>SIGN IN</string>
-                                                         </property>
-                                                     </widget>
-                                                 </item>
-                                                 <item>
-                                                     <layout class="QHBoxLayout" name="horizontalLayout">
-                                                         <property name="topMargin">
-                                                             <number>0</number>
-                                                         </property>
-                                                         <property name="bottomMargin">
-                                                             <number>0</number>
-                                                         </property>
-                                                         <item>
-                                                             <widget class="QLabel" name="label_7">
-                                                                 <property name="text">
-                                                                     <string>Don't have an account?</string>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                         <item>
-                                                             <widget class="QPushButton" name="pushButton_switchToRegisterPage">
-                                                                 <property name="styleSheet">
-                                                                     <string notr="true"/>
-                                                                 </property>
-                                                                 <property name="text">
-                                                                     <string>Register</string>
-                                                                 </property>
-                                                                 <property name="flat">
-                                                                     <bool>true</bool>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                         <item>
-                                                             <spacer name="horizontalSpacer_7">
-                                                                 <property name="orientation">
-                                                                     <enum>Qt::Horizontal</enum>
-                                                                 </property>
-                                                                 <property name="sizeHint" stdset="0">
-                                                                     <size>
-                                                                         <width>40</width>
-                                                                         <height>20</height>
-                                                                     </size>
-                                                                 </property>
-                                                             </spacer>
-                                                         </item>
-                                                     </layout>
-                                                 </item>
-                                             </layout>
-                                         </widget>
-                                         <widget class="QWidget" name="registerPage">
-                                             <layout class="QVBoxLayout" name="verticalLayout">
-                                                 <property name="spacing">
-                                                     <number>9</number>
-                                                 </property>
-                                                 <property name="leftMargin">
-                                                     <number>0</number>
-                                                 </property>
-                                                 <property name="topMargin">
-                                                     <number>0</number>
-                                                 </property>
-                                                 <property name="rightMargin">
-                                                     <number>0</number>
-                                                 </property>
-                                                 <property name="bottomMargin">
-                                                     <number>0</number>
-                                                 </property>
-                                                 <item>
-                                                     <layout class="QHBoxLayout" name="horizontalLayout_4">
-                                                         <property name="topMargin">
-                                                             <number>0</number>
-                                                         </property>
-                                                         <item>
-                                                             <widget class="QLabel" name="label_6">
-                                                                 <property name="font">
-                                                                     <font>
-                                                                         <pointsize>16</pointsize>
-                                                                     </font>
-                                                                 </property>
-                                                                 <property name="text">
-                                                                     <string>Register</string>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                     </layout>
-                                                 </item>
-                                                 <item>
-                                                     <layout class="QVBoxLayout" name="verticalLayout_7">
-                                                         <property name="spacing">
-                                                             <number>0</number>
-                                                         </property>
-                                                         <property name="topMargin">
-                                                             <number>0</number>
-                                                         </property>
-                                                         <item>
-                                                             <widget class="QLabel" name="label_4">
-                                                                 <property name="text">
-                                                                     <string>Email:</string>
-                                                                 </property>
-                                                                 <property name="alignment">
-                                                                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                         <item>
-                                                             <widget class="QLineEdit" name="lineEdit_registerEmail">
-                                                                 <property name="minimumSize">
-                                                                     <size>
-                                                                         <width>150</width>
-                                                                         <height>25</height>
-                                                                     </size>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                     </layout>
-                                                 </item>
-                                                 <item>
-                                                     <layout class="QVBoxLayout" name="verticalLayout_10">
-                                                         <property name="spacing">
-                                                             <number>0</number>
-                                                         </property>
-                                                         <property name="topMargin">
-                                                             <number>0</number>
-                                                         </property>
-                                                         <item>
-                                                             <widget class="QLabel" name="label_9">
-                                                                 <property name="text">
-                                                                     <string>Username:</string>
-                                                                 </property>
-                                                                 <property name="alignment">
-                                                                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                         <item>
-                                                             <widget class="QLineEdit" name="lineEdit_username">
-                                                                 <property name="placeholderText">
-                                                                     <string>[A-Za-z0-9-_.] are valid</string>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                     </layout>
-                                                 </item>
-                                                 <item>
-                                                     <layout class="QVBoxLayout" name="verticalLayout_8">
-                                                         <property name="spacing">
-                                                             <number>0</number>
-                                                         </property>
-                                                         <property name="topMargin">
-                                                             <number>0</number>
-                                                         </property>
-                                                         <item>
-                                                             <widget class="QLabel" name="label_5">
-                                                                 <property name="text">
-                                                                     <string>Password:</string>
-                                                                 </property>
-                                                                 <property name="alignment">
-                                                                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                         <item>
-                                                             <widget class="QLineEdit" name="lineEdit_registerPassword">
-                                                                 <property name="minimumSize">
-                                                                     <size>
-                                                                         <width>150</width>
-                                                                         <height>25</height>
-                                                                     </size>
-                                                                 </property>
-                                                                 <property name="echoMode">
-                                                                     <enum>QLineEdit::Password</enum>
-                                                                 </property>
-                                                                 <property name="placeholderText">
-                                                                     <string>8+ characters</string>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                     </layout>
-                                                 </item>
-                                                 <item>
-                                                     <layout class="QVBoxLayout" name="verticalLayout_9">
-                                                         <property name="spacing">
-                                                             <number>0</number>
-                                                         </property>
-                                                         <property name="topMargin">
-                                                             <number>0</number>
-                                                         </property>
-                                                         <item>
-                                                             <widget class="QLabel" name="label_8">
-                                                                 <property name="text">
-                                                                     <string>Repeat Password:</string>
-                                                                 </property>
-                                                                 <property name="alignment">
-                                                                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                         <item>
-                                                             <widget class="QLineEdit" name="lineEdit_registerPasswordRep">
-                                                                 <property name="echoMode">
-                                                                     <enum>QLineEdit::Password</enum>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                     </layout>
-                                                 </item>
-                                                 <item>
-                                                     <widget class="QPushButton" name="pushButton_register">
-                                                         <property name="minimumSize">
-                                                             <size>
-                                                                 <width>260</width>
-                                                                 <height>35</height>
-                                                             </size>
-                                                         </property>
-                                                         <property name="font">
-                                                             <font>
-                                                                 <kerning>true</kerning>
-                                                             </font>
-                                                         </property>
-                                                         <property name="styleSheet">
-                                                             <string notr="true"/>
-                                                         </property>
-                                                         <property name="text">
-                                                             <string>REGISTER</string>
-                                                         </property>
-                                                     </widget>
-                                                 </item>
-                                                 <item>
-                                                     <layout class="QHBoxLayout" name="horizontalLayout_3">
-                                                         <property name="bottomMargin">
-                                                             <number>0</number>
-                                                         </property>
-                                                         <item>
-                                                             <widget class="QLabel" name="label_10">
-                                                                 <property name="text">
-                                                                     <string>Already have an account?</string>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                         <item>
-                                                             <widget class="QPushButton" name="pushButton_switchToLoginPage">
-                                                                 <property name="styleSheet">
-                                                                     <string notr="true"/>
-                                                                 </property>
-                                                                 <property name="text">
-                                                                     <string>Sign In</string>
-                                                                 </property>
-                                                             </widget>
-                                                         </item>
-                                                         <item>
-                                                             <spacer name="horizontalSpacer_8">
-                                                                 <property name="orientation">
-                                                                     <enum>Qt::Horizontal</enum>
-                                                                 </property>
-                                                                 <property name="sizeHint" stdset="0">
-                                                                     <size>
-                                                                         <width>40</width>
-                                                                         <height>20</height>
-                                                                     </size>
-                                                                 </property>
-                                                             </spacer>
-                                                         </item>
-                                                     </layout>
-                                                 </item>
-                                             </layout>
-                                         </widget>
-                                     </widget>
-                                 </item>
-                             </layout>
-                         </widget>
-                     </item>
-                     <item row="0" column="2">
-                         <spacer name="verticalSpacer">
-                             <property name="orientation">
-                                 <enum>Qt::Vertical</enum>
-                             </property>
-                             <property name="sizeHint" stdset="0">
-                                 <size>
-                                     <width>20</width>
-                                     <height>40</height>
-                                 </size>
-                             </property>
-                         </spacer>
-                     </item>
-                 </layout>
-             </widget>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <property name="lineWidth">
+         <number>1</number>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_6">
+         <property name="leftMargin">
+          <number>50</number>
+         </property>
+         <property name="topMargin">
+          <number>50</number>
+         </property>
+         <property name="rightMargin">
+          <number>50</number>
+         </property>
+         <property name="bottomMargin">
+          <number>50</number>
+         </property>
+         <item row="0" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <spacer name="horizontalSpacer_9">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_title_logo">
+             <property name="text">
+              <string>logo goes here</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_10">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
          </item>
+         <item row="2" column="0">
+          <widget class="StackedWidget" name="stackedWidget">
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <widget class="QWidget" name="loginPage">
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <property name="spacing">
+              <number>9</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_3">
+                 <property name="font">
+                  <font>
+                   <pointsize>16</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Sign In</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_incorrectLogin">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <underline>false</underline>
+                   <strikeout>false</strikeout>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Incorrect email or password</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_4">
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_2">
+                 <property name="text">
+                  <string>Email:</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_loginEmail">
+                 <property name="minimumSize">
+                  <size>
+                   <width>150</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_5">
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label">
+                 <property name="text">
+                  <string>Password:</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_loginPassword">
+                 <property name="minimumSize">
+                  <size>
+                   <width>150</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                 <property name="inputMask">
+                  <string/>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="echoMode">
+                  <enum>QLineEdit::Password</enum>
+                 </property>
+                 <property name="placeholderText">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_7">
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QCheckBox" name="checkBox_rememberMe">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Remember me</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="Line" name="line">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_forgotPassword">
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string>Forgot password?</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_login">
+               <property name="minimumSize">
+                <size>
+                 <width>260</width>
+                 <height>35</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Cantarell</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>SIGN IN</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout">
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_7">
+                 <property name="text">
+                  <string>Don't have an account?</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_switchToRegisterPage">
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string>Register</string>
+                 </property>
+                 <property name="flat">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_7">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="registerPage">
+            <layout class="QVBoxLayout" name="verticalLayout">
+             <property name="spacing">
+              <number>9</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_6">
+                 <property name="font">
+                  <font>
+                   <pointsize>16</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Register</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_7">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_4">
+                 <property name="text">
+                  <string>Email:</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_registerEmail">
+                 <property name="minimumSize">
+                  <size>
+                   <width>150</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_10">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_9">
+                 <property name="text">
+                  <string>Username:</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_username">
+                 <property name="placeholderText">
+                  <string>[A-Za-z0-9-_.] are valid</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_8">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_5">
+                 <property name="text">
+                  <string>Password:</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_registerPassword">
+                 <property name="minimumSize">
+                  <size>
+                   <width>150</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                 <property name="echoMode">
+                  <enum>QLineEdit::Password</enum>
+                 </property>
+                 <property name="placeholderText">
+                  <string>8+ characters</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_9">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_8">
+                 <property name="text">
+                  <string>Repeat Password:</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_registerPasswordRep">
+                 <property name="echoMode">
+                  <enum>QLineEdit::Password</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_register">
+               <property name="minimumSize">
+                <size>
+                 <width>260</width>
+                 <height>35</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <kerning>true</kerning>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string>REGISTER</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_10">
+                 <property name="text">
+                  <string>Already have an account?</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_switchToLoginPage">
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string>Sign In</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_8">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <property name="topMargin">
+            <number>20</number>
+           </property>
+           <item>
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_padlock_icon">
+             <property name="text">
+              <string>padlock goes here</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
      </layout>
+    </widget>
+   </item>
+  </layout>
  </widget>
-    <customwidgets>
-        <customwidget>
-            <class>StackedWidget</class>
-            <extends>QStackedWidget</extends>
-            <header>StackedWidget.h</header>
-            <container>1</container>
-        </customwidget>
-        <customwidget>
-            <class>Frame</class>
-            <extends>QFrame</extends>
-            <header>Frame.h</header>
-            <container>1</container>
-        </customwidget>
-    </customwidgets>
-    <resources/>
-    <connections>
-        <connection>
-            <sender>lineEdit_loginEmail</sender>
-            <signal>returnPressed()</signal>
-            <receiver>pushButton_login</receiver>
-            <slot>click()</slot>
-            <hints>
-                <hint type="sourcelabel">
-                    <x>465</x>
-                    <y>274</y>
-                </hint>
-                <hint type="destinationlabel">
-                    <x>465</x>
-                    <y>428</y>
-                </hint>
-            </hints>
-        </connection>
-        <connection>
-            <sender>lineEdit_loginPassword</sender>
-            <signal>returnPressed()</signal>
-            <receiver>pushButton_login</receiver>
-            <slot>click()</slot>
-            <hints>
-                <hint type="sourcelabel">
-                    <x>465</x>
-                    <y>333</y>
-                </hint>
-                <hint type="destinationlabel">
-                    <x>465</x>
-                    <y>428</y>
-                </hint>
-            </hints>
-        </connection>
-        <connection>
-            <sender>lineEdit_registerEmail</sender>
-            <signal>returnPressed()</signal>
-            <receiver>pushButton_register</receiver>
-            <slot>click()</slot>
-            <hints>
-                <hint type="sourcelabel">
-                    <x>465</x>
-                    <y>251</y>
-                </hint>
-                <hint type="destinationlabel">
-                    <x>465</x>
-                    <y>451</y>
-                </hint>
-            </hints>
-        </connection>
-        <connection>
-            <sender>lineEdit_username</sender>
-            <signal>returnPressed()</signal>
-            <receiver>pushButton_register</receiver>
-            <slot>click()</slot>
-            <hints>
-                <hint type="sourcelabel">
-                    <x>465</x>
-                    <y>304</y>
-                </hint>
-                <hint type="destinationlabel">
-                    <x>465</x>
-                    <y>451</y>
-                </hint>
-            </hints>
-        </connection>
-        <connection>
-            <sender>lineEdit_registerPassword</sender>
-            <signal>returnPressed()</signal>
-            <receiver>pushButton_register</receiver>
-            <slot>click()</slot>
-            <hints>
-                <hint type="sourcelabel">
-                    <x>465</x>
-                    <y>357</y>
-                </hint>
-                <hint type="destinationlabel">
-                    <x>465</x>
-                    <y>451</y>
-                </hint>
-            </hints>
-        </connection>
-        <connection>
-            <sender>lineEdit_registerPasswordRep</sender>
-            <signal>returnPressed()</signal>
-            <receiver>pushButton_register</receiver>
-            <slot>click()</slot>
-            <hints>
-                <hint type="sourcelabel">
-                    <x>465</x>
-                    <y>410</y>
-                </hint>
-                <hint type="destinationlabel">
-                    <x>465</x>
-                    <y>451</y>
-                </hint>
-            </hints>
-        </connection>
-    </connections>
+ <customwidgets>
+  <customwidget>
+   <class>StackedWidget</class>
+   <extends>QStackedWidget</extends>
+   <header>StackedWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Frame</class>
+   <extends>QFrame</extends>
+   <header>Frame.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>lineEdit_loginEmail</sender>
+   <signal>returnPressed()</signal>
+   <receiver>pushButton_login</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>465</x>
+     <y>274</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>465</x>
+     <y>428</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_loginPassword</sender>
+   <signal>returnPressed()</signal>
+   <receiver>pushButton_login</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>465</x>
+     <y>333</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>465</x>
+     <y>428</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_registerEmail</sender>
+   <signal>returnPressed()</signal>
+   <receiver>pushButton_register</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>465</x>
+     <y>251</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>465</x>
+     <y>451</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_username</sender>
+   <signal>returnPressed()</signal>
+   <receiver>pushButton_register</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>465</x>
+     <y>304</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>465</x>
+     <y>451</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_registerPassword</sender>
+   <signal>returnPressed()</signal>
+   <receiver>pushButton_register</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>465</x>
+     <y>357</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>465</x>
+     <y>451</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_registerPasswordRep</sender>
+   <signal>returnPressed()</signal>
+   <receiver>pushButton_register</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>465</x>
+     <y>410</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>465</x>
+     <y>451</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

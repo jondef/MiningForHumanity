@@ -42,7 +42,7 @@ private slots:
 
 	void setPixmap(const QPixmap &);
 
-	const QPixmap *pixmap() const;
+	const QPixmap &pixmap() const;
 
 	void createUserAccount();
 
@@ -60,7 +60,11 @@ public slots:
 
 	bool autoLogin();
 
-	static void logOutUser();
+	static void deleteRememberMeCookie();
+
+	static quint64 generateRandomNumber();
+
+	void generateLoginCookie(const QString& email);
 
 Q_SIGNALS:
 
@@ -73,7 +77,8 @@ private:
 	QSqlDatabase db;
 
 public:
-	QString username;
+	QString m_username;
+
 };
 
 

@@ -9,6 +9,7 @@
 #include <QAction>
 #include <QMessageBox>
 #include <QCloseEvent>
+#include "AbstractTableModel.h"
 
 QChart *createSplineChart();
 
@@ -20,7 +21,7 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	this->argv = argv;
 
 	if (loginWindow->autoLogin()) {
-		showDashboard(loginWindow->username);
+		showDashboard(loginWindow->m_username);
 	} else {
 		showLoginScreen();
 	}
@@ -116,7 +117,7 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 						   "QMenu::separator { color: black; }");
 
 	connect(submenu->addAction(tr("Sign out")), &QAction::triggered, [this]() {
-		LoginWidget::logOutUser();
+		LoginWidget::deleteRememberMeCookie();
 		showLoginScreen();
 	});
 	connect(submenu->addAction(tr("Minimize")), &QAction::triggered, [this]() { close(); });
@@ -133,7 +134,7 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	menu->setMenuWidth(100);
 	menu->setBurgerIcon(QIcon(":/icons/burger/burger"));
 	menu->addMenuAction(QIcon(":/icons/burger/collections"), "Dashboard");
-	menu->addMenuAction(QIcon(":/icons/burger/albums"), "Reports");
+	menu->addMenuAction(QIcon(":/icons/burger/albums"), "Projects");
 	menu->addStretch();
 	menu->addMenuAction(QIcon(":/icons/burger/twitter_icon"), "Twitter");
 	menu->addMenuAction(QIcon(":/icons/burger/facebook_icon"), "Facebook");
@@ -156,6 +157,18 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	connect(menu, &BurgerMenu::triggered, [this, menu](QAction *action) {
 		uint8_t index = menu->actions().indexOf(action);
 		ui->stackedWidget->setCurrentIndex(index);
+	});
+
+	// PROJECT TAB
+	AbstractTableModel *model = new AbstractTableModel();
+	ui->tableView_projectList->setModel(model);
+	ui->tableView_projectList->setColumnHidden(0, true);
+
+	connect(ui->pushButton_projectConfirm, &QPushButton::clicked, this, [this]() {
+		QItemSelectionModel *select = ui->tableView_projectList->selectionModel();
+		if (select->hasSelection()) {
+			qDebug() << select->selectedRows(0).at(0).data();
+		}
 	});
 
 
@@ -220,6 +233,7 @@ MainWindow::~MainWindow() {
 }
 
 #pragma region graph
+
 DataTable generateRandomData(int listCount, int valueMax, int valueCount) {
 	DataTable dataTable;
 
