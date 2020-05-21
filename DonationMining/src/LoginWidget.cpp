@@ -12,8 +12,6 @@
 #include <QtWidgets/QMessageBox>
 #include "bcrypt/BCrypt.hpp"
 
-// todo: add a small padlock at the bottom of the login widget
-
 LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent), ui(new Ui::uiLogin) {
 	ui->setupUi(this);
 
@@ -215,7 +213,6 @@ bool LoginWidget::autoLogin() {
 		}
 		QString email = data.split('\n').at(0); // todo: use QVariant
 		QString password = data.split('\n').at(1);
-		qDebug() << password;
 		QString command = QString("SELECT remember_me FROM user_login WHERE email = '%1'").arg(email);
 
 		QSqlQuery query(db);
