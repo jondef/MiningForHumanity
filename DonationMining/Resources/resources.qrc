@@ -8,6 +8,7 @@
         <file alias="images/mining_for_humanity_logo">mining_for_humanity_icon.png</file>
         <file alias="images/new_york">new_york.jpg</file>
         <file alias="images/padlock">padlock_icon.png</file>
+        <file alias="images/MFH_logo_2">MFH_logo_white_transparent.png</file>
     </qresource>
     <qresource prefix="/icons/burger">
         <file alias="burger">burger/burger.png</file>

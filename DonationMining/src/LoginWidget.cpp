@@ -23,9 +23,9 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent), ui(new Ui::uiLogin)
 	blurLayer->setGraphicsEffect(p_blur);
 
 	// set the logo at the top
-	QPixmap map(":/images/mining_for_humanity_logo");
+	QPixmap map(":/images/MFH_logo_2");
 	QSize pixSize = map.size();
-	pixSize.scale(QSize(100, 100), Qt::KeepAspectRatio);
+	pixSize.scale(QSize(150, 150), Qt::KeepAspectRatio);
 	QPixmap scaledPix = map.scaled(pixSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
 	ui->label_title_logo->setPixmap(scaledPix);
 
@@ -217,7 +217,7 @@ bool LoginWidget::autoLogin() {
 
 		QSqlQuery query(db);
 		if (!query.exec(command)) { return false; }
-		if (!query.first()) { return false;	}
+		if (!query.first()) { return false; }
 
 		QByteArray hash = query.value(0).toByteArray();
 		if (!validatePassword(password, hash)) { // password is wrong
@@ -280,8 +280,8 @@ void LoginWidget::deleteRememberMeCookie() {
 QString LoginWidget::getUsername(const QString &email) {
 	QString command = QString("SELECT username FROM user_login WHERE email = '%1'").arg(email);
 	QSqlQuery query(db);
-	if (!query.exec(command)) {	return QString(); }
-	if (!query.first()) { return QString();	}
+	if (!query.exec(command)) { return QString(); }
+	if (!query.first()) { return QString(); }
 	return query.value(0).toString();
 }
 
@@ -295,7 +295,7 @@ quint64 LoginWidget::generateRandomNumber() {
  * a hashed version thereof on the database. Every time the user logs in,
  * a new password is generated and saved
  */
-void LoginWidget::generateLoginCookie(const QString& email) {
+void LoginWidget::generateLoginCookie(const QString &email) {
 	QSqlQuery query(db);
 	QString rememberMePW = QString::number(generateRandomNumber());
 
