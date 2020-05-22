@@ -13,7 +13,7 @@ print(f"{Qt_dll_folder=}")
 print(f"{Qt_plugins_folder=}")
 
 # run the executable to get the error output
-cmd = [win_executable_dir + "DonationMining.exe"]
+cmd = [win_executable_dir + "MiningForHumanity.exe"]
 result = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)  # run() / Popen()
 output = result.stdout.readlines()
 

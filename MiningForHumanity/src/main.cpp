@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
 	// these are used for qSettings
 	QCoreApplication::setOrganizationName("MiningForHumanity");
 	QCoreApplication::setOrganizationDomain("miningforhumanity.org");
-	QCoreApplication::setApplicationName("DonationMining");
+	QCoreApplication::setApplicationName("MiningForHumanity");
 
 	qDebug() << QStyleFactory::keys();
 	qDebug() << "Plugins loaded from: " << QCoreApplication::libraryPaths();

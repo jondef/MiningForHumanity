@@ -50,7 +50,7 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	auto sysTrayIcon = new QSystemTrayIcon(this);
 	sysTrayIcon->setContextMenu(trayIconMenu);
 	sysTrayIcon->setIcon(QIcon(":/images/icon"));
-	sysTrayIcon->setToolTip(tr("DonationMining"));
+	sysTrayIcon->setToolTip(tr("MiningForHumanity"));
 	sysTrayIcon->show();
 
 	connect(sysTrayIcon, &QSystemTrayIcon::activated, [this](QSystemTrayIcon::ActivationReason reason) {

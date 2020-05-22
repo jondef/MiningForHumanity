@@ -1,5 +1,5 @@
 set(CMAKE_CXX_STANDARD 20)
-project(DonationMining)
+project(MiningForHumanity)
 
 option(STATIC_BUILD_WIN "Link Qt statically for target Windows" OFF)
 
@@ -132,23 +132,23 @@ file(GLOB QRC_FILES
 qt5_wrap_ui(ui_wrap ${UI_FILES})
 
 if (WIN32)
-	add_executable(DonationMining WIN32 ${SOURCE_FILES} ${HEADER_FILES} ${ui_wrap} ${QRC_FILES})
+	add_executable(MiningForHumanity WIN32 ${SOURCE_FILES} ${HEADER_FILES} ${ui_wrap} ${QRC_FILES})
 else ()
-	add_executable(DonationMining ${SOURCE_FILES} ${HEADER_FILES} ${ui_wrap} ${QRC_FILES})
+	add_executable(MiningForHumanity ${SOURCE_FILES} ${HEADER_FILES} ${ui_wrap} ${QRC_FILES})
 endif ()
 
 ################################
 # Linking
 ################################
-target_link_libraries(DonationMining Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Charts Qt5::Network Qt5::Sql)
+target_link_libraries(MiningForHumanity Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Charts Qt5::Network Qt5::Sql)
 
 if (WIN32)
-	target_link_libraries(DonationMining ${CMAKE_BINARY_DIR}/lib/libbcrypt.dll.a)
+	target_link_libraries(MiningForHumanity ${CMAKE_BINARY_DIR}/lib/libbcrypt.dll.a)
 else ()
-	target_link_libraries(DonationMining ${CMAKE_BINARY_DIR}/lib/libbcrypt.a)
+	target_link_libraries(MiningForHumanity ${CMAKE_BINARY_DIR}/lib/libbcrypt.a)
 endif ()
 
 if (WIN32 AND STATIC_BUILD_WIN)
-	target_link_libraries(DonationMining Qt5::QWindowsIntegrationPlugin Qt5::QGenericEnginePlugin Qt5::QJpegPlugin Qt5::QGifPlugin Qt5::QICOPlugin)
-	target_link_libraries(DonationMining libmariadb.dll.a) # todo: doesn't work -> fix it
+	target_link_libraries(MiningForHumanity Qt5::QWindowsIntegrationPlugin Qt5::QGenericEnginePlugin Qt5::QJpegPlugin Qt5::QGifPlugin Qt5::QICOPlugin)
+	target_link_libraries(MiningForHumanity libmariadb.dll.a) # todo: doesn't work -> fix it
 endif()

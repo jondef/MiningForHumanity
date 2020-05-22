@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(DonationMining)
+project(MiningForHumanity)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 if (${CMAKE_BUILD_TYPE} STREQUAL Debug)
@@ -33,7 +33,7 @@ add_subdirectory(xmrig)
 add_subdirectory(libbcrypt)
 
 ################################
-# DonationMining
+# MiningForHumanity
 ################################
-add_subdirectory(DonationMining)
+add_subdirectory(MiningForHumanity)
 
