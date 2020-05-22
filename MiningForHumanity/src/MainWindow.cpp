@@ -174,7 +174,7 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 
 	//////////////////////////////////
 
-#pragma region graph
+	//<editor-fold desc="Graph">
 	// Assign names to the set of bars used
 	QBarSet *set0 = new QBarSet("Altuve");
 
@@ -225,15 +225,14 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	qApp->setPalette(pal);*/
 
 	ui->chartsLayout->addWidget(chartView, 0, 1, 1, 1);
-#pragma endregion graph
+	//</editor-fold>
 }
 
 MainWindow::~MainWindow() {
 	delete ui;
 }
 
-#pragma region graph
-
+//<editor-fold desc="Graph">
 DataTable generateRandomData(int listCount, int valueMax, int valueCount) {
 	DataTable dataTable;
 
@@ -276,8 +275,7 @@ QChart *createSplineChart() {
 	axisY->setLabelFormat("%.1f  ");
 	return chart;
 }
-
-#pragma endregion graph
+//</editor-fold>
 
 void MainWindow::showEvent(QShowEvent *event) {
 	// If the user opens the app for the first time,

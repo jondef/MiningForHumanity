@@ -228,7 +228,9 @@ bool LoginWidget::autoLogin() {
 		generateLoginCookie(email);
 		return true;
 	}
+	//<editor-fold desc="Description">
 	return false;
+	//</editor-fold>
 }
 
 QByteArray LoginWidget::hashPassword(const QString &password) {
