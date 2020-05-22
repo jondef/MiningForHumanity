@@ -1,4 +1,4 @@
-# DonationMining
+# MiningForHumanity
 
 # Cloning
 Make sure git submodules are up to date:
