@@ -1,7 +1,7 @@
-[submodule "libbcrypt"]
-	path = libbcrypt
-	url = https://github.com/trusch/libbcrypt
 [submodule "xmrig"]
 	path = xmrig
 	url = https://github.com/jondef/xmrig
 	branch = master
+[submodule "libbcrypt"]
+	path = libbcrypt
+	url = https://github.com/jondef/libbcrypt.git
