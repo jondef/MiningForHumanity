@@ -1,6 +1,6 @@
 [submodule "xmrig"]
 	path = xmrig
-	url = https://github.com/jondef/xmrig
+	url = https://github.com/jondef/xmrig.git
 	branch = master
 [submodule "libbcrypt"]
 	path = libbcrypt
