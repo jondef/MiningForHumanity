@@ -101,7 +101,6 @@
                                      color: rgb(39, 121, 246);
                                      border-radius: 1px;
                                      text-decoration: underline;
-                                     outline : none;
                                      }
 
                                      #pushButton_switchToRegisterPage:pressed, #pushButton_forgotPassword:pressed,
@@ -114,7 +113,6 @@
                                      border-radius: 5px;
                                      background-color: rgb(71, 160, 219);
                                      color: white;
-                                     outline : none;
                                      }
 
                                      #pushButton_register:hover, #pushButton_login:hover {
@@ -360,6 +358,9 @@
                  <property name="text">
                   <string>Forgot password?</string>
                  </property>
+                 <property name="autoDefault">
+                  <bool>true</bool>
+                 </property>
                 </widget>
                </item>
               </layout>
@@ -382,6 +383,9 @@
                </property>
                <property name="text">
                 <string>SIGN IN</string>
+               </property>
+               <property name="autoDefault">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -408,8 +412,11 @@
                  <property name="text">
                   <string>Register</string>
                  </property>
-                 <property name="flat">
+                 <property name="autoDefault">
                   <bool>true</bool>
+                 </property>
+                 <property name="flat">
+                  <bool>false</bool>
                  </property>
                 </widget>
                </item>
@@ -605,6 +612,9 @@
                <property name="text">
                 <string>REGISTER</string>
                </property>
+               <property name="autoDefault">
+                <bool>true</bool>
+               </property>
               </widget>
              </item>
              <item>
@@ -626,6 +636,9 @@
                  </property>
                  <property name="text">
                   <string>Sign In</string>
+                 </property>
+                 <property name="autoDefault">
+                  <bool>true</bool>
                  </property>
                 </widget>
                </item>
