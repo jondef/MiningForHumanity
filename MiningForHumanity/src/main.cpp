@@ -32,6 +32,11 @@ int main(int argc, char *argv[]) {
 	QCoreApplication::setOrganizationDomain("miningforhumanity.org");
 	QCoreApplication::setApplicationName("MiningForHumanity");
 
+	QTranslator myappTranslator;
+	myappTranslator.load(":/translations/MiningForHumanity_fr.qm");
+	qDebug() << myappTranslator.isEmpty();
+	QApplication::installTranslator(&myappTranslator);
+
 	qDebug() << QStyleFactory::keys();
 	qDebug() << "Plugins loaded from: " << QCoreApplication::libraryPaths();
 	QApplication::setStyle(QStyleFactory::create("Fusion"));

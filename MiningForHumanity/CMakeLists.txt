@@ -83,7 +83,7 @@ if (WIN32 AND STATIC_BUILD_WIN)
 	#	set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
 endif ()
 
-FIND_PACKAGE(Qt5 COMPONENTS Core Gui Widgets Charts Network Sql PrintSupport Test QuickTest REQUIRED)
+FIND_PACKAGE(Qt5 COMPONENTS Core Gui Widgets Charts Network Sql PrintSupport Test QuickTest LinguistTools REQUIRED)
 
 if (WIN32 AND STATIC_BUILD_WIN)
 	foreach (plugin ${Qt5Gui_PLUGINS})
@@ -126,15 +126,25 @@ file(GLOB QRC_FILES
 		"${PROJECT_SOURCE_DIR}/Resources/*.qrc"
 		)
 
+SET(TRANSLATION_FILES
+		translations/MiningForHumanity_en.ts
+		translations/MiningForHumanity_de.ts
+		translations/MiningForHumanity_fr.ts
+		)
+
 ################################
 # Compiling
 ################################
+configure_file(${PROJECT_SOURCE_DIR}/translations/translations.qrc ${PROJECT_BINARY_DIR} COPYONLY)
+qt5_create_translation(QM_FILES ${PROJECT_SOURCE_DIR}/src ${TRANSLATION_FILES})
+qt5_add_resources(QM_RC ${PROJECT_BINARY_DIR}/translations.qrc)
+
 qt5_wrap_ui(ui_wrap ${UI_FILES})
 
 if (WIN32)
-	add_executable(MiningForHumanity WIN32 ${SOURCE_FILES} ${HEADER_FILES} ${ui_wrap} ${QRC_FILES})
+	add_executable(MiningForHumanity WIN32 ${SOURCE_FILES} ${HEADER_FILES} ${ui_wrap} ${QRC_FILES} ${QM_RC})
 else ()
-	add_executable(MiningForHumanity ${SOURCE_FILES} ${HEADER_FILES} ${ui_wrap} ${QRC_FILES})
+	add_executable(MiningForHumanity ${SOURCE_FILES} ${HEADER_FILES} ${ui_wrap} ${QRC_FILES} ${QM_RC})
 endif ()
 
 ################################
