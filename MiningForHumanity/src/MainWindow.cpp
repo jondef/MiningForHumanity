@@ -26,7 +26,7 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 		showLoginScreen();
 	}
 
-	setWindowIcon(QIcon(":/images/icon"));
+	setWindowIcon(QIcon(":/images/MFH_logo_2"));
 	QSettings settings;
 
 	// populate the about tab in settings
@@ -49,7 +49,7 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 
 	auto sysTrayIcon = new QSystemTrayIcon(this);
 	sysTrayIcon->setContextMenu(trayIconMenu);
-	sysTrayIcon->setIcon(QIcon(":/images/icon"));
+	sysTrayIcon->setIcon(QIcon(":/images/MFH_logo_2"));
 	sysTrayIcon->setToolTip(tr("MiningForHumanity"));
 	sysTrayIcon->show();
 
@@ -174,108 +174,108 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 
 	//////////////////////////////////
 
-	//<editor-fold desc="Graph">
-	// Assign names to the set of bars used
-	QBarSet *set0 = new QBarSet("Altuve");
-
-
-	// Assign values for each bar
-	*set0 << 283 << 341 << 313 << 338 << 346 << 335;
-
-
-	// Add all sets of data to the chart as a whole
-	// 1. Bar Chart
-	QBarSeries *series = new QBarSeries();
-
-	// 2. Stacked bar chart
-	// QHorizontalStackedBarSeries *series = new QHorizontalStackedBarSeries();
-	series->append(set0);
-
-	QChart *chart = new QChart();
-	chart->addSeries(series);
-	chart->setTitle("Funds Collected by Day");
-	chart->setAnimationOptions(QChart::SeriesAnimations);
-
-	QStringList categories;
-	categories << "2013" << "2014" << "2015" << "2016" << "2017" << "2018";
-
-	QBarCategoryAxis *axis = new QBarCategoryAxis();
-	axis->append(categories);
-	chart->createDefaultAxes();
-
-	chart->setAxisX(axis, series);
-
-	chart->legend()->setVisible(true);
-	chart->legend()->setAlignment(Qt::AlignBottom);
-
-	chart->setBackgroundVisible(false);
-
-	QChart *splineChart = createSplineChart();
-	QChartView *chartView = new QChartView(splineChart);
-	chartView->setRenderHint(QPainter::Antialiasing);
-
-	/*// Used to change the palettes
-	QPalette pal = qApp->palette();
-
-	// Change the color around the chart widget and text
-	pal.setColor(QPalette::Window, QRgb(0xffffff));
-	pal.setColor(QPalette::WindowText, QRgb(0x404044));
-
-	// Apply palette changes to the application
-	qApp->setPalette(pal);*/
-
-	ui->chartsLayout->addWidget(chartView, 0, 1, 1, 1);
-	//</editor-fold>
+//	//<editor-fold desc="Graph">
+//	// Assign names to the set of bars used
+//	QBarSet *set0 = new QBarSet("Altuve");
+//
+//
+//	// Assign values for each bar
+//	*set0 << 283 << 341 << 313 << 338 << 346 << 335;
+//
+//
+//	// Add all sets of data to the chart as a whole
+//	// 1. Bar Chart
+//	QBarSeries *series = new QBarSeries();
+//
+//	// 2. Stacked bar chart
+//	// QHorizontalStackedBarSeries *series = new QHorizontalStackedBarSeries();
+//	series->append(set0);
+//
+//	QChart *chart = new QChart();
+//	chart->addSeries(series);
+//	chart->setTitle("Funds Collected by Day");
+//	chart->setAnimationOptions(QChart::SeriesAnimations);
+//
+//	QStringList categories;
+//	categories << "2013" << "2014" << "2015" << "2016" << "2017" << "2018";
+//
+//	QBarCategoryAxis *axis = new QBarCategoryAxis();
+//	axis->append(categories);
+//	chart->createDefaultAxes();
+//
+//	chart->setAxisX(axis, series);
+//
+//	chart->legend()->setVisible(true);
+//	chart->legend()->setAlignment(Qt::AlignBottom);
+//
+//	chart->setBackgroundVisible(false);
+//
+//	QChart *splineChart = createSplineChart();
+//	QChartView *chartView = new QChartView(splineChart);
+//	chartView->setRenderHint(QPainter::Antialiasing);
+//
+//	/*// Used to change the palettes
+//	QPalette pal = qApp->palette();
+//
+//	// Change the color around the chart widget and text
+//	pal.setColor(QPalette::Window, QRgb(0xffffff));
+//	pal.setColor(QPalette::WindowText, QRgb(0x404044));
+//
+//	// Apply palette changes to the application
+//	qApp->setPalette(pal);*/
+//
+//	ui->chartsLayout->addWidget(chartView, 0, 1, 1, 1);
+//	//</editor-fold>
 }
 
 MainWindow::~MainWindow() {
 	delete ui;
 }
 
-//<editor-fold desc="Graph">
-DataTable generateRandomData(int listCount, int valueMax, int valueCount) {
-	DataTable dataTable;
-
-	// generate random data
-	for (int i(0); i < listCount; i++) {
-		DataList dataList;
-		qreal yValue(0);
-		for (int j(0); j < valueCount; j++) {
-			yValue = yValue + QRandomGenerator::global()->bounded(valueMax / (qreal) valueCount);
-			QPointF value((j + QRandomGenerator::global()->generateDouble()) * ((qreal) 10 / (qreal) valueCount), yValue);
-			QString label = "Slice " + QString::number(i) + ":" + QString::number(j);
-			dataList << Data(value, label);
-		}
-		dataTable << dataList;
-	}
-	return dataTable;
-}
-
-QChart *createSplineChart() {
-	QChart *chart = new QChart();
-	chart->setTitle("Spline chart");
-	QString name("Series ");
-	int nameIndex = 0;
-	for (const DataList &list : generateRandomData(3, 10, 7)) {
-		QSplineSeries *series = new QSplineSeries(chart);
-		for (const Data &data : list)
-			series->append(data.first);
-		series->setName(name + QString::number(nameIndex));
-		nameIndex++;
-		chart->addSeries(series);
-	}
-
-	chart->createDefaultAxes();
-	chart->axes(Qt::Horizontal).first()->setRange(0, 10);
-	chart->axes(Qt::Vertical).first()->setRange(0, 7);
-
-	// Add space to label to add space between labels and axis
-	QValueAxis *axisY = qobject_cast<QValueAxis *>(chart->axes(Qt::Vertical).first());
-	Q_ASSERT(axisY);
-	axisY->setLabelFormat("%.1f  ");
-	return chart;
-}
-//</editor-fold>
+////<editor-fold desc="Graph">
+//DataTable generateRandomData(int listCount, int valueMax, int valueCount) {
+//	DataTable dataTable;
+//
+//	// generate random data
+//	for (int i(0); i < listCount; i++) {
+//		DataList dataList;
+//		qreal yValue(0);
+//		for (int j(0); j < valueCount; j++) {
+//			yValue = yValue + QRandomGenerator::global()->bounded(valueMax / (qreal) valueCount);
+//			QPointF value((j + QRandomGenerator::global()->generateDouble()) * ((qreal) 10 / (qreal) valueCount), yValue);
+//			QString label = "Slice " + QString::number(i) + ":" + QString::number(j);
+//			dataList << Data(value, label);
+//		}
+//		dataTable << dataList;
+//	}
+//	return dataTable;
+//}
+//
+//QChart *createSplineChart() {
+//	QChart *chart = new QChart();
+//	chart->setTitle("Spline chart");
+//	QString name("Series ");
+//	int nameIndex = 0;
+//	for (const DataList &list : generateRandomData(3, 10, 7)) {
+//		QSplineSeries *series = new QSplineSeries(chart);
+//		for (const Data &data : list)
+//			series->append(data.first);
+//		series->setName(name + QString::number(nameIndex));
+//		nameIndex++;
+//		chart->addSeries(series);
+//	}
+//
+//	chart->createDefaultAxes();
+//	chart->axes(Qt::Horizontal).first()->setRange(0, 10);
+//	chart->axes(Qt::Vertical).first()->setRange(0, 7);
+//
+//	// Add space to label to add space between labels and axis
+//	QValueAxis *axisY = qobject_cast<QValueAxis *>(chart->axes(Qt::Vertical).first());
+//	Q_ASSERT(axisY);
+//	axisY->setLabelFormat("%.1f  ");
+//	return chart;
+//}
+////</editor-fold>
 
 void MainWindow::showEvent(QShowEvent *event) {
 	// If the user opens the app for the first time,
