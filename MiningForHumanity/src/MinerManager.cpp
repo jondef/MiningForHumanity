@@ -25,7 +25,7 @@ MinerManager::MinerManager(QWidget *parent) : QWidget(parent), ui(new Ui::uiSett
 	QString username = "ludwig.landji@gmail.com";
 	QString password = "";
 	QString RIGID = "TestRig";
-	bool SSLSupport = false;
+//	bool SSLSupport = false;
 	mMinerArgs  << "--url" << poolId << "--user" << username << "--pass" << password << "--coin" << "monero" << "--rig-id" << RIGID << "--print-time" << "5" << "--keepalive" << "--no-color";
 }
 

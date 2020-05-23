@@ -9,6 +9,7 @@
 #include <QAction>
 #include <QMessageBox>
 #include <QCloseEvent>
+#include "Ribbon.hpp"
 #include "AbstractTableModel.h"
 
 QChart *createSplineChart();
@@ -127,20 +128,25 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	QHBoxLayout *lay = static_cast<QHBoxLayout *>(ui->toolBar->layout());
 	lay->insertWidget(lay->count() + 1, button);
 
-	// BURGERMENU
-	BurgerMenu *menu = new BurgerMenu();
-	ui->BurgermenuWidget->layout()->addWidget(menu);
+	QLabel *logo_label = new QLabel();
+	QPixmap map(":/images/MFH_logo_2");
+	QSize pixSize = map.size();
+	pixSize.scale(QSize(50, 50), Qt::KeepAspectRatio);
+	QPixmap scaledPix = map.scaled(pixSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+	logo_label->setPixmap(scaledPix);
+	lay->insertWidget(0, logo_label);
 
-	menu->setMenuWidth(100);
-	menu->setBurgerIcon(QIcon(":/icons/burger/burger"));
-	menu->addMenuAction(QIcon(":/icons/burger/collections"), "Dashboard");
-	menu->addMenuAction(QIcon(":/icons/burger/albums"), "Projects");
-	menu->addStretch();
-	menu->addMenuAction(QIcon(":/icons/burger/twitter_icon"), "Twitter");
-	menu->addMenuAction(QIcon(":/icons/burger/facebook_icon"), "Facebook");
-	menu->addMenuAction(QIcon(":/icons/burger/instagram_icon"), "Instagram");
-	menu->addStretch();
-	menu->addMenuAction(QIcon(":/icons/burger/settings_icon"), "Settings");
+	// BURGERMENU
+	ui->Burgermenu->setMenuWidth(100);
+	ui->Burgermenu->setBurgerIcon(QIcon(":/icons/burger/burger"));
+	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/collections"), "Dashboard");
+	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/albums"), "Projects");
+	ui->Burgermenu->addStretch();
+	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/twitter_icon"), "Twitter");
+	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/facebook_icon"), "Facebook");
+	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/instagram_icon"), "Instagram");
+	ui->Burgermenu->addStretch();
+	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/settings_icon"), "Settings");
 
 #define BURGERMENU_BACKGROUND_COLOR "#1B2430"
 
@@ -154,8 +160,8 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 				  "#MainBurgerButton:hover     { background-color: #333;    } "
 	);
 
-	connect(menu, &BurgerMenu::triggered, [this, menu](QAction *action) {
-		uint8_t index = menu->actions().indexOf(action);
+	connect(ui->Burgermenu, &BurgerMenu::triggered, [this](QAction *action) {
+		uint8_t index = ui->Burgermenu->actions().indexOf(action);
 		ui->stackedWidget->setCurrentIndex(index);
 	});
 
@@ -171,8 +177,16 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 		}
 	});
 
+	setPixmap(QPixmap(":/images/new_york"));
 
 	//////////////////////////////////
+
+	QPixmap pixmap = QPixmap(50, 50);
+	pixmap.fill(QColor(0, 100, 255));
+//	ui->ribbon->showCampaign("Campaign name", pixmap, { CategoryLabel::Innovation, CategoryLabel::Environment, CategoryLabel::Environment });
+//	pixmap.fill(QColor(0, 100, 255));
+	QPixmap pixmap2 = QPixmap(50, 50);
+//	ui->ribbon->showCampaign("Campaign 2", pixmap2, { CategoryLabel::Education, CategoryLabel::Innovation });
 
 //	//<editor-fold desc="Graph">
 //	// Assign names to the set of bars used
@@ -282,6 +296,20 @@ void MainWindow::showEvent(QShowEvent *event) {
 	// ask him to register / login
 }
 
+void MainWindow::paintEvent(QPaintEvent *event) {
+	QWidget::paintEvent(event);
+	if (backgroundPixmap.isNull()) { return; }
+
+	QPainter painter(this);
+	painter.setRenderHint(QPainter::Antialiasing);
+
+	// set the background image of the login screen
+	QSize pixSize = backgroundPixmap.size();
+	pixSize.scale(size(), Qt::KeepAspectRatioByExpanding); // ! don't use event->rect().size() instead of size()
+	QPixmap scaledPix = backgroundPixmap.scaled(pixSize, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
+	painter.drawPixmap(QPoint(), scaledPix);
+}
+
 void MainWindow::closeEvent(QCloseEvent *event) {
 	if (closing) {
 		event->accept();
@@ -306,8 +334,7 @@ void MainWindow::showDashboard(const QString &username) {
  * Updates the widgets on the dashboard: username, date, etc...
  */
 void MainWindow::updateDashboard(const QString &username) {
-	ui->label_welcomeBack->setText("Welcome back, " + username);
-	ui->label_date->setText(QDateTime::currentDateTime().date().toString());
+	ui->ribbon->showLabel("Welcome back, " + username + "!");
 }
 
 /*

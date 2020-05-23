@@ -34,6 +34,8 @@ protected:
 
 	void showEvent(QShowEvent *event) override;
 
+	void paintEvent(QPaintEvent *) override;
+
 public slots:
 
 private slots:
@@ -42,6 +44,8 @@ private slots:
 	void updateDashboard(const QString &username);
 
 	void showDashboard(const QString &username);
+
+	void setPixmap(const QPixmap &pixmap) { backgroundPixmap = pixmap; }
 
 public:
 
@@ -54,6 +58,7 @@ private:
 	MinerManager *settingsWindow = new MinerManager();
 	LoginWidget *loginWindow = new LoginWidget();
 	QWidget *centralWidget = nullptr;
+	QPixmap backgroundPixmap;
 };
 
 
