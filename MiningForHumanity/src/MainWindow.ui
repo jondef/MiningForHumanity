@@ -901,25 +901,10 @@ padding: 2px 5px 2px 5px;
      </widget>
     </item>
     <item row="0" column="2">
-     <widget class="QWidget" name="toolBar" native="true">
+     <widget class="ToolBar" name="toolBar" native="true">
       <property name="styleSheet">
        <string notr="true">#toolBar { background-color: white; }</string>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_17">
-       <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
      </widget>
     </item>
     <item row="0" column="0" rowspan="3">
@@ -948,7 +933,13 @@ padding: 2px 5px 2px 5px;
   <customwidget>
    <class>Ribbon</class>
    <extends>QWidget</extends>
-   <header>Ribbon.h</header>
+   <header>Ribbon.hpp</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ToolBar</class>
+   <extends>QWidget</extends>
+   <header>ToolBar.hpp</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

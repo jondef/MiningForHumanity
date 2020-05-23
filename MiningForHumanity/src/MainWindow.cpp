@@ -10,6 +10,7 @@
 #include <QMessageBox>
 #include <QCloseEvent>
 #include "Ribbon.hpp"
+#include "ToolBar.hpp"
 #include "AbstractTableModel.h"
 
 QChart *createSplineChart();
@@ -101,40 +102,6 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 												"padding: 2px 5px 2px 5px;");
 		}
 	});
-
-
-	// toolbar
-	QPushButton *button = new QPushButton;
-	button->setIcon(QIcon(":/images/power_off_icon"));
-	button->setIconSize(QSize(20, 20));
-	button->setStyleSheet("QPushButton { background: transparent; outline: none; border: 0px solid black; border-radius: 10px; }"
-						  "QPushButton::menu-indicator { width: 0px; }");
-
-	QMenu *submenu = new QMenu(this);
-	submenu->setStyleSheet("QMenu { color: black; background-color: white; border: 1px solid grey; outline : none; }"
-						   "QMenu::item { height: 25px; width: 100px; }" // doesn't seem to work
-						   "QMenu::item:selected { color: black; background-color: lightgrey; }"
-						   "QMenu::item:pressed { color: white; background-color: grey; }"
-						   "QMenu::separator { color: black; }");
-
-	connect(submenu->addAction(tr("Sign out")), &QAction::triggered, [this]() {
-		LoginWidget::deleteRememberMeCookie();
-		showLoginScreen();
-	});
-	connect(submenu->addAction(tr("Minimize")), &QAction::triggered, [this]() { close(); });
-	connect(submenu->addAction(tr("Quit")), &QAction::triggered, []() { qApp->quit(); });
-	button->setMenu(submenu);
-
-	QHBoxLayout *lay = static_cast<QHBoxLayout *>(ui->toolBar->layout());
-	lay->insertWidget(lay->count() + 1, button);
-
-	QLabel *logo_label = new QLabel();
-	QPixmap map(":/images/MFH_logo_2");
-	QSize pixSize = map.size();
-	pixSize.scale(QSize(50, 50), Qt::KeepAspectRatio);
-	QPixmap scaledPix = map.scaled(pixSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
-	logo_label->setPixmap(scaledPix);
-	lay->insertWidget(0, logo_label);
 
 	// BURGERMENU
 	ui->Burgermenu->setMenuWidth(100);
