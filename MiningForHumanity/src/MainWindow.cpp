@@ -52,7 +52,7 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	auto sysTrayIcon = new QSystemTrayIcon(this);
 	sysTrayIcon->setContextMenu(trayIconMenu);
 	sysTrayIcon->setIcon(QIcon(":/images/MFH_logo_2"));
-	sysTrayIcon->setToolTip(tr("MiningForHumanity"));
+	sysTrayIcon->setToolTip("MiningForHumanity");
 	sysTrayIcon->show();
 
 	connect(sysTrayIcon, &QSystemTrayIcon::activated, [this](QSystemTrayIcon::ActivationReason reason) {
@@ -78,24 +78,24 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	connect(settingsWindow, &MinerManager::minerChangedState, this, [this](MinerManager::MinerState state) {
 		if (state == MinerManager::Starting) {
 			ui->pushButton_startStopMiner->setDisabled(true);
-			ui->pushButton_startStopMiner->setText("Wait");
-			ui->label_minerState->setText("Starting");
+			ui->pushButton_startStopMiner->setText(tr("Wait"));
+			ui->label_minerState->setText(tr("Starting"));
 			ui->label_minerState->setStyleSheet("border-radius: 10px;\n"
 												"color: white;\n"
 												"background-color: blue;\n"
 												"padding: 2px 5px 2px 5px;");
 		} else if (state == MinerManager::Mining) {
 			ui->pushButton_startStopMiner->setDisabled(false);
-			ui->pushButton_startStopMiner->setText("Stop");
-			ui->label_minerState->setText("Donating");
+			ui->pushButton_startStopMiner->setText(tr("Stop"));
+			ui->label_minerState->setText(tr("Donating"));
 			ui->label_minerState->setStyleSheet("border-radius: 10px;\n"
 												"color: white;\n"
 												"background-color: green;\n"
 												"padding: 2px 5px 2px 5px;");
 		} else if (state == MinerManager::NotMining) {
 			ui->pushButton_startStopMiner->setDisabled(false);
-			ui->pushButton_startStopMiner->setText("Start");
-			ui->label_minerState->setText("Inactive");
+			ui->pushButton_startStopMiner->setText(tr("Start"));
+			ui->label_minerState->setText(tr("Inactive"));
 			ui->label_minerState->setStyleSheet("border-radius: 10px;\n"
 												"color: white;\n"
 												"background-color: red;\n"
@@ -106,12 +106,12 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	// BURGERMENU
 	ui->Burgermenu->setMenuWidth(100);
 	ui->Burgermenu->setBurgerIcon(QIcon(":/icons/burger/burger"));
-	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/collections"), "Dashboard");
+	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/collections"), tr("Dashboard"));
 	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/albums"), tr("Projects"));
 	ui->Burgermenu->addStretch();
-	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/twitter_icon"), "Twitter");
-	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/facebook_icon"), "Facebook");
-	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/instagram_icon"), "Instagram");
+	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/twitter_icon"), tr("Twitter"));
+	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/facebook_icon"), tr("Facebook"));
+	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/instagram_icon"), tr("Instagram"));
 	ui->Burgermenu->addStretch();
 	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/settings_icon"), tr("Settings"));
 
@@ -301,7 +301,7 @@ void MainWindow::showDashboard(const QString &username) {
  * Updates the widgets on the dashboard: username, date, etc...
  */
 void MainWindow::updateDashboard(const QString &username) {
-	ui->ribbon->showLabel("Welcome back, " + username + "!");
+	ui->ribbon->showLabel(tr("Welcome back, ") + username + "!");
 }
 
 /*

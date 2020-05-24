@@ -2,38 +2,96 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="de_DE">
 <context>
+    <name>CategoryLabel</name>
+    <message>
+        <location filename="../src/CategoryLabel.hpp" line="41"/>
+        <source>Education</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/CategoryLabel.hpp" line="45"/>
+        <source>Environment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/CategoryLabel.hpp" line="49"/>
+        <source>Innovation</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="../src/MainWindow.cpp" line="43"/>
         <source>&amp;Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Verlassen</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="55"/>
         <source>MiningForHumanity</source>
+        <translation>MinenFürDieHumanität</translation>
+    </message>
+    <message>
+        <location filename="../src/MainWindow.cpp" line="109"/>
+        <source>Dashboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="110"/>
         <source>Projects</source>
+        <translation>Projekte</translation>
+    </message>
+    <message>
+        <location filename="../src/MainWindow.cpp" line="112"/>
+        <source>Twitter</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/MainWindow.cpp" line="113"/>
+        <source>Facebook</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/MainWindow.cpp" line="114"/>
+        <source>Instagram</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/MainWindow.cpp" line="116"/>
+        <source>Settings</source>
+        <translation>Einstellungen</translation>
+    </message>
+    <message>
+        <location filename="../src/MainWindow.cpp" line="304"/>
+        <source>Welcome back, </source>
+        <translation>Willkommen zurück, </translation>
     </message>
 </context>
 <context>
     <name>ToolBar</name>
     <message>
-        <location filename="../src/ToolBar.hpp" line="32"/>
+        <location filename="../src/ToolBar.hpp" line="34"/>
         <source>Sign out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ToolBar.hpp" line="36"/>
+        <location filename="../src/ToolBar.hpp" line="38"/>
         <source>Minimize</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ToolBar.hpp" line="37"/>
+        <location filename="../src/ToolBar.hpp" line="39"/>
         <source>Quit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ToolBar.hpp" line="53"/>
+        <source>Restart?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ToolBar.hpp" line="54"/>
+        <source>You must restart the program to change language. Restart now?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -242,7 +300,7 @@
     <message>
         <location filename="../src/MainWindow.ui" line="547"/>
         <source>Currently donating to  &quot;Médecins sans frontières&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Sie spenden zurzeit an &quot;Médecins sans frontières&quot;</translation>
     </message>
     <message>
         <location filename="../src/MainWindow.ui" line="585"/>
@@ -337,15 +395,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Ribbon.ui" line="99"/>
-        <location filename="../src/Ribbon.ui" line="169"/>
-        <source>TextLabel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Ribbon.ui" line="176"/>
-        <source>logo goes here</source>
-        <translation type="unfinished"></translation>
+        <source>Welcome back, </source>
+        <translation type="vanished">Willkommen zurück, </translation>
     </message>
 </context>
 <context>
@@ -472,14 +523,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ToolBar.ui" line="20"/>
-        <source>logo goes here</source>
-        <translation type="unfinished"></translation>
+        <location filename="../src/ToolBar.ui" line="72"/>
+        <source>Search</source>
+        <translation>Suche</translation>
     </message>
     <message>
-        <location filename="../src/ToolBar.ui" line="40"/>
+        <location filename="../src/ToolBar.ui" line="102"/>
         <source>Menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Menü</translation>
     </message>
 </context>
 </TS>

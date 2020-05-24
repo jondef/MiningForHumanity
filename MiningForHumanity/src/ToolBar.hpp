@@ -6,7 +6,9 @@
 #define MININGFORHUMANITY_TOOLBAR_H
 
 #include <QWidget>
+#include <QProcess>
 #include "ui_ToolBar.h"
+#include "LanguageButtons.h"
 
 class ToolBar : public QWidget {
 
@@ -34,7 +36,7 @@ public:
 //			showLoginScreen();
 		});
 		connect(submenu->addAction(tr("Minimize")), &QAction::triggered, [this]() { close(); });
-		connect(submenu->addAction(tr("Quit")), &QAction::triggered, []() { qApp->quit(); });
+		connect(submenu->addAction(tr("Quit")), &QAction::triggered, []() { QApplication::quit(); });
 		ui->pushButton->setMenu(submenu);
 
 		// set the logo on the left of the toolbar
@@ -43,12 +45,27 @@ public:
 		pixSize.scale(QSize(50, 50), Qt::KeepAspectRatio);
 		QPixmap scaledPix = map.scaled(pixSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
 		ui->logo->setPixmap(scaledPix);
+
+		// set the country flags on the buttons
+		connect(ui->languageButtons, &LanguageButtons::clicked, this, [this](QString rLanguage){
+			QSettings settings;
+			settings.setValue("main/language", rLanguage);
+			QMessageBox::StandardButton reply = QMessageBox::question(this, tr("Restart?"),
+					tr("You must restart the program to change language. Restart now?"), QMessageBox::Yes | QMessageBox::No);
+
+			if (reply == QMessageBox::Yes) {
+				QApplication::quit();
+				QProcess::startDetached(QApplication::arguments()[0], QApplication::arguments());
+			}
+		});
 	}
 
 	~ToolBar() override = default;
 
 private:
 	Ui::uiToolBar *ui;
+	QTranslator m_translator;
+	QString m_currLang;
 };
 
 

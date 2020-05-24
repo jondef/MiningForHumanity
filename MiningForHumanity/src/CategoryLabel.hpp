@@ -38,15 +38,15 @@ public slots:
 		switch (category) {
 			case Education:
 				setStyleSheet(styleSheet() + "background-color: #353AAE;");
-				setText("Education");
+				setText(tr("Education"));
 				break;
 			case Environment:
 				setStyleSheet(styleSheet() + "background-color: #4C9E7E;");
-				setText("Environment");
+				setText(tr("Environment"));
 				break;
 			case Innovation:
 				setStyleSheet(styleSheet() + "background-color: #3167A0;");
-				setText("Innovation");
+				setText(tr("Innovation"));
 				break;
 		}
 	}

@@ -27,14 +27,14 @@ Q_OBJECT
 public:
 	explicit MainWindow(int argc, char *argv[], QWidget *parent = nullptr);
 
-	~MainWindow();
+	~MainWindow() override;
 
 protected:
 	void closeEvent(QCloseEvent *event) override;
 
 	void showEvent(QShowEvent *event) override;
 
-	void paintEvent(QPaintEvent *) override;
+	void paintEvent(QPaintEvent *event) override;
 
 public slots:
 

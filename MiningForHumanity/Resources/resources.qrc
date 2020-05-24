@@ -20,4 +20,9 @@
         <file alias="twitter_icon">burger/twitter_icon.png</file>
         <file alias="instagram_icon">burger/instagram_icon.png</file>
     </qresource>
+    <qresource prefix="/icons/countryFlags">
+        <file alias="fr">countryFlags/france-flag-icon-32.png</file>
+        <file alias="de">countryFlags/germany-flag-icon-32.png</file>
+        <file alias="en">countryFlags/united-kingdom-flag-icon-32.png</file>
+    </qresource>
 </RCC>

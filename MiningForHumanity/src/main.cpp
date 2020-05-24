@@ -32,9 +32,12 @@ int main(int argc, char *argv[]) {
 	QCoreApplication::setOrganizationDomain("miningforhumanity.org");
 	QCoreApplication::setApplicationName("MiningForHumanity");
 
+	// read language from settings and set it
+	QSettings settings;
+	QString language = settings.value("main/language").toString();
 	QTranslator myappTranslator;
-	myappTranslator.load(":/translations/MiningForHumanity_fr.qm");
-	qDebug() << myappTranslator.isEmpty();
+	myappTranslator.load(QString(":/translations/MiningForHumanity_%1.qm").arg(language));
+	if (myappTranslator.isEmpty()) { qDebug() << "Failed to load language file."; }
 	QApplication::installTranslator(&myappTranslator);
 
 	qDebug() << QStyleFactory::keys();
@@ -58,7 +61,7 @@ int main(int argc, char *argv[]) {
 //
 //// Widget used to display charts
 //#include <QtCharts/QChartView>
-//
+
 //// Used to draw bars representing data provided
 //// grouped into categories
 //#include <QtCharts/QBarSeries>

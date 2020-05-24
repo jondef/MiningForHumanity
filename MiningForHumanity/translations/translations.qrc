@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/translations">
         <file>MiningForHumanity_fr.qm</file>
+        <file>MiningForHumanity_en.qm</file>
+        <file>MiningForHumanity_de.qm</file>
     </qresource>
 </RCC>
