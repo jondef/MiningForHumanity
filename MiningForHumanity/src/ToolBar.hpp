@@ -45,19 +45,6 @@ public:
 		pixSize.scale(QSize(50, 50), Qt::KeepAspectRatio);
 		QPixmap scaledPix = map.scaled(pixSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
 		ui->logo->setPixmap(scaledPix);
-
-		// set the country flags on the buttons
-		connect(ui->languageButtons, &LanguageButtons::clicked, this, [this](QString rLanguage){
-			QSettings settings;
-			settings.setValue("main/language", rLanguage);
-			QMessageBox::StandardButton reply = QMessageBox::question(this, tr("Restart?"),
-					tr("You must restart the program to change language. Restart now?"), QMessageBox::Yes | QMessageBox::No);
-
-			if (reply == QMessageBox::Yes) {
-				QApplication::quit();
-				QProcess::startDetached(QApplication::arguments()[0], QApplication::arguments());
-			}
-		});
 	}
 
 	~ToolBar() override = default;

@@ -20,6 +20,19 @@
     </message>
 </context>
 <context>
+    <name>LanguageButtons</name>
+    <message>
+        <location filename="../src/LanguageButtons.cpp" line="38"/>
+        <source>Restart?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/LanguageButtons.cpp" line="39"/>
+        <source>You must restart the program to change language. Restart now?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="../src/MainWindow.cpp" line="43"/>
@@ -27,9 +40,38 @@
         <translation>&amp;Verlassen</translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="55"/>
         <source>MiningForHumanity</source>
-        <translation>MinenFürDieHumanität</translation>
+        <translation type="vanished">MinenFürDieHumanität</translation>
+    </message>
+    <message>
+        <location filename="../src/MainWindow.cpp" line="81"/>
+        <source>Wait</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/MainWindow.cpp" line="82"/>
+        <source>Starting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/MainWindow.cpp" line="89"/>
+        <source>Stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/MainWindow.cpp" line="90"/>
+        <source>Donating</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/MainWindow.cpp" line="97"/>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/MainWindow.cpp" line="98"/>
+        <source>Inactive</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="109"/>
@@ -82,16 +124,6 @@
     <message>
         <location filename="../src/ToolBar.hpp" line="39"/>
         <source>Quit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/ToolBar.hpp" line="53"/>
-        <source>Restart?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/ToolBar.hpp" line="54"/>
-        <source>You must restart the program to change language. Restart now?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
