@@ -47,7 +47,9 @@ public:
 		ui->logo->setPixmap(scaledPix);
 	}
 
-	~ToolBar() override = default;
+	~ToolBar() override {
+		delete ui;
+	}
 
 private:
 	Ui::uiToolBar *ui;

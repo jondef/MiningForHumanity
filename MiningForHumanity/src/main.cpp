@@ -26,28 +26,33 @@ Q_IMPORT_PLUGIN(QGifPlugin)
 
 int main(int argc, char *argv[]) {
 	QApplication app(argc, argv);
+	uint16_t result = 0;
 
-	// these are used for qSettings
-	QCoreApplication::setOrganizationName("MiningForHumanity");
-	QCoreApplication::setOrganizationDomain("miningforhumanity.org");
-	QCoreApplication::setApplicationName("MiningForHumanity");
+	do {
+		// these are used for qSettings
+		QCoreApplication::setOrganizationName("MiningForHumanity");
+		QCoreApplication::setOrganizationDomain("miningforhumanity.org");
+		QCoreApplication::setApplicationName("MiningForHumanity");
 
-	// read language from settings and set it
-	QSettings settings;
-	QString language = settings.value("main/language").toString();
-	QTranslator myappTranslator;
-	myappTranslator.load(QString(":/translations/MiningForHumanity_%1.qm").arg(language));
-	if (myappTranslator.isEmpty()) { qDebug() << "Failed to load language file."; }
-	QApplication::installTranslator(&myappTranslator);
+		// read language from settings and set it
+		QSettings settings;
+		QString language = settings.value("main/language").toString();
+		QTranslator myappTranslator;
+		myappTranslator.load(QString(":/translations/MiningForHumanity_%1.qm").arg(language));
+		if (myappTranslator.isEmpty()) { qDebug() << "Failed to load language file."; }
+		QApplication::installTranslator(&myappTranslator);
 
-	qDebug() << QStyleFactory::keys();
-	qDebug() << "Plugins loaded from: " << QCoreApplication::libraryPaths();
-	QApplication::setStyle(QStyleFactory::create("Fusion"));
+		// set application style
+		qDebug() << QStyleFactory::keys();
+		qDebug() << "Plugins loaded from: " << QCoreApplication::libraryPaths();
+		QApplication::setStyle(QStyleFactory::create("Fusion"));
 
-	MainWindow window(argc, argv);
-	window.show();
+		MainWindow window(argc, argv);
+		window.show();
+		result = QCoreApplication::exec();
+	} while(result == 1337);
 
-	QApplication::exec();
+	return result;
 }
 
 ////region Graph

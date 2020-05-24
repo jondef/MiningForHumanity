@@ -6,7 +6,6 @@
 #include <QHBoxLayout>
 #include <QSettings>
 #include <QMessageBox>
-#include <QProcess>
 #include <QApplication>
 
 #define STYLESHEET(flag) \
@@ -39,7 +38,6 @@ void LanguageButtons::changedLanguage(const QString &language) {
 			tr("You must restart the program to change language. Restart now?"), QMessageBox::Yes | QMessageBox::No);
 
 	if (reply == QMessageBox::Yes) {
-		QApplication::quit();
-		QProcess::startDetached(QApplication::arguments()[0], QApplication::arguments());
+		QApplication::exit(1337);
 	}
 }

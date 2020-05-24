@@ -26,7 +26,9 @@ public:
 		setFixedHeight(100);
 	}
 
-	~Ribbon() override = default;
+	~Ribbon() override {
+		delete ui;
+	}
 
 public slots:
 
