@@ -80,6 +80,9 @@
        </item>
        <item>
         <widget class="QLineEdit" name="lineEdit">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
          <property name="inputMask">
           <string/>
          </property>
@@ -131,7 +134,7 @@
   <customwidget>
    <class>LanguageButtons</class>
    <extends>QWidget</extends>
-   <header>LanguageButtons.h</header>
+   <header>LanguageButtons.hpp</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

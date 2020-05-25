@@ -66,10 +66,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::uiMain
 
 	QPixmap pixmap = QPixmap(50, 50);
 //	pixmap.fill(QColor(0, 100, 255));
-	ui->ribbon->showCampaign("Campaign name", pixmap, { CategoryLabel::Innovation, CategoryLabel::Environment, CategoryLabel::Environment });
+	ui->ribbon->showCampaign("Campaign name", pixmap, { CategoryLabel::Innovation, CategoryLabel::Environment, CategoryLabel::Education, CategoryLabel::Energy });
 //	pixmap.fill(QColor(0, 100, 255));
 	QPixmap pixmap2 = QPixmap(50, 50);
-	ui->ribbon->showCampaign("Campaign 2", pixmap2, { CategoryLabel::Education, CategoryLabel::Innovation });
+//	ui->ribbon->showCampaign("Campaign 2", pixmap2, { CategoryLabel::Education, CategoryLabel::Innovation });
 
 	// region graph
 //	// Assign names to the set of bars used

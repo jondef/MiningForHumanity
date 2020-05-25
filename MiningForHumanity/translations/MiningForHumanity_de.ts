@@ -4,50 +4,65 @@
 <context>
     <name>CategoryLabel</name>
     <message>
-        <location filename="../src/CategoryLabel.hpp" line="41"/>
+        <location filename="../src/CategoryLabel.hpp" line="44"/>
         <source>Education</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/CategoryLabel.hpp" line="45"/>
+        <location filename="../src/CategoryLabel.hpp" line="48"/>
         <source>Environment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/CategoryLabel.hpp" line="49"/>
+        <location filename="../src/CategoryLabel.hpp" line="52"/>
         <source>Innovation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/CategoryLabel.hpp" line="56"/>
+        <source>Energy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/CategoryLabel.hpp" line="60"/>
+        <source>Media</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/CategoryLabel.hpp" line="64"/>
+        <source>Foundations</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Dashboard</name>
     <message>
-        <location filename="../src/Dashboard.cpp" line="32"/>
+        <location filename="../src/Dashboard.cpp" line="31"/>
         <source>Wait</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.cpp" line="33"/>
+        <location filename="../src/Dashboard.cpp" line="32"/>
         <source>Starting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.cpp" line="40"/>
+        <location filename="../src/Dashboard.cpp" line="39"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.cpp" line="41"/>
+        <location filename="../src/Dashboard.cpp" line="40"/>
         <source>Donating</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.cpp" line="48"/>
+        <location filename="../src/Dashboard.cpp" line="47"/>
         <source>Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.cpp" line="49"/>
+        <location filename="../src/Dashboard.cpp" line="48"/>
         <source>Inactive</source>
         <translation type="unfinished"></translation>
     </message>
@@ -176,7 +191,7 @@
     <message>
         <location filename="../src/Dashboard.ui" line="150"/>
         <location filename="../src/Dashboard.ui" line="335"/>
-        <location filename="../src/Dashboard.ui" line="423"/>
+        <location filename="../src/Dashboard.ui" line="426"/>
         <source>Since yesterday</source>
         <translation type="unfinished"></translation>
     </message>
@@ -231,111 +246,111 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="399"/>
+        <location filename="../src/Dashboard.ui" line="402"/>
         <source>2643$</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="411"/>
+        <location filename="../src/Dashboard.ui" line="414"/>
         <source>+3%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="487"/>
+        <location filename="../src/Dashboard.ui" line="490"/>
         <source>Welcome back, Jon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="499"/>
+        <location filename="../src/Dashboard.ui" line="502"/>
         <source>Monday, 29 April 2020</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="534"/>
+        <location filename="../src/Dashboard.ui" line="537"/>
         <source>Currently donating to  &quot;Médecins sans frontières&quot;</source>
         <translation type="unfinished">Sie spenden zurzeit an &quot;Médecins sans frontières&quot;</translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="572"/>
+        <location filename="../src/Dashboard.ui" line="575"/>
         <source>Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="591"/>
+        <location filename="../src/Dashboard.ui" line="594"/>
         <source>Inactive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="608"/>
+        <location filename="../src/Dashboard.ui" line="611"/>
         <source>Confirm choice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="615"/>
+        <location filename="../src/Dashboard.ui" line="618"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="635"/>
+        <location filename="../src/Dashboard.ui" line="638"/>
         <source>Search:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="691"/>
+        <location filename="../src/Dashboard.ui" line="694"/>
         <source>General Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="702"/>
+        <location filename="../src/Dashboard.ui" line="705"/>
         <source>General</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="707"/>
+        <location filename="../src/Dashboard.ui" line="710"/>
         <source>Miner</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="713"/>
+        <location filename="../src/Dashboard.ui" line="716"/>
         <source>User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="718"/>
+        <location filename="../src/Dashboard.ui" line="721"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="790"/>
+        <location filename="../src/Dashboard.ui" line="793"/>
         <source>Version:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="800"/>
-        <location filename="../src/Dashboard.ui" line="817"/>
-        <location filename="../src/Dashboard.ui" line="834"/>
-        <location filename="../src/Dashboard.ui" line="851"/>
-        <location filename="../src/Dashboard.ui" line="868"/>
+        <location filename="../src/Dashboard.ui" line="803"/>
+        <location filename="../src/Dashboard.ui" line="820"/>
+        <location filename="../src/Dashboard.ui" line="837"/>
+        <location filename="../src/Dashboard.ui" line="854"/>
+        <location filename="../src/Dashboard.ui" line="871"/>
         <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="807"/>
+        <location filename="../src/Dashboard.ui" line="810"/>
         <source>Build Date:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="824"/>
+        <location filename="../src/Dashboard.ui" line="827"/>
         <source>Git Commit Date:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="841"/>
+        <location filename="../src/Dashboard.ui" line="844"/>
         <source>Git Commit Hash:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="858"/>
+        <location filename="../src/Dashboard.ui" line="861"/>
         <source>Git Branch:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -557,22 +572,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/SettingsWindow.ui" line="321"/>
+        <location filename="../src/SettingsWindow.ui" line="324"/>
         <source>General Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/SettingsWindow.ui" line="326"/>
+        <location filename="../src/SettingsWindow.ui" line="329"/>
         <source>CPU Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/SettingsWindow.ui" line="331"/>
+        <location filename="../src/SettingsWindow.ui" line="334"/>
         <source>Pool Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/SettingsWindow.ui" line="336"/>
+        <location filename="../src/SettingsWindow.ui" line="339"/>
         <source>Logs</source>
         <translation type="unfinished"></translation>
     </message>
@@ -585,12 +600,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ToolBar.ui" line="90"/>
+        <location filename="../src/ToolBar.ui" line="93"/>
         <source>Search</source>
         <translation>Suche</translation>
     </message>
     <message>
-        <location filename="../src/ToolBar.ui" line="120"/>
+        <location filename="../src/ToolBar.ui" line="123"/>
         <source>Menu</source>
         <translation>Menü</translation>
     </message>

@@ -726,13 +726,13 @@
   <customwidget>
    <class>StackedWidget</class>
    <extends>QStackedWidget</extends>
-   <header>StackedWidget.h</header>
+   <header>StackedWidget.hpp</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>Frame</class>
    <extends>QFrame</extends>
-   <header>Frame.h</header>
+   <header>Frame.hpp</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

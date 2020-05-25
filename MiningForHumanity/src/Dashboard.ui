@@ -38,7 +38,7 @@
       </sizepolicy>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="dashboardPage">
       <layout class="QGridLayout" name="gridLayout_3">
@@ -394,6 +394,9 @@ padding: 2px 5px 2px 5px;
                  <font>
                   <pointsize>14</pointsize>
                  </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
                 </property>
                 <property name="text">
                  <string>2643$</string>

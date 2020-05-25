@@ -3,7 +3,6 @@
 //
 
 #include "Dashboard.hpp"
-
 #include "AbstractTableModel.hpp"
 
 Dashboard::Dashboard(QWidget *parent) : ui(new Ui::uiDashboard) {
