@@ -2,7 +2,7 @@
 // Created by jon on 25.05.20.
 //
 
-#include "ToolBar.h"
+#include "ToolBar.hpp"
 
 // todo: put the start/stop miner button and label instead of the language buttons
 

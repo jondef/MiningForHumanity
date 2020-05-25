@@ -5,7 +5,7 @@
 #include <QList>
 #include <QSize>
 #include <QIcon>
-#include "BurgerButton.h"
+#include "BurgerButton.hpp"
 
 class QPushButton;
 

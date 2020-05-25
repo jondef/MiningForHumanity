@@ -2,7 +2,7 @@
 // Created by jon on 29.04.20.
 //
 
-#include "BurgerButton.h"
+#include "BurgerButton.hpp"
 
 
 BurgerButton::BurgerButton(QAction *action, QWidget *parent) : QPushButton(parent), mIconSize(QSize(64, 64)), mAction(action), hovered(false) {

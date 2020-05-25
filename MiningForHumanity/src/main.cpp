@@ -21,7 +21,7 @@ Q_IMPORT_PLUGIN(QGifPlugin)
 
 #endif
 
-#include "MainWindow.h"
+#include "MainWindow.hpp"
 
 
 int main(int argc, char *argv[]) {

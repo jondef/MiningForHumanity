@@ -12,7 +12,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include "ui_LoginWidget.h"
-#include "BlurLayer.h"
+#include "BlurLayer.hpp"
 
 static const QString accountFileName("account.dat");
 

@@ -2,7 +2,7 @@
 // Created by jon on 11.04.20.
 //
 
-#include "MinerManager.h"
+#include "MinerManager.hpp"
 #include <QScrollBar>
 
 // ! FOR POOLS WIDGET SETTINGS USE A TABLE

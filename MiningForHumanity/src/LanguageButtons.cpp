@@ -2,7 +2,7 @@
 // Created by jon on 24.05.20.
 //
 
-#include "LanguageButtons.h"
+#include "LanguageButtons.hpp"
 #include <QHBoxLayout>
 #include <QSettings>
 #include <QMessageBox>

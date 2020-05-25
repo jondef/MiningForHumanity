@@ -2,7 +2,7 @@
 // Created by jon on 31.03.20.
 //
 
-#include "MainWindow.h"
+#include "MainWindow.hpp"
 
 #include <QSystemTrayIcon>
 #include <QMenu>

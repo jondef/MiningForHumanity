@@ -2,9 +2,9 @@
 // Created by jon on 25.05.20.
 //
 
-#include "Dashboard.h"
+#include "Dashboard.hpp"
 
-#include "AbstractTableModel.h"
+#include "AbstractTableModel.hpp"
 
 Dashboard::Dashboard(QWidget *parent) : ui(new Ui::uiDashboard) {
 	ui->setupUi(this);

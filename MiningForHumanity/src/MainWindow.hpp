@@ -9,9 +9,9 @@
 #include <QtCore>
 #include <QtGui>
 #include <QtCharts>
-#include "BurgerMenu.h"
+#include "BurgerMenu.hpp"
 #include "ui_MainWindow.h"
-#include "LoginWidget.h"
+#include "LoginWidget.hpp"
 
 #include <future>
 #include <memory>

@@ -7,7 +7,7 @@
 #include <QtGui/QRegExpValidator>
 #include <QPainter>
 #include <QPaintEvent>
-#include "LoginWidget.h"
+#include "LoginWidget.hpp"
 #include <QDesktopWidget>
 #include <QtWidgets/QMessageBox>
 #include "bcrypt/BCrypt.hpp"
@@ -98,8 +98,7 @@ void LoginWidget::paintEvent(QPaintEvent *event) {
 	// send the cropped pix map to the blur layer
 	QPoint position = ui->centralFrame->mapTo(this, ui->centralFrame->rect().topLeft());
 	blurLayer->setGeometry(position.x(), position.y(), ui->centralFrame->size().rwidth(), ui->centralFrame->size().rheight());
-	QPixmap cropped = scaledPix.copy(QRect(position, ui->centralFrame->size()));
-	blurLayer->pixmap = cropped;
+	blurLayer->pixmap = scaledPix.copy(QRect(position, ui->centralFrame->size()));
 }
 
 void LoginWidget::showEvent(QShowEvent *event) {

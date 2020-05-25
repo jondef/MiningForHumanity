@@ -1,4 +1,4 @@
-#include "BurgerMenu.h"
+#include "BurgerMenu.hpp"
 #include <QStackedWidget>
 #include <QtCore>
 #include <QtGui>
