@@ -6,24 +6,27 @@
 #define MININGFORHUMANITY_TOOLBAR_H
 
 #include <QWidget>
-#include <QProcess>
-#include <QTranslator>
-#include "ui_ToolBar.h"
 #include <QMenu>
+#include <QPainter>
+#include <QStyleOption>
+#include "ui_ToolBar.h"
 #include "LanguageButtons.h"
 
 class ToolBar : public QWidget {
-
+Q_OBJECT
 public:
 	explicit ToolBar(QWidget *parent = nullptr);
 
 	~ToolBar() override;
 
+protected:
+	void paintEvent(QPaintEvent *event) override;
+
+Q_SIGNALS:
+	void changePage(int pageIndex);
 
 private:
 	Ui::uiToolBar *ui;
-	QTranslator m_translator;
-	QString m_currLang;
 };
 
 

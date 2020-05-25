@@ -6,6 +6,8 @@
 #define MININGFORHUMANITY_DASHBOARD_H
 
 #include <QWidget>
+#include <QPainter>
+#include <QStyleOption>
 #include "ui_Dashboard.h"
 #include "MinerManager.h"
 
@@ -16,6 +18,12 @@ public:
 	explicit Dashboard(QWidget *parent = nullptr);
 
 	~Dashboard() override;
+
+protected:
+	void paintEvent(QPaintEvent *event) override;
+
+public slots:
+	void changePage(int pageIndex);
 
 private:
 	Ui::uiDashboard *ui;

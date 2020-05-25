@@ -45,6 +45,18 @@ BurgerMenu::BurgerMenu(QWidget *parent) : QWidget(parent), mActions(new QActionG
 	connect(mBurgerButton, &QPushButton::toggled, this, &BurgerMenu::setExpansionState);
 	connect(mBurgerButton, &QPushButton::toggled, this, &BurgerMenu::expandedChanged);
 	connect(mActions, &QActionGroup::triggered, this, &BurgerMenu::triggered);
+
+#define BURGERMENU_BACKGROUND_COLOR "#1B2430"
+
+	setStyleSheet("BurgerMenu                  { background-color: " BURGERMENU_BACKGROUND_COLOR ";   }"
+				  "#BurgerMenu                 { background-color: " BURGERMENU_BACKGROUND_COLOR ";   }"
+				  "#BurgerButton               { background-color: " BURGERMENU_BACKGROUND_COLOR ";   color: white; font-size: 18px; }" // buttons
+				  "#BurgerButton:hover         { background-color: #3480D2; }"
+				  "#BurgerButton:checked       { background-color: #106EBE; }"
+				  "#BurgerButton:checked:hover { background-color: #3480D2; }"
+				  "#MainBurgerButton           { background-color: " BURGERMENU_BACKGROUND_COLOR ";   border: none; } "
+				  "#MainBurgerButton:hover     { background-color: #333;    } "
+	);
 }
 
 QIcon BurgerMenu::burgerIcon() const {

@@ -38,7 +38,7 @@
       </sizepolicy>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="dashboardPage">
       <layout class="QGridLayout" name="gridLayout_3">
@@ -683,11 +683,6 @@ padding: 2px 5px 2px 5px;
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="untitledPage_2">
-      <layout class="QGridLayout" name="gridLayout_4"/>
-     </widget>
-     <widget class="QWidget" name="page"/>
-     <widget class="QWidget" name="untitledPage_3"/>
      <widget class="QWidget" name="settingsPage">
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>

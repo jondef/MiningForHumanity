@@ -4,6 +4,8 @@
 
 #include "Dashboard.h"
 
+#include "AbstractTableModel.h"
+
 Dashboard::Dashboard(QWidget *parent) : ui(new Ui::uiDashboard) {
 	ui->setupUi(this);
 
@@ -51,8 +53,31 @@ Dashboard::Dashboard(QWidget *parent) : ui(new Ui::uiDashboard) {
 												"padding: 2px 5px 2px 5px;");
 		}
 	});
+
+	// PROJECT TAB
+	AbstractTableModel *model = new AbstractTableModel();
+	ui->tableView_projectList->setModel(model);
+	ui->tableView_projectList->setColumnHidden(0, true);
+
+	connect(ui->pushButton_projectConfirm, &QPushButton::clicked, this, [this]() {
+		QItemSelectionModel *select = ui->tableView_projectList->selectionModel();
+		if (select->hasSelection()) {
+			qDebug() << select->selectedRows(0).at(0).data();
+		}
+	});
 }
 
 Dashboard::~Dashboard() {
 	delete ui;
+}
+
+void Dashboard::paintEvent(QPaintEvent *event) {
+	QPainter painter(this);
+	QStyleOption opt;
+	opt.initFrom(this);
+	style()->drawPrimitive(QStyle::PE_Widget, &opt, &painter, this);
+}
+
+void Dashboard::changePage(int pageIndex) {
+	ui->stackedWidget->setCurrentIndex(pageIndex);
 }

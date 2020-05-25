@@ -9,9 +9,6 @@
 #include <QAction>
 #include <QMessageBox>
 #include <QCloseEvent>
-#include "Ribbon.hpp"
-#include "ToolBar.h"
-#include "AbstractTableModel.h"
 
 QChart *createSplineChart();
 
@@ -29,15 +26,14 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	}
 
 	setWindowIcon(QIcon(":/images/MFH_logo_2"));
-	QSettings settings;
+	setPixmap(QPixmap(":/images/new_york"));
 
-	// configure the system tray
+	// region configure the system tray
 	auto exitAction = new QAction(tr("&Exit"), this);
 	connect(exitAction, &QAction::triggered, [this]() {
 		closing = true;
 		close();
 	});
-
 	auto trayIconMenu = new QMenu(this);
 	trayIconMenu->addAction(exitAction);
 
@@ -57,50 +53,12 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 			}
 		}
 	});
+	// endregion
+
 	connect(loginWindow, &LoginWidget::userAuthorized, this, &MainWindow::showDashboard);
 
-	// BURGERMENU
-	ui->Burgermenu->setMenuWidth(100);
-	ui->Burgermenu->setBurgerIcon(QIcon(":/icons/burger/burger"));
-	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/collections"), tr("Dashboard"));
-	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/albums"), tr("Projects"));
-	ui->Burgermenu->addStretch();
-	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/twitter_icon"), tr("Twitter"));
-	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/facebook_icon"), tr("Facebook"));
-	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/instagram_icon"), tr("Instagram"));
-	ui->Burgermenu->addStretch();
-	ui->Burgermenu->addMenuAction(QIcon(":/icons/burger/settings_icon"), tr("Settings"));
-
-#define BURGERMENU_BACKGROUND_COLOR "#1B2430"
-
-	setStyleSheet("BurgerMenu                  { background-color: " BURGERMENU_BACKGROUND_COLOR ";   }"
-				  "#BurgerMenu                 { background-color: " BURGERMENU_BACKGROUND_COLOR ";   }"
-				  "#BurgerButton               { background-color: " BURGERMENU_BACKGROUND_COLOR ";   color: white; font-size: 18px; }" // buttons
-				  "#BurgerButton:hover         { background-color: #3480D2; }"
-				  "#BurgerButton:checked       { background-color: #106EBE; }"
-				  "#BurgerButton:checked:hover { background-color: #3480D2; }"
-				  "#MainBurgerButton           { background-color: " BURGERMENU_BACKGROUND_COLOR ";   border: none; } "
-				  "#MainBurgerButton:hover     { background-color: #333;    } "
-	);
-
-//	connect(ui->Burgermenu, &BurgerMenu::triggered, [this](QAction *action) {
-//		uint8_t index = ui->Burgermenu->actions().indexOf(action);
-//		ui->stackedWidget->setCurrentIndex(index);
-//	});
-//
-//	// PROJECT TAB
-//	AbstractTableModel *model = new AbstractTableModel();
-//	ui->tableView_projectList->setModel(model);
-//	ui->tableView_projectList->setColumnHidden(0, true);
-//
-//	connect(ui->pushButton_projectConfirm, &QPushButton::clicked, this, [this]() {
-//		QItemSelectionModel *select = ui->tableView_projectList->selectionModel();
-//		if (select->hasSelection()) {
-//			qDebug() << select->selectedRows(0).at(0).data();
-//		}
-//	});
-
-	setPixmap(QPixmap(":/images/new_york"));
+	// allow the toolbar and the dashboard to communicate
+	connect(ui->toolBar, &ToolBar::changePage, ui->dashboard, &Dashboard::changePage);
 
 	//////////////////////////////////
 
