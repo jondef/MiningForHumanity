@@ -10,7 +10,7 @@
 #include <QMessageBox>
 #include <QCloseEvent>
 #include "Ribbon.hpp"
-#include "ToolBar.hpp"
+#include "ToolBar.h"
 #include "AbstractTableModel.h"
 
 QChart *createSplineChart();
@@ -31,15 +31,7 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	setWindowIcon(QIcon(":/images/MFH_logo_2"));
 	QSettings settings;
 
-	// populate the about tab in settings
-	ui->label_VERSION->setText(VERSION);
-	ui->label_BUILDDATE->setText(BUILDDATE);
-	ui->label_GIT_COMMIT_DATE->setText(GIT_COMMIT_DATE);
-	ui->label_GIT_COMMIT_HASH->setText(GIT_COMMIT_HASH);
-	ui->label_GIT_BRANCH->setText(GIT_BRANCH);
-
-	ui->tab_2->layout()->addWidget(settingsWindow);
-
+	// configure the system tray
 	auto exitAction = new QAction(tr("&Exit"), this);
 	connect(exitAction, &QAction::triggered, [this]() {
 		closing = true;
@@ -67,42 +59,6 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	});
 	connect(loginWindow, &LoginWidget::userAuthorized, this, &MainWindow::showDashboard);
 
-	// * miner start / stop connections
-	connect(ui->pushButton_startStopMiner, &QPushButton::clicked, this, [this]() {
-		if (settingsWindow->getMinerState() == MinerManager::NotMining) {
-			settingsWindow->startMiner();
-		} else if (settingsWindow->getMinerState() == MinerManager::Mining) {
-			settingsWindow->stopMiner();
-		}
-	});
-	connect(settingsWindow, &MinerManager::minerChangedState, this, [this](MinerManager::MinerState state) {
-		if (state == MinerManager::Starting) {
-			ui->pushButton_startStopMiner->setDisabled(true);
-			ui->pushButton_startStopMiner->setText(tr("Wait"));
-			ui->label_minerState->setText(tr("Starting"));
-			ui->label_minerState->setStyleSheet("border-radius: 10px;\n"
-												"color: white;\n"
-												"background-color: blue;\n"
-												"padding: 2px 5px 2px 5px;");
-		} else if (state == MinerManager::Mining) {
-			ui->pushButton_startStopMiner->setDisabled(false);
-			ui->pushButton_startStopMiner->setText(tr("Stop"));
-			ui->label_minerState->setText(tr("Donating"));
-			ui->label_minerState->setStyleSheet("border-radius: 10px;\n"
-												"color: white;\n"
-												"background-color: green;\n"
-												"padding: 2px 5px 2px 5px;");
-		} else if (state == MinerManager::NotMining) {
-			ui->pushButton_startStopMiner->setDisabled(false);
-			ui->pushButton_startStopMiner->setText(tr("Start"));
-			ui->label_minerState->setText(tr("Inactive"));
-			ui->label_minerState->setStyleSheet("border-radius: 10px;\n"
-												"color: white;\n"
-												"background-color: red;\n"
-												"padding: 2px 5px 2px 5px;");
-		}
-	});
-
 	// BURGERMENU
 	ui->Burgermenu->setMenuWidth(100);
 	ui->Burgermenu->setBurgerIcon(QIcon(":/icons/burger/burger"));
@@ -127,22 +83,22 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 				  "#MainBurgerButton:hover     { background-color: #333;    } "
 	);
 
-	connect(ui->Burgermenu, &BurgerMenu::triggered, [this](QAction *action) {
-		uint8_t index = ui->Burgermenu->actions().indexOf(action);
-		ui->stackedWidget->setCurrentIndex(index);
-	});
-
-	// PROJECT TAB
-	AbstractTableModel *model = new AbstractTableModel();
-	ui->tableView_projectList->setModel(model);
-	ui->tableView_projectList->setColumnHidden(0, true);
-
-	connect(ui->pushButton_projectConfirm, &QPushButton::clicked, this, [this]() {
-		QItemSelectionModel *select = ui->tableView_projectList->selectionModel();
-		if (select->hasSelection()) {
-			qDebug() << select->selectedRows(0).at(0).data();
-		}
-	});
+//	connect(ui->Burgermenu, &BurgerMenu::triggered, [this](QAction *action) {
+//		uint8_t index = ui->Burgermenu->actions().indexOf(action);
+//		ui->stackedWidget->setCurrentIndex(index);
+//	});
+//
+//	// PROJECT TAB
+//	AbstractTableModel *model = new AbstractTableModel();
+//	ui->tableView_projectList->setModel(model);
+//	ui->tableView_projectList->setColumnHidden(0, true);
+//
+//	connect(ui->pushButton_projectConfirm, &QPushButton::clicked, this, [this]() {
+//		QItemSelectionModel *select = ui->tableView_projectList->selectionModel();
+//		if (select->hasSelection()) {
+//			qDebug() << select->selectedRows(0).at(0).data();
+//		}
+//	});
 
 	setPixmap(QPixmap(":/images/new_york"));
 

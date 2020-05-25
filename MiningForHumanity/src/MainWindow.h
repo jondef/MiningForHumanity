@@ -11,7 +11,6 @@
 #include <QtCharts>
 #include "BurgerMenu.h"
 #include "ui_MainWindow.h"
-#include "MinerManager.h"
 #include "LoginWidget.h"
 
 #include <future>
@@ -55,7 +54,6 @@ private:
 	char **argv;
 	bool closing = false;
 
-	MinerManager *settingsWindow = new MinerManager();
 	LoginWidget *loginWindow = new LoginWidget();
 	QWidget *centralWidget = nullptr;
 	QPixmap backgroundPixmap;

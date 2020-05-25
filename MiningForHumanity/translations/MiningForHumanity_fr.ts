@@ -20,14 +20,47 @@
     </message>
 </context>
 <context>
+    <name>Dashboard</name>
+    <message>
+        <location filename="../src/Dashboard.cpp" line="30"/>
+        <source>Wait</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.cpp" line="31"/>
+        <source>Starting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.cpp" line="38"/>
+        <source>Stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.cpp" line="39"/>
+        <source>Donating</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.cpp" line="46"/>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.cpp" line="47"/>
+        <source>Inactive</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LanguageButtons</name>
     <message>
-        <location filename="../src/LanguageButtons.cpp" line="38"/>
+        <location filename="../src/LanguageButtons.cpp" line="37"/>
         <source>Restart?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/LanguageButtons.cpp" line="39"/>
+        <location filename="../src/LanguageButtons.cpp" line="38"/>
         <source>You must restart the program to change language. Restart now?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -35,7 +68,7 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../src/MainWindow.cpp" line="43"/>
+        <location filename="../src/MainWindow.cpp" line="35"/>
         <source>&amp;Exit</source>
         <translation>&amp;Quitter</translation>
     </message>
@@ -44,91 +77,298 @@
         <translation type="vanished">Miner pour l&apos;humanité</translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="81"/>
-        <source>Wait</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.cpp" line="82"/>
-        <source>Starting</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.cpp" line="89"/>
-        <source>Stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.cpp" line="90"/>
-        <source>Donating</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.cpp" line="97"/>
-        <source>Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.cpp" line="98"/>
-        <source>Inactive</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.cpp" line="109"/>
+        <location filename="../src/MainWindow.cpp" line="65"/>
         <source>Dashboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="110"/>
+        <location filename="../src/MainWindow.cpp" line="66"/>
         <source>Projects</source>
         <translation>Les projects</translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="112"/>
+        <location filename="../src/MainWindow.cpp" line="68"/>
         <source>Twitter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="113"/>
+        <location filename="../src/MainWindow.cpp" line="69"/>
         <source>Facebook</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="114"/>
+        <location filename="../src/MainWindow.cpp" line="70"/>
         <source>Instagram</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="116"/>
+        <location filename="../src/MainWindow.cpp" line="72"/>
         <source>Settings</source>
         <translation>Réglages</translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="304"/>
+        <location filename="../src/MainWindow.cpp" line="260"/>
         <source>Welcome back, </source>
-        <translation type="unfinished"></translation>
+        <translation>Bienvenue à nouveau, </translation>
     </message>
 </context>
 <context>
     <name>ToolBar</name>
     <message>
-        <location filename="../src/ToolBar.hpp" line="34"/>
         <source>Sign out</source>
-        <translation>Loger dehors</translation>
+        <translation type="vanished">Loger dehors</translation>
     </message>
     <message>
-        <location filename="../src/ToolBar.hpp" line="38"/>
         <source>Minimize</source>
-        <translation>Faire petit</translation>
+        <translation type="vanished">Faire petit</translation>
     </message>
     <message>
-        <location filename="../src/ToolBar.hpp" line="39"/>
         <source>Quit</source>
-        <translation>quitter</translation>
+        <translation type="vanished">quitter</translation>
+    </message>
+    <message>
+        <location filename="../src/ToolBar.cpp" line="26"/>
+        <source>Dashboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ToolBar.cpp" line="27"/>
+        <source>Ongoing campaigns</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ToolBar.cpp" line="28"/>
+        <source>Finished campaigns</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ToolBar.cpp" line="29"/>
+        <source>My profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ToolBar.cpp" line="30"/>
+        <source>My campaigns</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ToolBar.cpp" line="32"/>
+        <source>Settings</source>
+        <translation type="unfinished">Réglages</translation>
+    </message>
+    <message>
+        <location filename="../src/ToolBar.cpp" line="33"/>
+        <source>Contact</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ToolBar.cpp" line="34"/>
+        <source>About MFH</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/ToolBar.cpp" line="35"/>
+        <source>Log out</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Current Language changed to</source>
         <translation type="vanished">La language à été changée au</translation>
+    </message>
+</context>
+<context>
+    <name>uiDashboard</name>
+    <message>
+        <location filename="../src/Dashboard.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="92"/>
+        <source>Completed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="112"/>
+        <location filename="../src/Dashboard.ui" line="385"/>
+        <source>All time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="126"/>
+        <source>56%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="138"/>
+        <source>+2%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="150"/>
+        <location filename="../src/Dashboard.ui" line="335"/>
+        <location filename="../src/Dashboard.ui" line="423"/>
+        <source>Since yesterday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="180"/>
+        <source>Unique Donators</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="203"/>
+        <source>Today</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="220"/>
+        <source>1253</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="232"/>
+        <source>+14%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="244"/>
+        <source>Since last week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="274"/>
+        <source>Donators online</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="294"/>
+        <source>Now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="308"/>
+        <source>516</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="320"/>
+        <source>-16%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="365"/>
+        <source>Funds collected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="399"/>
+        <source>2643$</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="411"/>
+        <source>+3%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="487"/>
+        <source>Welcome back, Jon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="499"/>
+        <source>Monday, 29 April 2020</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="534"/>
+        <source>Currently donating to  &quot;Médecins sans frontières&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="572"/>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="591"/>
+        <source>Inactive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="608"/>
+        <source>Confirm choice</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="615"/>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="635"/>
+        <source>Search:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="696"/>
+        <source>General Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="707"/>
+        <source>General</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="712"/>
+        <source>Miner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="718"/>
+        <source>User</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="723"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="795"/>
+        <source>Version:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="805"/>
+        <location filename="../src/Dashboard.ui" line="822"/>
+        <location filename="../src/Dashboard.ui" line="839"/>
+        <location filename="../src/Dashboard.ui" line="856"/>
+        <location filename="../src/Dashboard.ui" line="873"/>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="812"/>
+        <source>Build Date:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="829"/>
+        <source>Git Commit Date:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="846"/>
+        <source>Git Commit Hash:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="863"/>
+        <source>Git Branch:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -233,193 +473,6 @@
     <message>
         <location filename="../src/MainWindow.ui" line="14"/>
         <source>Mining for Humanity</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="105"/>
-        <source>Completed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="125"/>
-        <location filename="../src/MainWindow.ui" line="398"/>
-        <source>All time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="139"/>
-        <source>56%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="151"/>
-        <source>+2%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="163"/>
-        <location filename="../src/MainWindow.ui" line="348"/>
-        <location filename="../src/MainWindow.ui" line="436"/>
-        <source>Since yesterday</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="193"/>
-        <source>Unique Donators</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="216"/>
-        <source>Today</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="233"/>
-        <source>1253</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="245"/>
-        <source>+14%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="257"/>
-        <source>Since last week</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="287"/>
-        <source>Donators online</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="307"/>
-        <source>Now</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="321"/>
-        <source>516</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="333"/>
-        <source>-16%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="378"/>
-        <source>Funds collected</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="412"/>
-        <source>2643$</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="424"/>
-        <source>+3%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="500"/>
-        <source>Welcome back, Jon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="512"/>
-        <source>Monday, 29 April 2020</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="547"/>
-        <source>Currently donating to  &quot;Médecins sans frontières&quot;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="585"/>
-        <source>Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="604"/>
-        <source>Inactive</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="621"/>
-        <source>Confirm choice</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="628"/>
-        <source>Refresh</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="648"/>
-        <source>Search:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="709"/>
-        <source>General Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="720"/>
-        <source>General</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="725"/>
-        <source>Miner</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="731"/>
-        <source>User</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="736"/>
-        <source>About</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="808"/>
-        <source>Version:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="818"/>
-        <location filename="../src/MainWindow.ui" line="835"/>
-        <location filename="../src/MainWindow.ui" line="852"/>
-        <location filename="../src/MainWindow.ui" line="869"/>
-        <location filename="../src/MainWindow.ui" line="886"/>
-        <source>TextLabel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="825"/>
-        <source>Build Date:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="842"/>
-        <source>Git Commit Date:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="859"/>
-        <source>Git Commit Hash:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/MainWindow.ui" line="876"/>
-        <source>Git Branch:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -555,12 +608,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ToolBar.ui" line="72"/>
+        <location filename="../src/ToolBar.ui" line="90"/>
         <source>Search</source>
         <translation>Recherche</translation>
     </message>
     <message>
-        <location filename="../src/ToolBar.ui" line="102"/>
+        <location filename="../src/ToolBar.ui" line="120"/>
         <source>Menu</source>
         <translation type="unfinished"></translation>
     </message>
