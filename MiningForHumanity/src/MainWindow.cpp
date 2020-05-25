@@ -14,10 +14,8 @@ QChart *createSplineChart();
 
 // todo: add reload information button next to shutdown button
 
-MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(parent), ui(new Ui::uiMainWindow) {
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::uiMainWindow) {
 	ui->setupUi(this);
-	this->argc = argc;
-	this->argv = argv;
 
 	if (loginWindow->autoLogin()) {
 		showDashboard(loginWindow->m_username);
@@ -26,7 +24,7 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 	}
 
 	setWindowIcon(QIcon(":/images/MFH_logo_2"));
-	setPixmap(QPixmap(":/images/new_york"));
+	setBackgroundPixmap(QPixmap(":/images/new_york"));
 
 	// region configure the system tray
 	auto exitAction = new QAction(tr("&Exit"), this);
@@ -59,17 +57,21 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 
 	// allow the toolbar and the dashboard to communicate
 	connect(ui->toolBar, &ToolBar::changePage, ui->dashboard, &Dashboard::changePage);
+	connect(ui->toolBar, &ToolBar::userLogOut, this, [this]() {
+		LoginWidget::deleteRememberMeCookie();
+		showLoginScreen();
+	});
 
 	//////////////////////////////////
 
 	QPixmap pixmap = QPixmap(50, 50);
-	pixmap.fill(QColor(0, 100, 255));
-//	ui->ribbon->showCampaign("Campaign name", pixmap, { CategoryLabel::Innovation, CategoryLabel::Environment, CategoryLabel::Environment });
+//	pixmap.fill(QColor(0, 100, 255));
+	ui->ribbon->showCampaign("Campaign name", pixmap, { CategoryLabel::Innovation, CategoryLabel::Environment, CategoryLabel::Environment });
 //	pixmap.fill(QColor(0, 100, 255));
 	QPixmap pixmap2 = QPixmap(50, 50);
-//	ui->ribbon->showCampaign("Campaign 2", pixmap2, { CategoryLabel::Education, CategoryLabel::Innovation });
+	ui->ribbon->showCampaign("Campaign 2", pixmap2, { CategoryLabel::Education, CategoryLabel::Innovation });
 
-//	//<editor-fold desc="Graph">
+	// region graph
 //	// Assign names to the set of bars used
 //	QBarSet *set0 = new QBarSet("Altuve");
 //
@@ -120,14 +122,14 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) : QMainWindow(pa
 //	qApp->setPalette(pal);*/
 //
 //	ui->chartsLayout->addWidget(chartView, 0, 1, 1, 1);
-//	//</editor-fold>
+	// endregion
 }
 
 MainWindow::~MainWindow() {
 	delete ui;
 }
 
-////<editor-fold desc="Graph">
+// region graph
 //DataTable generateRandomData(int listCount, int valueMax, int valueCount) {
 //	DataTable dataTable;
 //
@@ -170,7 +172,7 @@ MainWindow::~MainWindow() {
 //	axisY->setLabelFormat("%.1f  ");
 //	return chart;
 //}
-////</editor-fold>
+// endregion
 
 void MainWindow::showEvent(QShowEvent *event) {
 	// If the user opens the app for the first time,
@@ -187,7 +189,7 @@ void MainWindow::paintEvent(QPaintEvent *event) {
 	// set the background image of the login screen
 	QSize pixSize = backgroundPixmap.size();
 	pixSize.scale(size(), Qt::KeepAspectRatioByExpanding); // ! don't use event->rect().size() instead of size()
-	QPixmap scaledPix = backgroundPixmap.scaled(pixSize, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
+	QPixmap scaledPix = backgroundPixmap.scaled(pixSize, Qt::KeepAspectRatioByExpanding, Qt::FastTransformation);
 	painter.drawPixmap(QPoint(), scaledPix);
 }
 

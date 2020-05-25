@@ -4,6 +4,8 @@
 
 #include "ToolBar.h"
 
+// todo: put the start/stop miner button and label instead of the language buttons
+
 ToolBar::ToolBar(QWidget *parent) : ui(new Ui::uiToolBar) {
 	ui->setupUi(this);
 	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
@@ -32,7 +34,7 @@ ToolBar::ToolBar(QWidget *parent) : ui(new Ui::uiToolBar) {
 	connect(submenu->addAction(tr("Settings")), &QAction::triggered, [this]() { emit changePage(2); });
 	connect(submenu->addAction(tr("Contact")), &QAction::triggered, []() {});
 	connect(submenu->addAction(tr("About MFH")), &QAction::triggered, []() {});
-	connect(submenu->addAction(tr("Log out")), &QAction::triggered, []() { /*LoginWidget::deleteRememberMeCookie(); showLoginScreen();*/ });
+	connect(submenu->addAction(tr("Log out")), &QAction::triggered, [this]() { emit userLogOut(); });
 	ui->pushButton->setMenu(submenu);
 
 	// set the logo on the left of the toolbar

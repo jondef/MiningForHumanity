@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
 		qDebug() << "Plugins loaded from: " << QCoreApplication::libraryPaths();
 		QApplication::setStyle(QStyleFactory::create("Fusion"));
 
-		MainWindow window(argc, argv);
+		MainWindow window;
 		window.show();
 		result = QCoreApplication::exec();
 	} while(result == 1337);

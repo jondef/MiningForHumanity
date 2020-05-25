@@ -24,7 +24,7 @@ class MainWindow : public QMainWindow {
 Q_OBJECT
 
 public:
-	explicit MainWindow(int argc, char *argv[], QWidget *parent = nullptr);
+	explicit MainWindow(QWidget *parent = nullptr);
 
 	~MainWindow() override;
 
@@ -44,14 +44,12 @@ private slots:
 
 	void showDashboard(const QString &username);
 
-	void setPixmap(const QPixmap &pixmap) { backgroundPixmap = pixmap; }
+	void setBackgroundPixmap(const QPixmap &pixmap) { backgroundPixmap = pixmap; }
 
 public:
 
 private:
 	Ui::uiMainWindow *ui;
-	int argc;
-	char **argv;
 	bool closing = false;
 
 	LoginWidget *loginWindow = new LoginWidget();

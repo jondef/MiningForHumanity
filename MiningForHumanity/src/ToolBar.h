@@ -24,6 +24,7 @@ protected:
 
 Q_SIGNALS:
 	void changePage(int pageIndex);
+	void userLogOut();
 
 private:
 	Ui::uiToolBar *ui;

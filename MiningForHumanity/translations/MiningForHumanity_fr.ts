@@ -68,7 +68,7 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../src/MainWindow.cpp" line="32"/>
+        <location filename="../src/MainWindow.cpp" line="30"/>
         <source>&amp;Exit</source>
         <translation>&amp;Quitter</translation>
     </message>
@@ -85,7 +85,7 @@
         <translation type="vanished">Réglages</translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="218"/>
+        <location filename="../src/MainWindow.cpp" line="220"/>
         <source>Welcome back, </source>
         <translation>Bienvenue à nouveau, </translation>
     </message>
@@ -105,47 +105,47 @@
         <translation type="vanished">quitter</translation>
     </message>
     <message>
-        <location filename="../src/ToolBar.cpp" line="26"/>
+        <location filename="../src/ToolBar.cpp" line="28"/>
         <source>Dashboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ToolBar.cpp" line="27"/>
+        <location filename="../src/ToolBar.cpp" line="29"/>
         <source>Ongoing campaigns</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ToolBar.cpp" line="28"/>
+        <location filename="../src/ToolBar.cpp" line="30"/>
         <source>Finished campaigns</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ToolBar.cpp" line="29"/>
+        <location filename="../src/ToolBar.cpp" line="31"/>
         <source>My profile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ToolBar.cpp" line="30"/>
+        <location filename="../src/ToolBar.cpp" line="32"/>
         <source>My campaigns</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ToolBar.cpp" line="32"/>
+        <location filename="../src/ToolBar.cpp" line="34"/>
         <source>Settings</source>
         <translation type="unfinished">Réglages</translation>
     </message>
     <message>
-        <location filename="../src/ToolBar.cpp" line="33"/>
+        <location filename="../src/ToolBar.cpp" line="35"/>
         <source>Contact</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ToolBar.cpp" line="34"/>
+        <location filename="../src/ToolBar.cpp" line="36"/>
         <source>About MFH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/ToolBar.cpp" line="35"/>
+        <location filename="../src/ToolBar.cpp" line="37"/>
         <source>Log out</source>
         <translation type="unfinished"></translation>
     </message>

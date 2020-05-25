@@ -92,7 +92,7 @@ void LoginWidget::paintEvent(QPaintEvent *event) {
 	// set the background image of the login screen
 	QSize pixSize = backgroundPixmap.size();
 	pixSize.scale(size(), Qt::KeepAspectRatioByExpanding); // ! don't use event->rect().size() instead of size()
-	QPixmap scaledPix = backgroundPixmap.scaled(pixSize, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation);
+	QPixmap scaledPix = backgroundPixmap.scaled(pixSize, Qt::KeepAspectRatioByExpanding, Qt::FastTransformation);
 	painter.drawPixmap(QPoint(), scaledPix);
 
 	// send the cropped pix map to the blur layer
