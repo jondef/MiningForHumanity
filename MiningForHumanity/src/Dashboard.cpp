@@ -4,9 +4,18 @@
 
 #include "Dashboard.hpp"
 #include "AbstractTableModel.hpp"
+#include "Campaign.hpp"
 
-Dashboard::Dashboard(QWidget *parent) : ui(new Ui::uiDashboard) {
+
+Dashboard::Dashboard(QWidget *parent) : QWidget(parent), ui(new Ui::uiDashboard) {
 	ui->setupUi(this);
+
+	auto camp = new CampaignDisplay;
+	dynamic_cast<QVBoxLayout *>(ui->widget->layout())->insertWidget(1, new CampaignDisplay);
+	dynamic_cast<QVBoxLayout *>(ui->widget->layout())->insertWidget(1, camp);
+	connect(camp->btn, &QPushButton::clicked, this, [this](){
+		qDebug() << "fucK";
+	});
 
 	// populate the about tab in settings
 	ui->label_VERSION->setText(VERSION);

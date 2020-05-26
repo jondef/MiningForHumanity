@@ -37,32 +37,32 @@
 <context>
     <name>Dashboard</name>
     <message>
-        <location filename="../src/Dashboard.cpp" line="31"/>
+        <location filename="../src/Dashboard.cpp" line="40"/>
         <source>Wait</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.cpp" line="32"/>
+        <location filename="../src/Dashboard.cpp" line="41"/>
         <source>Starting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.cpp" line="39"/>
+        <location filename="../src/Dashboard.cpp" line="48"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.cpp" line="40"/>
+        <location filename="../src/Dashboard.cpp" line="49"/>
         <source>Donating</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.cpp" line="47"/>
+        <location filename="../src/Dashboard.cpp" line="56"/>
         <source>Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.cpp" line="48"/>
+        <location filename="../src/Dashboard.cpp" line="57"/>
         <source>Inactive</source>
         <translation type="unfinished"></translation>
     </message>
@@ -83,7 +83,7 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../src/MainWindow.cpp" line="30"/>
+        <location filename="../src/MainWindow.cpp" line="33"/>
         <source>&amp;Exit</source>
         <translation>&amp;Quitter</translation>
     </message>
@@ -100,7 +100,7 @@
         <translation type="vanished">Réglages</translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="220"/>
+        <location filename="../src/MainWindow.cpp" line="223"/>
         <source>Welcome back, </source>
         <translation>Bienvenue à nouveau, </translation>
     </message>
@@ -290,76 +290,84 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="611"/>
+        <location filename="../src/Dashboard.ui" line="615"/>
+        <source>Your Dashboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="728"/>
         <source>Confirm choice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="618"/>
+        <location filename="../src/Dashboard.ui" line="735"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="638"/>
+        <location filename="../src/Dashboard.ui" line="755"/>
         <source>Search:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="694"/>
+        <location filename="../src/Dashboard.ui" line="811"/>
         <source>General Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="705"/>
+        <location filename="../src/Dashboard.ui" line="822"/>
         <source>General</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="710"/>
+        <location filename="../src/Dashboard.ui" line="827"/>
         <source>Miner</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="716"/>
+        <location filename="../src/Dashboard.ui" line="833"/>
         <source>User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="721"/>
+        <location filename="../src/Dashboard.ui" line="838"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="793"/>
+        <location filename="../src/Dashboard.ui" line="910"/>
         <source>Version:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="803"/>
-        <location filename="../src/Dashboard.ui" line="820"/>
-        <location filename="../src/Dashboard.ui" line="837"/>
-        <location filename="../src/Dashboard.ui" line="854"/>
-        <location filename="../src/Dashboard.ui" line="871"/>
+        <location filename="../src/Dashboard.ui" line="633"/>
+        <location filename="../src/Dashboard.ui" line="665"/>
+        <location filename="../src/Dashboard.ui" line="697"/>
+        <location filename="../src/Dashboard.ui" line="920"/>
+        <location filename="../src/Dashboard.ui" line="937"/>
+        <location filename="../src/Dashboard.ui" line="954"/>
+        <location filename="../src/Dashboard.ui" line="971"/>
+        <location filename="../src/Dashboard.ui" line="988"/>
         <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="810"/>
+        <location filename="../src/Dashboard.ui" line="927"/>
         <source>Build Date:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="827"/>
+        <location filename="../src/Dashboard.ui" line="944"/>
         <source>Git Commit Date:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="844"/>
+        <location filename="../src/Dashboard.ui" line="961"/>
         <source>Git Commit Hash:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="861"/>
+        <location filename="../src/Dashboard.ui" line="978"/>
         <source>Git Branch:</source>
         <translation type="unfinished"></translation>
     </message>

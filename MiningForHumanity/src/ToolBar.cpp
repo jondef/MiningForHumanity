@@ -6,7 +6,7 @@
 
 // todo: put the start/stop miner button and label instead of the language buttons
 
-ToolBar::ToolBar(QWidget *parent) : ui(new Ui::uiToolBar) {
+ToolBar::ToolBar(QWidget *parent) : QWidget(parent), ui(new Ui::uiToolBar) {
 	ui->setupUi(this);
 	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
 	setFixedHeight(75);

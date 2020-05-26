@@ -17,6 +17,9 @@ QChart *createSplineChart();
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::uiMainWindow) {
 	ui->setupUi(this);
 
+	QRect screenGeometry = QGuiApplication::primaryScreen()->geometry();
+	resize(screenGeometry.width() / 1.5,screenGeometry.height() / 1.5);
+
 	if (loginWindow->autoLogin()) {
 		showDashboard(loginWindow->m_username);
 	} else {
