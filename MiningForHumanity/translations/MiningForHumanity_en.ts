@@ -356,91 +356,91 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/LoginWidget.ui" line="176"/>
+        <location filename="../src/LoginWidget.ui" line="180"/>
         <source>logo goes here</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/LoginWidget.ui" line="233"/>
-        <location filename="../src/LoginWidget.ui" line="638"/>
+        <location filename="../src/LoginWidget.ui" line="237"/>
+        <location filename="../src/LoginWidget.ui" line="642"/>
         <source>Sign In</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/LoginWidget.ui" line="253"/>
+        <location filename="../src/LoginWidget.ui" line="257"/>
         <source>Incorrect email or password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/LoginWidget.ui" line="270"/>
-        <location filename="../src/LoginWidget.ui" line="487"/>
+        <location filename="../src/LoginWidget.ui" line="274"/>
+        <location filename="../src/LoginWidget.ui" line="491"/>
         <source>Email:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/LoginWidget.ui" line="297"/>
-        <location filename="../src/LoginWidget.ui" line="544"/>
+        <location filename="../src/LoginWidget.ui" line="301"/>
+        <location filename="../src/LoginWidget.ui" line="548"/>
         <source>Password:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/LoginWidget.ui" line="342"/>
+        <location filename="../src/LoginWidget.ui" line="346"/>
         <source>Remember me</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/LoginWidget.ui" line="359"/>
+        <location filename="../src/LoginWidget.ui" line="363"/>
         <source>Forgot password?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/LoginWidget.ui" line="385"/>
+        <location filename="../src/LoginWidget.ui" line="389"/>
         <source>SIGN IN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/LoginWidget.ui" line="403"/>
+        <location filename="../src/LoginWidget.ui" line="407"/>
         <source>Don&apos;t have an account?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/LoginWidget.ui" line="413"/>
-        <location filename="../src/LoginWidget.ui" line="470"/>
+        <location filename="../src/LoginWidget.ui" line="417"/>
+        <location filename="../src/LoginWidget.ui" line="474"/>
         <source>Register</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/LoginWidget.ui" line="517"/>
+        <location filename="../src/LoginWidget.ui" line="521"/>
         <source>Username:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/LoginWidget.ui" line="527"/>
+        <location filename="../src/LoginWidget.ui" line="531"/>
         <source>[A-Za-z0-9-_.] are valid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/LoginWidget.ui" line="563"/>
+        <location filename="../src/LoginWidget.ui" line="567"/>
         <source>8+ characters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/LoginWidget.ui" line="580"/>
+        <location filename="../src/LoginWidget.ui" line="584"/>
         <source>Repeat Password:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/LoginWidget.ui" line="613"/>
+        <location filename="../src/LoginWidget.ui" line="617"/>
         <source>REGISTER</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/LoginWidget.ui" line="628"/>
+        <location filename="../src/LoginWidget.ui" line="632"/>
         <source>Already have an account?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/LoginWidget.ui" line="685"/>
+        <location filename="../src/LoginWidget.ui" line="689"/>
         <source>padlock goes here</source>
         <translation type="unfinished"></translation>
     </message>

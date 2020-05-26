@@ -2,7 +2,6 @@
 // Created by jon on 17.04.20.
 //
 
-#include <QtWidgets/QGraphicsBlurEffect>
 #include <QtGui/QDesktopServices>
 #include <QtGui/QRegExpValidator>
 #include <QPainter>
@@ -15,12 +14,7 @@
 LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent), ui(new Ui::uiLogin) {
 	ui->setupUi(this);
 
-	// set up the blur layer
 	blurLayer = new BlurLayer(ui->centralWidget);
-	QGraphicsBlurEffect *p_blur = new QGraphicsBlurEffect;
-	p_blur->setBlurRadius(10);
-	p_blur->setBlurHints(QGraphicsBlurEffect::PerformanceHint);
-	blurLayer->setGraphicsEffect(p_blur);
 
 	// set the logo at the top
 	QPixmap map(":/images/MFH_logo_2");

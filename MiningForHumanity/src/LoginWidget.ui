@@ -77,6 +77,19 @@
         </property>
        </spacer>
       </item>
+      <item row="0" column="2">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
       <item row="6" column="2">
        <widget class="Frame" name="centralFrame">
         <property name="sizePolicy">
@@ -129,15 +142,6 @@
                                      color: rgb(255,0,0);
                                      }
                                  </string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <property name="lineWidth">
-         <number>1</number>
         </property>
         <layout class="QGridLayout" name="gridLayout_6">
          <property name="leftMargin">
@@ -704,19 +708,6 @@
         </layout>
        </widget>
       </item>
-      <item row="0" column="2">
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
      </layout>
     </widget>
    </item>
@@ -737,102 +728,5 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections>
-  <connection>
-   <sender>lineEdit_loginEmail</sender>
-   <signal>returnPressed()</signal>
-   <receiver>pushButton_login</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>465</x>
-     <y>274</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>465</x>
-     <y>428</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lineEdit_loginPassword</sender>
-   <signal>returnPressed()</signal>
-   <receiver>pushButton_login</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>465</x>
-     <y>333</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>465</x>
-     <y>428</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lineEdit_registerEmail</sender>
-   <signal>returnPressed()</signal>
-   <receiver>pushButton_register</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>465</x>
-     <y>251</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>465</x>
-     <y>451</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lineEdit_username</sender>
-   <signal>returnPressed()</signal>
-   <receiver>pushButton_register</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>465</x>
-     <y>304</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>465</x>
-     <y>451</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lineEdit_registerPassword</sender>
-   <signal>returnPressed()</signal>
-   <receiver>pushButton_register</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>465</x>
-     <y>357</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>465</x>
-     <y>451</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lineEdit_registerPasswordRep</sender>
-   <signal>returnPressed()</signal>
-   <receiver>pushButton_register</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>465</x>
-     <y>410</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>465</x>
-     <y>451</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
