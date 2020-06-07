@@ -24,6 +24,14 @@ class MainWindow : public QMainWindow {
 Q_OBJECT
 
 public:
+	enum Page {
+		Dashboard,
+		OngoingCampaigns,
+		FinishedCampaigns,
+		Settings
+	};
+
+public:
 	explicit MainWindow(QWidget *parent = nullptr);
 
 	~MainWindow() override;
@@ -38,11 +46,10 @@ protected:
 public slots:
 
 private slots:
+
 	void showLoginScreen();
 
-	void updateDashboard(const QString &username);
-
-	void showDashboard(const QString &username);
+	void showDashboard();
 
 	void setBackgroundPixmap(const QPixmap &pixmap) { backgroundPixmap = pixmap; }
 

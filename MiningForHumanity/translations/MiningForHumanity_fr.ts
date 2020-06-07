@@ -2,6 +2,24 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="fr" sourcelanguage="en">
 <context>
+    <name>CampaignDisplay</name>
+    <message>
+        <location filename="../src/Campaign.hpp" line="89"/>
+        <source>(until </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Campaign.hpp" line="90"/>
+        <source>Funds collected by you: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Campaign.hpp" line="91"/>
+        <source>Funds collected: </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CategoryLabel</name>
     <message>
         <location filename="../src/CategoryLabel.hpp" line="44"/>
@@ -37,33 +55,63 @@
 <context>
     <name>Dashboard</name>
     <message>
-        <location filename="../src/Dashboard.cpp" line="40"/>
+        <location filename="../src/Dashboard.cpp" line="60"/>
         <source>Wait</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.cpp" line="41"/>
+        <location filename="../src/Dashboard.cpp" line="61"/>
         <source>Starting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.cpp" line="48"/>
+        <location filename="../src/Dashboard.cpp" line="68"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.cpp" line="49"/>
+        <location filename="../src/Dashboard.cpp" line="69"/>
         <source>Donating</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.cpp" line="56"/>
+        <location filename="../src/Dashboard.cpp" line="76"/>
         <source>Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.cpp" line="57"/>
+        <location filename="../src/Dashboard.cpp" line="77"/>
         <source>Inactive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.cpp" line="122"/>
+        <source>Until the </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.cpp" line="129"/>
+        <source>Created on </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.cpp" line="130"/>
+        <source>Website: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.cpp" line="123"/>
+        <source>Current donators: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.cpp" line="127"/>
+        <source>About </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.cpp" line="128"/>
+        <source>Description: </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -83,7 +131,7 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../src/MainWindow.cpp" line="33"/>
+        <location filename="../src/MainWindow.cpp" line="31"/>
         <source>&amp;Exit</source>
         <translation>&amp;Quitter</translation>
     </message>
@@ -100,7 +148,7 @@
         <translation type="vanished">Réglages</translation>
     </message>
     <message>
-        <location filename="../src/MainWindow.cpp" line="223"/>
+        <location filename="../src/MainWindow.cpp" line="126"/>
         <source>Welcome back, </source>
         <translation>Bienvenue à nouveau, </translation>
     </message>
@@ -177,197 +225,229 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="92"/>
-        <source>Completed</source>
+        <location filename="../src/Dashboard.ui" line="98"/>
+        <source>Your ongoing campaigns</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="112"/>
-        <location filename="../src/Dashboard.ui" line="385"/>
-        <source>All time</source>
+        <location filename="../src/Dashboard.ui" line="140"/>
+        <source>Ended campaigns</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="126"/>
-        <source>56%</source>
+        <location filename="../src/Dashboard.ui" line="182"/>
+        <source>Your goals</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="138"/>
-        <source>+2%</source>
+        <location filename="../src/Dashboard.ui" line="211"/>
+        <source>You might be interested in</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="150"/>
-        <location filename="../src/Dashboard.ui" line="335"/>
-        <location filename="../src/Dashboard.ui" line="426"/>
-        <source>Since yesterday</source>
+        <location filename="../src/Dashboard.ui" line="423"/>
+        <source>Campaign objectives</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="180"/>
-        <source>Unique Donators</source>
+        <location filename="../src/Dashboard.ui" line="450"/>
+        <source>Donate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="203"/>
-        <source>Today</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Dashboard.ui" line="220"/>
-        <source>1253</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Dashboard.ui" line="232"/>
-        <source>+14%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Dashboard.ui" line="244"/>
-        <source>Since last week</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Dashboard.ui" line="274"/>
-        <source>Donators online</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Dashboard.ui" line="294"/>
-        <source>Now</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Dashboard.ui" line="308"/>
-        <source>516</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Dashboard.ui" line="320"/>
-        <source>-16%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Dashboard.ui" line="365"/>
-        <source>Funds collected</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Dashboard.ui" line="402"/>
-        <source>2643$</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Dashboard.ui" line="414"/>
-        <source>+3%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Dashboard.ui" line="490"/>
-        <source>Welcome back, Jon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Dashboard.ui" line="502"/>
-        <source>Monday, 29 April 2020</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Dashboard.ui" line="537"/>
-        <source>Currently donating to  &quot;Médecins sans frontières&quot;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Dashboard.ui" line="575"/>
-        <source>Start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Dashboard.ui" line="594"/>
-        <source>Inactive</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Dashboard.ui" line="615"/>
-        <source>Your Dashboard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Dashboard.ui" line="728"/>
-        <source>Confirm choice</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Dashboard.ui" line="735"/>
-        <source>Refresh</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/Dashboard.ui" line="755"/>
-        <source>Search:</source>
+        <location filename="../src/Dashboard.ui" line="457"/>
+        <source>Share</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/Dashboard.ui" line="811"/>
+        <source>Completed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="831"/>
+        <location filename="../src/Dashboard.ui" line="1104"/>
+        <source>All time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="845"/>
+        <source>56%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="857"/>
+        <source>+2%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="869"/>
+        <location filename="../src/Dashboard.ui" line="1054"/>
+        <location filename="../src/Dashboard.ui" line="1145"/>
+        <source>Since yesterday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="899"/>
+        <source>Unique Donators</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="922"/>
+        <source>Today</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="939"/>
+        <source>1253</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="951"/>
+        <source>+14%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="963"/>
+        <source>Since last week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="993"/>
+        <source>Donators online</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="1013"/>
+        <source>Now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="1027"/>
+        <source>516</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="1039"/>
+        <source>-16%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="1084"/>
+        <source>Funds collected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="1121"/>
+        <source>2643$</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="1133"/>
+        <source>+3%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="1209"/>
+        <source>Welcome back, Jon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="1221"/>
+        <source>Monday, 29 April 2020</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="1256"/>
+        <source>Currently donating to  &quot;Médecins sans frontières&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="1294"/>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="1313"/>
+        <source>Inactive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="72"/>
+        <source>Your Dashboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="490"/>
+        <source>Confirm choice</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="497"/>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="517"/>
+        <source>Search:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/Dashboard.ui" line="573"/>
         <source>General Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="822"/>
+        <location filename="../src/Dashboard.ui" line="584"/>
         <source>General</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="827"/>
+        <location filename="../src/Dashboard.ui" line="589"/>
         <source>Miner</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="833"/>
+        <location filename="../src/Dashboard.ui" line="595"/>
         <source>User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="838"/>
+        <location filename="../src/Dashboard.ui" line="600"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="910"/>
+        <location filename="../src/Dashboard.ui" line="672"/>
         <source>Version:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="633"/>
-        <location filename="../src/Dashboard.ui" line="665"/>
-        <location filename="../src/Dashboard.ui" line="697"/>
-        <location filename="../src/Dashboard.ui" line="920"/>
-        <location filename="../src/Dashboard.ui" line="937"/>
-        <location filename="../src/Dashboard.ui" line="954"/>
-        <location filename="../src/Dashboard.ui" line="971"/>
-        <location filename="../src/Dashboard.ui" line="988"/>
+        <location filename="../src/Dashboard.ui" line="682"/>
+        <location filename="../src/Dashboard.ui" line="699"/>
+        <location filename="../src/Dashboard.ui" line="716"/>
+        <location filename="../src/Dashboard.ui" line="733"/>
+        <location filename="../src/Dashboard.ui" line="750"/>
         <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="927"/>
+        <location filename="../src/Dashboard.ui" line="689"/>
         <source>Build Date:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="944"/>
+        <location filename="../src/Dashboard.ui" line="706"/>
         <source>Git Commit Date:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="961"/>
+        <location filename="../src/Dashboard.ui" line="723"/>
         <source>Git Commit Hash:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Dashboard.ui" line="978"/>
+        <location filename="../src/Dashboard.ui" line="740"/>
         <source>Git Branch:</source>
         <translation type="unfinished"></translation>
     </message>

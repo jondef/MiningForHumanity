@@ -66,9 +66,11 @@ public slots:
 
 	void generateLoginCookie(const QString& email);
 
+	void resetInputFields();
+
 Q_SIGNALS:
 
-	void userAuthorized(QString username);
+	void userAuthorized();
 
 private:
 	Ui::uiLogin *ui;

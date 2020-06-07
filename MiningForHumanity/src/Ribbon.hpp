@@ -52,6 +52,10 @@ public slots:
 		}
 	}
 
+	void changePage(int pageIndex) {
+		ui->stackedWidget->setCurrentIndex(pageIndex);
+	}
+
 private:
 	Ui::uiRibbon *ui;
 	QList<CategoryLabel *> labelList;

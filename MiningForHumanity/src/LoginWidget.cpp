@@ -44,6 +44,7 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent), ui(new Ui::uiLogin)
 	db.setUserName("application_user");
 	db.setPassword("miningforhumanity");
 	if (!db.open()) {
+		qDebug() << "Failed to connect using LAN. Trying WAN...";
 		db.setHostName("62.203.57.210");
 		if (!db.open()) {
 			qDebug() << "FAILED TO CONNECT TO DATABASE";
@@ -134,7 +135,8 @@ void LoginWidget::LoginButtonPressed() {
 		if (ui->checkBox_rememberMe->isChecked()) {
 			generateLoginCookie(email);
 		}
-		emit userAuthorized(getUsername(email));
+		m_username = getUsername(email);
+		emit userAuthorized();
 	}
 }
 
@@ -221,9 +223,7 @@ bool LoginWidget::autoLogin() {
 		generateLoginCookie(email);
 		return true;
 	}
-	//<editor-fold desc="Description">
 	return false;
-	//</editor-fold>
 }
 
 QByteArray LoginWidget::hashPassword(const QString &password) {
@@ -270,6 +270,7 @@ QByteArray LoginWidget::readBinary(const QString &fileName) {
  */
 void LoginWidget::deleteRememberMeCookie() {
 	QFile::remove(accountFileName);
+	// todo: clear the text from the widgets -> reset them
 }
 
 QString LoginWidget::getUsername(const QString &email) {
@@ -299,4 +300,14 @@ void LoginWidget::generateLoginCookie(const QString &email) {
 	QByteArray input;
 	input.append(email + "\n" + rememberMePW);
 	writeBinary(accountFileName, input);
+}
+
+void LoginWidget::resetInputFields() {
+	ui->lineEdit_loginEmail->setText("");
+	ui->lineEdit_loginPassword->setText("");
+	ui->checkBox_rememberMe->setChecked(false);
+	ui->lineEdit_registerEmail->setText("");
+	ui->lineEdit_username->setText("");
+	ui->lineEdit_registerPassword->setText("");
+	ui->lineEdit_registerPasswordRep->setText("");
 }
