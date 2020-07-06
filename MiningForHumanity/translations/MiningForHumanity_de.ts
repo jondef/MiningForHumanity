@@ -138,7 +138,7 @@
     <message>
         <location filename="../src/MainWindow.cpp" line="122"/>
         <source>Welcome back, </source>
-        <translation type="unfinished"></translation>
+        <translation>Willkommen zurück, </translation>
     </message>
     <message>
         <location filename="../src/MainWindow.cpp" line="128"/>

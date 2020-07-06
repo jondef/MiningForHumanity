@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
 	qDebug() << "Plugins loaded from: " << QCoreApplication::libraryPaths();
 	QApplication::setStyle(QStyleFactory::create("Fusion"));
 
-	uint16_t result = 0;
+	uint16_t result;
 	do {
 		// read language string from settings and load the translations
 		QSettings settings;
