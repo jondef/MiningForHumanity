@@ -1,4 +1,4 @@
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 project(MiningForHumanity)
 
 option(STATIC_BUILD_WIN "Link Qt statically for target Windows" OFF)

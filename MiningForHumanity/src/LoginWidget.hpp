@@ -19,7 +19,6 @@ static const QString accountFileName("account.dat");
 class LoginWidget : public QWidget {
 Q_OBJECT
 
-
 public:
 	enum AccountType {
 		Organisation,
@@ -54,9 +53,11 @@ private slots:
 
 	static void writeBinary(const QString &fileName, const QByteArray &data);
 
+	void connectToDatabase();
+
 public slots:
 
-	QString getUsername(const QString &email);
+	QString getUsername(const QString &email) const;
 
 	bool autoLogin();
 
@@ -68,6 +69,8 @@ public slots:
 
 	void resetInputFields();
 
+	QString getUsername() const;
+
 Q_SIGNALS:
 
 	void userAuthorized();
@@ -77,8 +80,6 @@ private:
 	QPixmap backgroundPixmap;
 	BlurLayer *blurLayer;
 	QSqlDatabase db;
-
-public:
 	QString m_username;
 
 };

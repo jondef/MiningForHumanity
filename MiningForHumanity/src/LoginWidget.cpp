@@ -43,14 +43,7 @@ LoginWidget::LoginWidget(QWidget *parent) : QWidget(parent), ui(new Ui::uiLogin)
 	db.setDatabaseName("userdb");
 	db.setUserName("application_user");
 	db.setPassword("miningforhumanity");
-	if (!db.open()) {
-		qDebug() << "Failed to connect using LAN. Trying WAN...";
-		db.setHostName("62.203.57.210");
-		if (!db.open()) {
-			qDebug() << "FAILED TO CONNECT TO DATABASE";
-			QMessageBox::warning(this, "Warning", "Failed to connect to database!");
-		}
-	}
+	db.setConnectOptions("MYSQL_OPT_CONNECT_TIMEOUT=5");
 
 	// page switching connections
 	connect(ui->pushButton_switchToRegisterPage, &QPushButton::clicked, this, [this]() { ui->stackedWidget->setCurrentIndex(1); });
@@ -119,6 +112,8 @@ void LoginWidget::LoginButtonPressed() {
 	QString password = ui->lineEdit_loginPassword->text();
 	QString command = QString("SELECT password FROM user_login WHERE email = '%1'").arg(email);
 
+	if (!db.isOpen()) { connectToDatabase(); }
+
 	QSqlQuery query(db);
 	if (query.exec(command)) {
 		if (!query.first()) {
@@ -145,6 +140,8 @@ void LoginWidget::createUserAccount() {
 	QString email = ui->lineEdit_registerEmail->text();
 	QString password = ui->lineEdit_registerPassword->text();
 	QString username = ui->lineEdit_username->text();
+
+	if (!db.isOpen()) { connectToDatabase(); }
 
 	// make sure the email address is valid
 	const QRegExpValidator *valid = dynamic_cast<const QRegExpValidator *>(ui->lineEdit_loginEmail->validator());
@@ -210,6 +207,8 @@ bool LoginWidget::autoLogin() {
 		QString password = data.split('\n').at(1);
 		QString command = QString("SELECT remember_me FROM user_login WHERE email = '%1'").arg(email);
 
+		if (!db.isOpen()) { connectToDatabase(); }
+
 		QSqlQuery query(db);
 		if (!query.exec(command)) { return false; }
 		if (!query.first()) { return false; }
@@ -270,10 +269,9 @@ QByteArray LoginWidget::readBinary(const QString &fileName) {
  */
 void LoginWidget::deleteRememberMeCookie() {
 	QFile::remove(accountFileName);
-	// todo: clear the text from the widgets -> reset them
 }
 
-QString LoginWidget::getUsername(const QString &email) {
+QString LoginWidget::getUsername(const QString &email) const {
 	QString command = QString("SELECT username FROM user_login WHERE email = '%1'").arg(email);
 	QSqlQuery query(db);
 	if (!query.exec(command)) { return QString(); }
@@ -310,4 +308,19 @@ void LoginWidget::resetInputFields() {
 	ui->lineEdit_username->setText("");
 	ui->lineEdit_registerPassword->setText("");
 	ui->lineEdit_registerPasswordRep->setText("");
+}
+
+QString LoginWidget::getUsername() const {
+	return m_username;
+}
+
+void LoginWidget::connectToDatabase() {
+	if (!db.open()) {
+		qDebug() << "Failed to connect using LAN. Trying WAN...";
+		db.setHostName("176.127.177.173");
+		if (!db.open()) {
+			qDebug() << "FAILED TO CONNECT TO DATABASE";
+			QMessageBox::warning(this, "Warning", "Failed to connect to database!");
+		}
+	}
 }

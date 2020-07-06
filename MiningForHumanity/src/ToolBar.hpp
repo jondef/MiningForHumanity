@@ -11,6 +11,7 @@
 #include <QStyleOption>
 #include "ui_ToolBar.h"
 #include "LanguageButtons.hpp"
+#include "globals.hpp"
 
 class ToolBar : public QWidget {
 Q_OBJECT
@@ -23,7 +24,8 @@ protected:
 	void paintEvent(QPaintEvent *event) override;
 
 Q_SIGNALS:
-	void changePage(int pageIndex);
+	void changePage(GLOBALS::Page);
+
 	void userLogOut();
 
 private:

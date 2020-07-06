@@ -12,24 +12,13 @@
 #include "BurgerMenu.hpp"
 #include "ui_MainWindow.h"
 #include "LoginWidget.hpp"
+#include "globals.hpp"
 
 #include <future>
 #include <memory>
 
-typedef QPair<QPointF, QString> Data;
-typedef QList<Data> DataList;
-typedef QList<DataList> DataTable;
-
 class MainWindow : public QMainWindow {
 Q_OBJECT
-
-public:
-	enum Page {
-		Dashboard,
-		OngoingCampaigns,
-		FinishedCampaigns,
-		Settings
-	};
 
 public:
 	explicit MainWindow(QWidget *parent = nullptr);
@@ -46,6 +35,7 @@ protected:
 public slots:
 
 private slots:
+	void changePage(GLOBALS::Page page);
 
 	void showLoginScreen();
 

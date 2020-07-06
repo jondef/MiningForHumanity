@@ -11,6 +11,7 @@
 #include "ui_Dashboard.h"
 #include "MinerManager.hpp"
 #include "Campaign.hpp"
+#include "globals.hpp"
 
 class Dashboard : public QWidget {
 Q_OBJECT
@@ -24,6 +25,8 @@ protected:
 	void paintEvent(QPaintEvent *event) override;
 
 Q_SIGNALS:
+	void changePage(GLOBALS::Page);
+
 	void ribbonSetText(const QString &text);
 
 	void ribbonSetCampaign(const QString &title, const QPixmap &pixmap, const QList<CategoryLabel::Category> &categories);

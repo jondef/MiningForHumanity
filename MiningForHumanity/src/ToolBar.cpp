@@ -25,13 +25,13 @@ ToolBar::ToolBar(QWidget *parent) : QWidget(parent), ui(new Ui::uiToolBar) {
 	"QMenu::item:pressed { color: white; background-color: grey; }"
 	"QMenu::separator { color: black; }");
 
-	connect(submenu->addAction(tr("Dashboard")), &QAction::triggered, [this]() { emit changePage(0); });
-	connect(submenu->addAction(tr("Ongoing campaigns")), &QAction::triggered, [this]() { emit changePage(1); });
+	connect(submenu->addAction(tr("Dashboard")), &QAction::triggered, [this]() { emit changePage(GLOBALS::Dashboard); });
+	connect(submenu->addAction(tr("Ongoing campaigns")), &QAction::triggered, [this]() { emit changePage(GLOBALS::OngoingCampaigns); });
 	connect(submenu->addAction(tr("Finished campaigns")), &QAction::triggered, []() {});
 	connect(submenu->addAction(tr("My profile")), &QAction::triggered, []() {});
 	connect(submenu->addAction(tr("My campaigns")), &QAction::triggered, []() {});
 	submenu->addSeparator();
-	connect(submenu->addAction(tr("Settings")), &QAction::triggered, [this]() { emit changePage(2); });
+	connect(submenu->addAction(tr("Settings")), &QAction::triggered, [this]() { emit changePage(GLOBALS::Settings); });
 	connect(submenu->addAction(tr("Contact")), &QAction::triggered, []() {});
 	connect(submenu->addAction(tr("About MFH")), &QAction::triggered, []() {});
 	connect(submenu->addAction(tr("Log out")), &QAction::triggered, [this]() { emit userLogOut(); });

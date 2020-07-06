@@ -86,9 +86,9 @@ protected:
 
 public slots:
 	void updateLabels() {
-		line_1->setText(campaign->campaignName + tr("(until ") + campaign->campaignExpirationDate.toString() + ")");
-		line_2->setText(tr("Funds collected by you: ") + campaign->monetaryByUser + "$");
-		line_3->setText(tr("Funds collected: ") + campaign->monetaryCurrent + " / " + campaign->monetaryObjective + "$");
+		line_1->setText(campaign->campaignName + tr(" (until ") + campaign->campaignExpirationDate.toString() + ")");
+		line_2->setText(tr("Funds collected by you: ") + QString::number(campaign->monetaryByUser) + "$");
+		line_3->setText(tr("Funds collected: ") + QString::number(campaign->monetaryCurrent) + " / " + QString::number(campaign->monetaryObjective) + "$");
 	}
 
 private:

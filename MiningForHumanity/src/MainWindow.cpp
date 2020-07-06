@@ -55,14 +55,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::uiMain
 	// endregion
 
 	connect(loginWindow, &LoginWidget::userAuthorized, this, &MainWindow::showDashboard);
-
-	// allow the toolbar to communicate to the dashboard
-	connect(ui->toolBar, &ToolBar::changePage, ui->dashboard, &Dashboard::changePage);
-	connect(ui->toolBar, &ToolBar::changePage, ui->ribbon, &Ribbon::changePage);
 	connect(ui->toolBar, &ToolBar::userLogOut, this, &MainWindow::showLoginScreen);
 
-	// allow the dashboard to communicate to the ribbon
-	connect(ui->dashboard, &Dashboard::ribbonSetText, ui->ribbon, &Ribbon::showLabel); // todo: questionable connection
+	connect(ui->toolBar, &ToolBar::changePage, this, &MainWindow::changePage);
+
 	connect(ui->dashboard, &Dashboard::ribbonSetCampaign, ui->ribbon, &Ribbon::showCampaign);
 
 }
@@ -107,7 +103,7 @@ void MainWindow::showDashboard() {
 		takeCentralWidget(); // don't need to take ownership of the login widget because it is already a member
 		setCentralWidget(centralWidget);
 	}
-	changePage(MainWindow::Dashboard)
+	changePage(GLOBALS::Dashboard);
 }
 
 /*
@@ -120,16 +116,23 @@ void MainWindow::showLoginScreen() {
 	setCentralWidget(loginWindow);
 }
 
-void MainWindow::changePage(Page page) {
+void MainWindow::changePage(GLOBALS::Page page) {
 	switch(page) {
-		case MainWindow::Dashboard:
-			ui->ribbon->showLabel(tr("Welcome back, ") + loginWindow->m_username + "!");
+		case GLOBALS::Dashboard:
+			ui->ribbon->showLabel(tr("Welcome back, ") + loginWindow->getUsername() + "!");
 			ui->dashboard->changePage(0);
 			break;
-		case MainWindow::Settings:
-			// code block
+		case GLOBALS::CampaignPreview: // campaignPreview is not managed here
 			break;
-		default:
-			// code block
+		case GLOBALS::Settings:
+			ui->ribbon->showLabel(tr("Settings"));
+			ui->dashboard->changePage(3);
+			break;
+		case GLOBALS::FinishedCampaigns:
+			break;
+		case GLOBALS::OngoingCampaigns:
+			ui->ribbon->showLabel(tr("Ongoing Campaigns"));
+			ui->dashboard->changePage(2);
+			break;
 	}
 }

@@ -4,6 +4,7 @@
 
 #include "Dashboard.hpp"
 #include "AbstractTableModel.hpp"
+#include "globals.hpp"
 
 
 Dashboard::Dashboard(QWidget *parent) : QWidget(parent), ui(new Ui::uiDashboard) {
@@ -115,6 +116,7 @@ void Dashboard::changePage(int pageIndex) {
  * all the widgets accordingly
  */
 void Dashboard::showCampaignInfo(Campaign *campaign) {
+	// todo: implement a back button to return to the dashboard
 	changePage(1);
 	ribbonSetCampaign(campaign->associationName, campaign->associationLogo, campaign->associationCategories);
 
